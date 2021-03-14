@@ -1,0 +1,22 @@
+<div class="container" style="padding-top: 10%;">
+    <h1 class="h1">כניסה לאתר</h1>
+    <form action="/action_page.php" #myForm="ngForm" style="direction: rtl;" >
+      <div class="form-group" ><br>
+        <label for="email" style="margin-right:35% ;">כתובת דוא"ל:</label>
+        <input  type="email" #ngEmail="ngModel" [(ngModel)]="clientService.newClient.EmailAddress" class="form-control" id="EmailAddress" name="EmailAddress" style="width: 30%;margin-right: 35%; border-color:#f3e412;"  minlength="10" required>
+        <div class="alert alert-danger" *ngIf="ngEmail.invalid&&(ngEmail.touched||ngEmail.dirty)" style="width: 30%;margin-right: 35%; border-color:white; background-color: teal;">
+          <!-- <div class="invalid-feedback">Please fill out this field.</div> -->
+          <!-- <p *ngIf="ngEmail.errors.required">דוא"ל זה שדה חובה</p> -->
+          <!--<p *ngIf="ngEmail.errors.pattern">gfhfgh</p>
+          <p *ngIf="ngEmail.errors.minlength">יש להכניס לפחות 10 תווים</p> -->
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="pwd" style="margin-right:35% ;">סיסמא:</label>
+        <input type="password" #ngPassword="ngModel" [(ngModel)]="clientService.newClient.Password" class="form-control" id="Password" name="Password" style="width: 30%;margin-right: 35%; border-color:#f3e412;" required>
+        <div class="alert alert-danger" *ngIf="ngEmail.invalid&&(ngEmail.touched||ngEmail.dirty)" style="width: 30%;margin-right: 35%; border-color:white; background-color: teal;">
+        </div>
+      </div>
+      <button (click)="Enter()" type="submit" class="button btn-lg" style="margin-right: 35%;" [disabled]="!myForm.form.valid">כניסה</button>
+    </form>
+  </div>  

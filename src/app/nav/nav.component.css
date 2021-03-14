@@ -1,0 +1,43 @@
+.navbar{
+    background-color: white;
+    
+}
+
+/* עיצוב האותיות והמיקום שלהם */
+.navbar li a{
+    text-align: right;
+    direction: rtl;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 22px;
+    color: #c1272d !important;
+    font-weight: bold;
+    margin-top: 13px;
+    /* right: 50px; */
+}
+/* שינוי הצבע בזמן שעובר על אחד מהקישורים */
+.navbar-nav li a:hover{
+    color:#c1272d !important;
+    background-color:rgb(252, 252, 110) !important;
+}
+
+/* עיצוב הלוגו */
+.logo{
+    margin-top: 10px;
+    width: 228px;
+    height: 66px;
+}
+.button{
+    width: 18%;
+    background-color: #c1272d;
+    color:#fcee21;
+    border-color: #c1272d;
+    text-align: center;
+    float: right;
+    /* margin-left: 10px;
+    margin-right: 15px; */
+    margin-top: 13px;
+}
+
+
+
+

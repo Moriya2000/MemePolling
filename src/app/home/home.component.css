@@ -1,0 +1,129 @@
+
+  @media screen and (max-width: 1200px) {
+    .p2 {
+      font-size: 20px;
+    }
+    .p3{
+        font-size: 17px;
+    }
+    .p4{
+        font-size: 13px;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .p2 {
+      font-size: 15px;
+    }
+    .p3{
+        font-size: 17px;
+    }
+    .p4{
+        font-size: 10px;
+    }  
+      .button{
+        font-size: 10px;
+    }
+
+  }
+
+/* .a{
+    margin-left: 47%;
+} */
+.YellowLineLeft{
+    background:#fcee21;
+    max-width: 40%;
+    height: 2.5px;
+    margin-top: -3%;
+}
+
+.YellowLineRight{
+    background:#fcee21;
+    height: 2.5px;
+    margin-top: -0.1%;
+    margin-left: 60%;
+    max-width: 40%;
+}
+
+.YellowLineLeft1{
+    background:#fcee21;
+    width: 35%;
+    height: 2.5px;
+    margin-top: -3%;
+}
+
+.YellowLineRight1{
+    background:#fcee21;
+    max-width: 35%;
+    height: 2.5px;
+    margin-top: -0.1%;
+    margin-left: 65%;
+}
+.p{
+    font-size: 40px;
+    color:#c1272d;
+    text-align: center;
+    margin-top: 4%;
+    font-weight: bold;
+}
+
+.p1{
+    font-size: 20px;
+    color:black;
+    text-align: center;
+    margin-top: 2%;
+    font-weight: bold;
+    margin-bottom: 2%;
+}
+
+.p2{
+    color:#c1272d;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.p3{
+    color:black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.p4{
+    color:black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.picture{
+    width:100%;
+    height: 300px;
+    border-style: groove;
+}
+
+.button{
+    width: 15%;
+    background-color: #c1272d;
+    color:#fcee21;
+    border-color: #c1272d;
+    margin-top: 5%;
+    margin-left: 42.5%;
+    margin-bottom: 5%;
+}
+
+.carousel-control.right, .carousel-control.left {
+    background-image: none;
+    color: #c1272d;
+}
+
+.carousel-indicators li {
+    border-color: #c1272d;
+}
+
+.carousel-indicators li.active {
+    background-color:  #c1272d;
+}
+
+.item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 70px 0;
+}
