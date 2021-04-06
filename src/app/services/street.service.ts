@@ -12,10 +12,11 @@ export class StreetService {
   newStreet:Street=new Street();
 
   constructor(private http: HttpClient) { }
-  url: string = "https://localhost:44337/api/Client"
+  url: string = "https://localhost:44337/api/Street"
 
   //שליפת רשימת רחובות
   GatAllStreet():Observable<Array<Street>>{
+    this.newStreet.StreetID=0;
     return this.http.get<Array<Street>>(this.url+"/GatAllStreet")}
             
   //שליפת רחוב לפי קוד   

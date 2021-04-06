@@ -11,7 +11,6 @@ import { ClientService } from '../services/client.service';
 export class ClientLoginComponent implements OnInit {
 
   constructor(public clientService:ClientService, public rout:Router) { }
-
   ngOnInit(){}
 
   Enter() 
@@ -23,14 +22,13 @@ export class ClientLoginComponent implements OnInit {
         alert(" ברוך הבאה"+ " "+this.clientService.newClient.EmailAddress);
         this.clientService.conected=true
         this.clientService.clientConected=this.clientService.newClient;
-        this.rout.navigate(['/Order']);
+        this.rout.navigate(['/Delivery']);
       }
       else{
         alert("משתמש לא קיים במערכת");
         this.rout.navigate(['/ClientRegister']);
         this.clientService.newClient=new Client;
       }
-    },err=>{alert("שגיאה בהתחברות לשרת")}
-  )
-}
+    },err=>{alert("שגיאה בהתחברות לשרת")})
+  }
 }

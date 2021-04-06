@@ -10,13 +10,64 @@
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse "> 
         <ul class="nav navbar-nav navbar-right" >     
-        <li><a href="#Contact">צור קשר</a></li>
+        <li><a [routerLink]="['/Delivery']">צור קשר</a></li>
         <!-- <li><a href="#WebsiteTerms">תנאי האתר</a></li> -->
-        <li><a href="#About">אודותינו</a></li>
+        <li><a [routerLink]="['/AllDetailsCompany']" >אודותינו</a></li>
         <li><a href="#Home" >דף הבית</a></li> 
-        <button type="button" class="button btn-lg" [routerLink]="['/ClientRegister']">הרשמה</button>
-        <button type="button" class="button btn-lg" [routerLink]="['/ClientLogin']">כניסה</button> 
+        <button type="button" class="button btn-lg" [routerLink]="['/ClientRegister']">הרשמה ללקוח</button>
+        <button type="button" class="button btn-lg" [routerLink]="['/ClientLogin']">כניסה ללקוח</button> 
       </ul>       
     </div>      
   </div>
 </nav> 
+ <!-- data-toggle="modal" data-target="#myModal" -->
+<!-- <div class="container">
+   <div class="modal fade" id="myModal" style="height: 600px;">
+    <div class=" modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="container">
+          <button type="button" [routerLink]="['/AllDetailsCompany']">חברה</button>
+          <button type="button" [routerLink]="['/ClientRegister']">אדם</button>
+
+        </div>
+      </div>
+    </div>
+   </div>
+</div> -->
+
+
+
+
+<!-- data-toggle="modal" data-target="#myModal" -->
+<!-- <div class="container">
+   <div class="modal fade" id="myModal" style="height: 600px;">
+    <div class=" modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="container">
+          <h1 class="h1">הרשמה לאתר</h1>
+          <form action="/action_page.php" #myForm="ngForm" (ngSubmit)="addClient()" style="direction: rtl;">
+            <div class="form-group" ><br>
+              <label for="email" style="margin-right:35% ;">כתובת דוא"ל:</label>
+              <input  type="email" #ngEmail="ngModel" [(ngModel)]="clientService.newClient.EmailAddress" class="form-control" id="EmailAddress" name="EmailAddress" style="width: 30%;margin-right: 35%; border-color:#f3e412;"  minlength="10" required>
+              <div class="alert alert-danger" *ngIf="ngEmail.invalid&&(ngEmail.touched||ngEmail.dirty)" style="width: 30%;margin-right: 35%; border-color:white; background-color: white; color:#d42a30;font-weight: bolder;">
+                <p *ngIf="!ngEmail.valid && ngEmail.touched">זהו שדה חובה</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="pwd" style="margin-right:35% ;">סיסמא:</label>
+              <input type="password" #ngPassword="ngModel" [(ngModel)]="clientService.newClient.Password" class="form-control" id="Password" name="Password" style="width: 30%;margin-right: 35%; border-color:#f3e412;" required>
+              <div class="alert alert-danger" *ngIf="ngPassword.invalid&&(ngPassword.touched||ngPassword.dirty)" style="width: 30%;margin-right: 35%; border-color:white; background-color: white; color:#d42a30;font-weight: bolder;">
+                <p *ngIf="!ngPassword.valid && ngPassword.touched">זהו שדה חובה</p>
+              </div>
+            </div>
+              <div class="custom-control custom-checkbox mb-3" style="margin-right: 35%;" required>
+                <input required type="checkbox"  class="custom-control-input" id="customCheck" checked name="example1" style="margin-left: 10px;" >
+                <a href="#">אני מסכים לתנאי האתר</a>
+              </div>
+            <button type="submit" class="button1 btn-lg" style="margin-right: 60%;" [disabled]="!myForm.form.valid">אישור</button>
+          </form>
+        </div> 
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>  
+</div> -->

@@ -1,0 +1,76 @@
+.YellowLineLeft{
+    background:#fcee21;
+    max-width: 40%;
+    height: 2.5px;
+    margin-top: -6%;
+}
+
+.YellowLineRight{
+    background:#fcee21;
+    height: 2.5px;
+    margin-top: -0.4%;
+    margin-left: 60%;
+    max-width: 40%;
+}
+.p{
+    font-size: 30px;
+    color:#c1272d;
+    text-align: center;
+    margin-top: 4%;
+    font-weight: bold;
+}
+.div1{
+    height: 500px;
+    width: 30%;
+    float: right;
+    margin-top: 2%;
+
+}
+.YellowLineLeft1{
+    background:#fcee21;
+    max-width: 80%;
+    height: 2.5px;
+    margin-top: -3%;
+}
+.p1{
+    font-size: 20px;
+    color:#c1272d;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+
+}
+.YellowLinealong{
+    background:#fcee21;
+    max-width: 3px;
+    height: 250px;
+    margin-left: 70%;
+    margin-top:6%;
+}
+.div2{
+    background:#c1272d;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    margin-top: -220px;
+    margin-left: 69.4%;
+
+}
+.div3{
+    background:#c1272d;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    margin-left: 69.4%;
+}
+.button{
+    width: 11%;
+    height: 40px;
+    background-color: #c1272d;
+    color:cornsilk;
+    border-color: #c1272d;
+    text-align: center;
+    float: left;
+    margin-top: -20%;
+    font-weight: bold;
+    margin-left: 5%;
+}

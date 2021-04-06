@@ -12,10 +12,11 @@ export class DeliveryTypeService {
   newDeliveryType:DeliveryType=new DeliveryType();
 
   constructor(private http: HttpClient) { }
-  url: string = "https://localhost:44337/api/Client"
+  url: string = "https://localhost:44337/api/DeliveryType"
 
   //שליפת רשימת סוג משלוח
   GatAllDeliveryType():Observable<Array<DeliveryType>>{
+    this.newDeliveryType.DeliveryTypeID = 0;
     return this.http.get<Array<DeliveryType>>(this.url+"/GatAllDeliveryType")}
           
   //שליפת סוג משלוח לפי קוד   
@@ -24,6 +25,8 @@ export class DeliveryTypeService {
             
   //הוספת סוג משלוח 
   GetAddDeliveryType(c:DeliveryType):Observable<Array<DeliveryType>>{
+    this.newDeliveryType.DeliveryTypeID = 0;
+
     return this.http.put<Array<DeliveryType>>(this.url+"/GetAddDeliveryType",c)}
         
   //עדכון סוג משלוח  

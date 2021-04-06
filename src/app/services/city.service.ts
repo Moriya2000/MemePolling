@@ -12,19 +12,22 @@ export class CityService {
   newCity:City=new City();
 
   constructor(private http: HttpClient) { }
-  url: string = "https://localhost:44337/api/Client"
+  url: string = "https://localhost:44337/api/City"
 
   //שליפת רשימת ערים
   GatAllCity():Observable<Array<City>>{
+    this.newCity.CityID = 0;
     return this.http.get<Array<City>>(this.url+"/GatAllCity")}
     
   //שליפת עיר לפי קוד   
   GetIdCity(id:number):Observable<Array<City>>{
     return this.http.get<Array<City>>(this.url+"/GetIdCity"+id)}
       
+
   //הוספת עיר  
   GetAddCity(c:City):Observable<Array<City>>{
-    return this.http.put<Array<City>>(this.url+"/GetAddCity",c)}
+    this.newCity.CityID = 0;
+    return this.http.put<Array<City>>(this.url+"/GetAddCity",c)}  
   
   //עדכון עיר  
   GetUpdatCity(c:City):Observable<Array<City>>{

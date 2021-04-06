@@ -1,0 +1,148 @@
+<section class="row">
+    <div class="col-xs-12 col-lg-12">
+        <br><br><br><br><br>
+        <img src="../../assets/Images/men.jpg" class="img-responsive">
+        <p class="p">ביצוע הזמנה</p>
+        <div class="YellowLineLeft"></div>
+        <div class="YellowLineRight"></div>
+        <br><br>
+    </div>
+</section>
+<div class="container">
+    <div class="container-fluid">
+        <section class="row" dir="rtl">
+            <h3 class="p1">מהיכן אוספים את המשלוח?</h3><br>
+            <form action="/action_page.php" #myForm="ngForm" (ngSubmit)="addDetailesDelivey()" style="direction: rtl;">
+               <div class="div1">
+          <!--    <div class="form-inline" >            
+                <select  aria-label="Default select example" [(ngModel)]="takingDeliveryService.newTakingDelivery.TDCityID" [ngModelOptions]="{standalone: true}" name="city">
+                    <option *ngFor="let item of cityService.listCity" value="{{item.CityID}}">{{item.CityName}}</option>
+                </select>
+            </div>
+            <div class="form-inline">
+                <select [(ngModel)]="takingDeliveryService.newTakingDelivery.TDStreetID" [ngModelOptions]="{standalone: true}" nam="Street">
+                    <option *ngFor="let item of streetService.listStreet" value="{{item.StreetID}}">{{item.StreetName}}</option>
+                </select>
+            </div >  -->
+                <!-- <input placeholder="בניין" type="text" #ngArea="ngModel" [(ngModel)]="takingDeliveryService.newTakingDelivery.TDBuildingNumber" class="form-control" id="BuildingNumber" name="BuildingNumber" style="width: 8%;"> -->
+                <input ngx-google-places-autocomplete #placesRef="ngx-places"
+                    (onAddressChange)="takeDeliveryAddress($event)" required name="place" #place />
+                <input placeholder="כניסה" type="text" #ngArea="ngModel"
+                    [(ngModel)]="takingDeliveryService.newTakingDelivery.TDEntranceBuilding" class="form-control"
+                    id="EntranceBuilding" name="EntranceBuilding" style="width: 8%;">
+                <input placeholder="קומה" type="text" #ngArea="ngModel"
+                    [(ngModel)]="takingDeliveryService.newTakingDelivery.TDFloorNumber" class="form-control"
+                    id="FloorNumber" name="FloorNumber" style="width: 8%;">
+                <input placeholder="דירה" type="text" #ngArea="ngModel"
+                    [(ngModel)]="takingDeliveryService.newTakingDelivery.TDApartmentNumber" class="form-control"
+                    id="ApartmentNumber" name="ApartmentNumber" style="width: 8%;">
+                <input placeholder="שם פרטי" type="text" #ngArea="ngModel"
+                    [(ngModel)]="takingDeliveryService.newTakingDelivery.TDFirstName" class="form-control"
+                    id="FirstName" name="FirstName">
+                <input placeholder="שם משפחה" type="text" #ngArea="ngModel"
+                    [(ngModel)]="takingDeliveryService.newTakingDelivery.TDLastName" class="form-control" id="LastName"
+                    name="LastName">
+                <input placeholder="טלפון" type="text" #ngArea="ngModel"
+                    [(ngModel)]="takingDeliveryService.newTakingDelivery.TDPhone" class="form-control" id="Phone"
+                    name="Phone">
+                <input placeholder="טלפון נוסף" type="text" #ngArea="ngModel"
+                    [(ngModel)]="takingDeliveryService.newTakingDelivery.TDAdditionalPhone" class="form-control"
+                    id="AdditionalPhone" name="AdditionalPhone">
+                <input placeholder="מייל" type="text" #ngArea="ngModel"
+                    [(ngModel)]="takingDeliveryService.newTakingDelivery.TDEmail" class="form-control" id="Email"
+                    name="Email" style="width: 25%;">
+                <p class="p2">שעות שניתן לקחת את המשלוח:</p>
+                <p class="p3">מ:</p>
+                <input type="text" #ngArea="ngModel" [(ngModel)]="takingDeliveryService.newTakingDelivery.TDPickUpTime"
+                    class="form-control" id="PickUpTime" name="PickUpTime"
+                    style="width: 10%;margin-right: 29.5%;margin-top: -3.5%;">
+                <p class="p4">עד:</p>
+                <input type="text" #ngArea="ngModel"
+                    [(ngModel)]="takingDeliveryService.newTakingDelivery.TDPickUpTimeUntil" class="form-control"
+                    id="StreetName" name="PickUpTimeUntil" style="width: 10%;margin-right: 75%;margin-top: -7%;">
+    </div>
+    <h3 class="p1">לאן מביאים את המשלוח?</h3><br>
+    <div class="div1">
+        <!-- <div class="form-inline">
+            <select [(ngModel)]="takingDeliveryService.newTakingDelivery.GDCityID" [ngModelOptions]="{standalone: true}" nam="city">
+            <option *ngFor="let item of cityService.listCity" value="{{item.CityID}}">{{item.CityName}}</option>
+        </select>
+        </div>
+        <div class="form-inline">
+            <select [(ngModel)]="takingDeliveryService.newTakingDelivery.GDStreetID" [ngModelOptions]="{standalone: true}" nam="Street">
+            <option *ngFor="let item of streetService.listStreet" value="{{item.StreetID}}">{{item.StreetName}}</option>
+        </select>
+        </div>
+        <input placeholder="בניין" type="text" #ngArea="ngModel" [(ngModel)]="takingDeliveryService.newTakingDelivery.GDBuildingNumber" class="form-control" id="BuildingNumber" name="BuildingNumber" style="width: 8%;"> -->
+        <input ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="getDeliveryAddress($event)"
+            required name="place" #place />
+        <input placeholder="כניסה" type="text" #ngArea="ngModel"
+            [(ngModel)]="takingDeliveryService.newTakingDelivery.GDEntranceBuilding" class="form-control"
+            id="EntranceBuilding" name="EntranceBuilding" style="width: 8%;">
+        <input placeholder="קומה" type="text" #ngArea="ngModel"
+            [(ngModel)]="takingDeliveryService.newTakingDelivery.GDFloorNumber" class="form-control" id="FloorNumber"
+            name="FloorNumber" style="width: 8%;">
+        <input placeholder="דירה" type="text" #ngArea="ngModel"
+            [(ngModel)]="takingDeliveryService.newTakingDelivery.GDApartmentNumber" class="form-control"
+            id="ApartmentNumber" name="ApartmentNumber" style="width: 8%;">
+        <input placeholder="שם פרטי" type="text" #ngArea="ngModel"
+            [(ngModel)]="takingDeliveryService.newTakingDelivery.GDFirstName" class="form-control" id="FirstName"
+            name="FirstName">
+        <input placeholder="שם משפחה" type="text" #ngArea="ngModel"
+            [(ngModel)]="takingDeliveryService.newTakingDelivery.GDLastName" class="form-control" id="LastName"
+            name="LastName">
+        <input placeholder="טלפון" type="text" #ngArea="ngModel"
+            [(ngModel)]="takingDeliveryService.newTakingDelivery.GDPhone" class="form-control" id="Phone" name="Phone">
+        <input placeholder="טלפון נוסף" type="text" #ngArea="ngModel"
+            [(ngModel)]="takingDeliveryService.newTakingDelivery.GDAdditionalPhone" class="form-control"
+            id="AdditionalPhone" name="AdditionalPhone">
+        <input placeholder="מייל" type="text" #ngArea="ngModel"
+            [(ngModel)]="takingDeliveryService.newTakingDelivery.GDEmail" class="form-control" id="Email" name="Email"
+            style="width: 25%;">
+        <p class="p2">שעות שניתן לקחת את המשלוח:</p>
+        <p class="p3">מ:</p>
+        <input type="text" #ngArea="ngModel" [(ngModel)]="takingDeliveryService.newTakingDelivery.GDPickUpTime"
+            class="form-control" id="PickUpTime" name="PickUpTime"
+            style="width: 10%;margin-right: 29.5%;margin-top: -3.5%;">
+        <p class="p4">עד:</p>
+        <input type="text" #ngArea="ngModel" [(ngModel)]="takingDeliveryService.newTakingDelivery.GDPickUpTimeUntil"
+            class="form-control" id="StreetName" name="PickUpTimeUntil"
+            style="width: 10%;margin-right: 75%;margin-top: -7%;">
+    </div>
+
+    <div class="div4">
+        <div class="form-inline">
+            <h3 class="p1">דחיפות המשלוח?</h3><br>
+            <div class="div2">
+                <select [(ngModel)]="takingDeliveryService.newTakingDelivery.DeliveryUrgencyID"
+                    [ngModelOptions]="{standalone: true}" nam="DeliveryUrgency">
+                    <option *ngFor="let item of deliveryUrgencyService.listDeliveryUrgency"
+                        value="{{item.DeliveryUrgencyID}}">{{item.Urgency}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-inline">
+            <h3 class="p5">סוג המשלוח?</h3><br>
+            <div class="div3">
+                <select [(ngModel)]="takingDeliveryService.newTakingDelivery.DeliveryTypeID"
+                    [ngModelOptions]="{standalone: true}" nam="DeliveryType">
+                    <option *ngFor="let item of deliveryTypeService.listDeliveryType" value="{{item.DeliveryTypeID}}">
+                        {{item.DeliveryTypeName}}</option>
+                </select>
+                <div class="div5">
+                    <input placeholder="כמות" type="number" #ngArea="ngModel"
+                        [(ngModel)]="takingDeliveryService.newTakingDelivery.Amount" class="form-control" id="Amount"
+                        name="Amount" style="border-color: gray;"><br><br>
+                    <input placeholder="נפח" type="number" #ngArea="ngModel"
+                        [(ngModel)]="takingDeliveryService.newTakingDelivery.Volume" class="form-control" id="Volume"
+                        name="Volume" style="border-color: gray;">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="button btn-lg" style="margin-right: 35%;"
+            [disabled]="!myForm.form.valid">אישור</button>
+    </div>
+    </form>
+    </section>
+</div>
+</div>

@@ -12,7 +12,7 @@ export class BusinessDaysService {
   newBusinessDays:BusinessDays=new BusinessDays();
 
   constructor(private http: HttpClient) { }
-  url: string = "https://localhost:44337/api/Client"
+  url: string = "https://localhost:44337/api/BusinessDays"
 
   //הוספת יום עבודה
   GetAddDay(c:BusinessDays):Observable<Array<BusinessDays>>{

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ClientService } from '../services/client.service';
 
 @Component({
   selector: 'app-nav',
@@ -13,6 +12,4 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     this.route.navigate(['/Home'])
   }
-
-
 }

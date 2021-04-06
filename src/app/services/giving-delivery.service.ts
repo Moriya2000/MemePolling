@@ -12,7 +12,7 @@ export class GivingDeliveryService {
   newGivingDelivery:GivingDelivery=new GivingDelivery();
 
   constructor(private http: HttpClient) { }
-  url: string = "https://localhost:44337/api/Client"
+  url: string = "https://localhost:44337/api/GivingDelivery"
 
   //שליפת רשימת נתינת משלוחים
   GatAllGivingDelivery():Observable<Array<GivingDelivery>>{

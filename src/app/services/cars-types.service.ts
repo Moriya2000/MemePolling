@@ -12,7 +12,7 @@ export class CarsTypesService {
   newCarsTypes:CarsTypes=new CarsTypes();
 
   constructor(private http: HttpClient) { }
-  url: string = "https://localhost:44337/api/Client"
+  url: string = "https://localhost:44337/api/CarsTypes"
 
   //שליפת רשימת רכבים
   GatAllCarsTypes():Observable<Array<CarsTypes>>{

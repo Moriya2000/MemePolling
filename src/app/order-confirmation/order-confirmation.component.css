@@ -1,0 +1,41 @@
+.YellowLineLeft{
+    background:#fcee21;
+    max-width: 40%;
+    height: 2.5px;
+    margin-top: -6%;
+}
+
+.YellowLineRight{
+    background:#fcee21;
+    height: 2.5px;
+    margin-top: -0.4%;
+    margin-left: 60%;
+    max-width: 40%;
+}
+.p{
+    font-size: 35px;
+    color:#c1272d;
+    text-align: center;
+    margin-top: 6%;
+    font-weight: bold;
+}
+.p1{
+    font-size: 26px;
+    color:#c1272d;
+    text-align: center;
+}
+.p2{
+    font-size: 30px;
+    text-align: center;
+    margin-right: 9%;
+}
+.button1{
+    width: 13%;
+    background-color: #c1272d;
+    color:white;
+    border-color: #c1272d;
+    padding: 7px;
+    margin-left: 43%;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}

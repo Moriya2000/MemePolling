@@ -1,0 +1,103 @@
+<section class="row">
+    <div class="col-xs-12 col-lg-12">
+        <br><br><br>
+        <!-- <img src="../../assets/Images/pic14.jpg" class="img-thumbnail img-responsive" style="width: 100%;"> -->
+        <p class="p">הרשמה לחברה</p>
+        <div class="YellowLineLeft"></div>
+        <div class="YellowLineRight"></div>
+        <br><br>
+    </div>
+</section>
+<br><br>
+<div class="container">
+    <div class="container-fluid">
+        <section class="row" dir="rtl">
+            <h3 class="p1">פרטי החברה</h3>
+            <form action="/action_page.php" #myForm="ngForm" (ngSubmit)="addDetailsCompany()" style="direction: rtl;">
+                <div class="div1 col-sm-12 col-lg-12">
+                    <input placeholder="שם החברה" type="text" #ngArea="ngModel"
+                        [(ngModel)]="sendingCompanyService.newCompany.CompanyName" class="form-control"
+                        id="BuildingNumber" name="BuildingNumber">
+                    <input placeholder="כתובת מלאה" type="text" #ngArea="ngModel"
+                        [(ngModel)]="sendingCompanyService.newCompany.FullAddress" class="form-control" id="FullAddress"
+                        name="FullAddress">
+                    <input placeholder="טלפון" type="text" #ngArea="ngModel"
+                        [(ngModel)]="sendingCompanyService.newCompany.Phone" class="form-control" id="Phone"
+                        name="Phone">
+                    <input placeholder="מייל" type="text" #ngArea="ngModel"
+                        [(ngModel)]="sendingCompanyService.newCompany.Email" class="form-control" id="Email"
+                        name="Email">
+                </div>
+                <h3 class="p1">פרטי בנק</h3>
+                <div class="div2 col-sm-12 col-lg-12">
+                    <input placeholder="שם המוטב" type="text" #ngArea="ngModel"
+                        [(ngModel)]="sendingCompanyService.newCompany.BeneficiaryName" class="form-control"
+                        id="BeneficiaryName" name="BeneficiaryName">
+                    <input placeholder="בנק" type="text" #ngArea="ngModel"
+                        [(ngModel)]="sendingCompanyService.newCompany.Bank" class="form-control" id="Bank" name="Bank">
+                    <input placeholder="סניף" type="text" #ngArea="ngModel"
+                        [(ngModel)]="sendingCompanyService.newCompany.Branch" class="form-control" id="Branch"
+                        name="Branch">
+                    <input placeholder="מספר חשבון" type="text" #ngArea="ngModel"
+                        [(ngModel)]="sendingCompanyService.newCompany.AccountNumber" class="form-control"
+                        id="AccountNumber" name="AccountNumber">
+                </div>
+                <h3 class="p1">ימי עבודה</h3>
+                <div class="div2 col-sm-12 col-lg-12">
+                    <div *ngFor="let d of listDay">
+                        <input type="checkbox" id="days" [checked]="d.showOrHide" name="d.numDay"
+                            (change)="changeDay(d.numDay)" class="input1">
+                        <label>{{d.nameDay}}</label>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-12">
+                    <div *ngFor="let d of listBusDay">
+                        <div style="display: none;" style="display:block;">
+                            <label>{{d.nameDay}}</label>
+                            <input type="text" #ngDay="ngModel" [(ngModel)]="d.BeginningTime" class="form-control"
+                                id="BeginningTime" name="BeginningTime" placeholder="מהשעה">
+                            <input type="text" #ngDay="ngModel" [(ngModel)]="d.EndTime" class="form-control"
+                                id="EndTime" name="EndTime" placeholder="עד השעה"><br><br><br><br>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="p1">ערים שהחברה עובדת</h3>
+                <div class="div2 col-sm-12 col-lg-12">
+
+                    <!-- name=select1 size="3" multiple-->
+                    <select #ngCity="ngModel" [(ngModel)]="sendingCompanyService.newCompany.listCitiesCompany" multiple
+                        (ngModelChange)="sendingCompanyService.newCompany.listCitiesCompany=$event"
+                        name="CitiesCompanyID">
+                        <option *ngFor="let item of cityService.listCity" (click)="clickedOption(item)"
+                            [ngValue]="item">
+                            {{item.CityName}}</option>
+                    </select>
+                </div>
+                <!-- <h3 class="p1">סוגי רכבים</h3>
+            <select  #ngCar="ngModel" [(ngModel)]="sendingCompanyService.newCompany.listCarsCompany" multiple (ngModelChange)="sendingCompanyService.newCompany.listCarsCompany=$event" name="CarsCompanyID">
+            <option *ngFor="let item of carsTypesService.listCarsTypes" (click)="clickedOption(item)" [ngValue]="item">{{item.CarTypeName}}</option>
+        </select>   -->
+
+                <h3 class="p1">סוגי רכבים</h3>
+                <div class="div3 col-sm-12 col-lg-12">
+                    <div *ngFor="let car of carsTypesService.listCarsTypes">
+                        <input type="checkbox" id="cars" name="car" (change)="clickedCar(car)" class="input2">
+                        <label>{{car.CarTypeName}}</label><br><br>
+                    </div>
+                </div>
+                <h3 class="p1">סיום ההרשמה</h3>
+                <div class="div2 col-sm-12 col-lg-12">
+
+                    <input placeholder="קוד חברה" type="text" #ngArea="ngModel"
+                        [(ngModel)]="sendingCompanyService.newCompany.CompanyNumber" class="form-control"
+                        id="CompanyNumber" name="CompanyNumber">
+                    <input placeholder="סיסמא" type="text" #ngArea="ngModel"
+                        [(ngModel)]="sendingCompanyService.newCompany.Password" class="form-control" id="Password"
+                        name="Password">
+                </div>
+                <button type="submit" class="button btn-lg" style="margin-right: 35%;"
+                    [disabled]="!myForm.form.valid">אישור</button>
+            </form>
+        </section>
+    </div>
+</div>

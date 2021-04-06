@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AllOrder } from '../classes/AllOrder';
 import { Order } from '../classes/Order';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class OrderService {
   newOrder:Order=new Order();
 
   constructor(private http: HttpClient) { }
-  url: string = "https://localhost:44337/api/Client"
+  url: string = "https://localhost:44337/api/Order"
 
   //שליפת רשימת הזמנות
   GatAllOrder():Observable<Array<Order>>{

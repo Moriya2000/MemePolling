@@ -12,18 +12,20 @@ export class DeliveryUrgencyService {
   newDeliveryUrgency:DeliveryUrgency=new DeliveryUrgency();
 
   constructor(private http: HttpClient) { }
-  url: string = "https://localhost:44337/api/Client"
+  url: string = "https://localhost:44337/api/DeliveryUrgency"
 
   //שליפת רשימת דחיפות משלוח
   GatAllDeliveryUrgency():Observable<Array<DeliveryUrgency>>{
+    this.newDeliveryUrgency.DeliveryUrgencyID=0;
     return this.http.get<Array<DeliveryUrgency>>(this.url+"/GatAllDeliveryUrgency")}
-            
+          
   //שליפת דחיפות משלוח לפי קוד   
   GetIdDeliveryUrgency(id:number):Observable<Array<DeliveryUrgency>>{
     return this.http.get<Array<DeliveryUrgency>>(this.url+"/GetIdDeliveryUrgency"+id)}
               
   //הוספת דחיפות משלוח 
   GetAddDeliveryUrgency(c:DeliveryUrgency):Observable<Array<DeliveryUrgency>>{
+    this.newDeliveryUrgency.DeliveryUrgencyID=0;
     return this.http.put<Array<DeliveryUrgency>>(this.url+"/GetAddDeliveryUrgency",c)}
           
   //עדכון דחיפות משלוח  

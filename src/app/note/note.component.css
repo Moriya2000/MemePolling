@@ -1,0 +1,56 @@
+.YellowLineLeft{
+    background:#fcee21;
+    max-width: 40%;
+    height: 2.5px;
+    margin-top: -6%;
+}
+
+.YellowLineRight{
+    background:#fcee21;
+    height: 2.5px;
+    margin-top: -0.4%;
+    margin-left: 60%;
+    max-width: 40%;
+}
+.p{
+    font-size: 35px;
+    color:#c1272d;
+    text-align: center;
+    margin-top: 6%;
+    font-weight: bold;
+}
+.p1{
+    font-size: 27px;
+    color:#c1272d;
+    text-align: center;
+}
+
+.star1{
+    margin-left: 39%;
+    font-size: 50px;
+    margin-right: 2%;
+    color: #fcee21;
+
+}
+.star2{
+    font-size: 50px;
+    margin-right: 2%;
+    color:#c1272d;
+
+}
+.note{
+    width: 30%;
+    height:200px;
+    margin-left: 35%;
+    margin-top: 3%;
+}
+.button1{
+    width: 13%;
+    background-color: #c1272d;
+    color:white;
+    border-color: #c1272d;
+    padding: 7px;
+    margin-left: 43%;
+    margin-top: 2%;
+    margin-bottom: 3%;
+}

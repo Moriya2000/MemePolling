@@ -1,4 +1,18 @@
-<div class="container" style="padding-top: 10%;">
+<!-- <br><br><br><br><br><br><br><br> -->
+<div style="float: right; margin-top: 10%;" dir="rtl">
+<button type="button" class="button1 btn-lg" [routerLink]="['/LoginCompany']">כניסה לחברה</button> 
+<button type="button" class="button1 btn-lg" [routerLink]="['/TaskLog']">יומן שליחויות</button> 
+<button type="button" class="button1 btn-lg" [routerLink]="['/OrderTracking']">מעקב אחרי הזמנה</button> 
+<button type="button" class="button1 btn-lg" [routerLink]="['/Pay']">תשלום</button> <br>
+<button type="button" class="button1 btn-lg" [routerLink]="['/SiteTermsClient']">תנאי אתר לקוח</button>
+<button type="button" class="button1 btn-lg" [routerLink]="['/SiteTermCompany']">תנאי אתר חברה</button> 
+<button type="button" class="button1 btn-lg" [routerLink]="['/AddressPrinting']">הדפסת כתובת יעד</button> 
+<button type="button" class="button1 btn-lg" [routerLink]="['/OrderConfirmation']">אישור הזמנה</button> 
+<button type="button" class="button1 btn-lg" [routerLink]="['/Note']">הערה</button> 
+</div>
+
+<div class="container">
+  <div style="margin-top: 30%;" >
   <h1 class="h1">הרשמה לאתר</h1>
   <form action="/action_page.php" #myForm="ngForm" (ngSubmit)="addClient()" style="direction: rtl;">
     <div class="form-group" ><br>
@@ -19,7 +33,7 @@
       </div>
     </div>
       <div class="custom-control custom-checkbox mb-3" style="margin-right: 35%;" required>
-        <input required type="checkbox"  class="custom-control-input" id="customCheck" name="example1" style="margin-left: 10px;" >
+        <input required type="checkbox"  class="custom-control-input" id="customCheck" checked name="example1" style="margin-left: 10px;" >
         <a href="#">אני מסכים לתנאי האתר</a>
       </div>
     <!-- <div class="form-group form-check">
@@ -30,4 +44,33 @@
     </div> -->
     <button type="submit" class="button btn-lg" style="margin-right: 35%;" [disabled]="!myForm.form.valid">אישור</button>
   </form>
+</div>
 </div> 
+
+<!-- <div class="container">
+  <div style="float: left;">
+      <h1 class="h1">כניסה לאתר</h1>
+      <form action="/action_page.php" #myForm="ngForm" style="direction: rtl;" >
+        <div class="form-group" ><br>
+          <label for="email" style="margin-right:35% ;">כתובת דוא"ל:</label>
+          <input  type="email" #ngEmail="ngModel" [(ngModel)]="clientService.newClient.EmailAddress" class="form-control" id="EmailAddress" name="EmailAddress" style="width: 30%;margin-right: 35%; border-color:#f3e412;"  minlength="10" required>
+          <div class="alert alert-danger" *ngIf="ngEmail.invalid&&(ngEmail.touched||ngEmail.dirty)" style="width: 30%;margin-right: 35%; border-color:white; background-color: teal;">
+            <div class="invalid-feedback">Please fill out this field.</div> -->
+            <!-- <p *ngIf="ngEmail.errors.required">דוא"ל זה שדה חובה</p> -->
+            <!--<p *ngIf="ngEmail.errors.pattern">gfhfgh</p>
+            <p *ngIf="ngEmail.errors.minlength">יש להכניס לפחות 10 תווים</p> -->
+          <!-- </div>
+        </div>
+        <div class="form-group">
+          <label for="pwd" style="margin-right:35% ;">סיסמא:</label>
+          <input type="password" #ngPassword="ngModel" [(ngModel)]="clientService.newClient.Password" class="form-control" id="Password" name="Password" style="width: 30%;margin-right: 35%; border-color:#f3e412;" required>
+          <div class="alert alert-danger" *ngIf="ngEmail.invalid&&(ngEmail.touched||ngEmail.dirty)" style="width: 30%;margin-right: 35%; border-color:white; background-color: teal;">
+          </div>
+        </div>
+        <button type="submit" class="button btn-lg" style="margin-right: 35%;" [disabled]="!myForm.form.valid">כניסה</button>
+      </form>
+  </div>
+</div> -->
+
+
+

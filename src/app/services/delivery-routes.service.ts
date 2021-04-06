@@ -12,7 +12,7 @@ export class DeliveryRoutesService {
   newDeliveryRoutes:DeliveryRoutes=new DeliveryRoutes();
 
   constructor(private http: HttpClient) { }
-  url: string = "https://localhost:44337/api/Client"
+  url: string = "https://localhost:44337/api/DeliveryRoutes"
 
   //שליפת רשימת מסלול משלוחים
   GatAllDeliveryRoutes():Observable<Array<DeliveryRoutes>>{

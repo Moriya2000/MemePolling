@@ -12,7 +12,7 @@ export class DestinationsRouteService {
   newDestinationsRoute:DestinationsRoute=new DestinationsRoute();
 
   constructor(private http: HttpClient) { }
-  url: string = "https://localhost:44337/api/Client"
+  url: string = "https://localhost:44337/api/DestinationsRoute"
 
   //שליפת רשימת יעדים במסלול
   GatAllDestinationsRoute():Observable<Array<DestinationsRoute>>{

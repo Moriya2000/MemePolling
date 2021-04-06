@@ -1,0 +1,118 @@
+.YellowLineLeft{
+    background:#fcee21;
+    max-width: 40%;
+    height: 2.5px;
+    margin-top: -2%;
+}
+
+.YellowLineRight{
+    background:#fcee21;
+    height: 2.5px;
+    margin-top: -0.4%;
+    margin-left: 60%;
+    max-width: 40%;
+}
+.p{
+    font-size: 30px;
+    color:#c1272d;
+    text-align: center;
+    margin-top: 2%;
+    font-weight: bold;
+}
+.p1{
+    color:#c1272d;
+    font-weight: bold;
+}
+input{
+    width: 19%;
+    float: right;
+    margin-left: 3%;
+    margin-bottom: 3%;
+    height: 45px;
+    font-size: 18px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-style:solid ;
+    border-color: #ffee00;
+    border-width: 1.6px;
+}
+select{
+    width: 19%;
+    float: right;
+    margin-left: 3%;
+    border-width: 1.6px;
+    height: 45px;
+    font-size: 18px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-style:solid ;
+    border-color: #ffee00;
+}
+.p2{
+    font-size: 22px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 20%;
+}
+.p3{
+    font-size: 22px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+     margin-right:55%;
+    margin-top: -3.5%;
+}
+.p4{
+    font-size: 22px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-right:72%;
+    margin-top: -3.5%;
+}
+.div1{
+    width: 100%;
+    height: 250px;
+    border: white;
+    border-style: dotted;
+    margin-right: 3%;
+}
+.div2{
+    width: 19%;
+    height: 150px;
+    border: #ffee00;
+    border-style: solid;
+}
+.div3{
+    width: 35%;
+    height: 150px;
+    border: #ffee00;
+    border-style: solid;
+    margin-right: 25%;
+}
+.div4{
+    width: 100%;
+    height: 250px;
+    border: white;
+    border-style: dotted;
+    margin-right: 3%;
+    margin-bottom: 3%;
+}
+.p5{
+    margin-right: 25%;
+    margin-top: -18.2%;
+    color:#c1272d;
+    font-weight: bold;
+}
+.div5{
+    width: 60%;
+    height: 100px;
+    border: white;
+    border-style: dotted;
+    float: left;
+    margin-top: 9%;
+}
+.button{
+    width: 13%;
+    background-color: #c1272d;
+    color:white;
+    border-color: #c1272d;
+    text-align: center;
+    float: left;
+    margin-top: -5%;
+    margin-left:10%;
+
+}

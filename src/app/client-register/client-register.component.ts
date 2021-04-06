@@ -17,10 +17,10 @@ export class ClientRegisterComponent implements OnInit {
   //הוספת לקוח
   addClient()
   {
-      this.clientService.GetAddClient().subscribe(data=>{
-      alert("תודה שנרשמת אצלנו")
-      this.rout.navigate(['/Home']);
-      this.clientService.newClient=new Client;
+    this.clientService.GetAddClient().subscribe(data=>{
+    alert("תודה שנרשמת אצלנו")
+    this.rout.navigate(['/Home']);
     },err=>{alert("error" + err)})
+    this.clientService.newClient=new Client;
   }
 }

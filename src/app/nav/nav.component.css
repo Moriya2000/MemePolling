@@ -29,7 +29,7 @@
 .button{
     width: 18%;
     background-color: #c1272d;
-    color:#fcee21;
+    color:white;
     border-color: #c1272d;
     text-align: center;
     float: right;
@@ -39,5 +39,29 @@
 }
 
 
+
+
+.h1{
+    color:#d42a30;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    /* margin-right: 60%; */
+}
+.button1{
+    width: 30%;
+    background-color: #fcee21;
+    color:black;
+    font-weight: bold;
+    border-radius: 0%;
+    margin-bottom: 18.8%;
+    
+}
+.h4{
+    font-weight: bold;
+}
+.box{
+    width: 10px;
+}
 
 

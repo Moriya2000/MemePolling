@@ -12,7 +12,7 @@ export class CompanyBankDetailsService {
   newCompanyBankDetails:CompanyBankDetails=new CompanyBankDetails();
 
   constructor(private http: HttpClient) { }
-  url: string = "https://localhost:44337/api/Client"
+  url: string = "https://localhost:44337/api/CompanyBankDetails"
 
   //שליפת רשימת פרטי בנק
   GatAllCompanyBankDetails():Observable<Array<CompanyBankDetails>>{

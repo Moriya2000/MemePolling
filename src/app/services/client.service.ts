@@ -26,7 +26,13 @@ export class ClientService {
   //בדיקה האם המשתמש קיים במערכת
   GetEmailAddressPassword(emailAdress:string,password:string):Observable<number>{
     return this.http.get<number>(this.url+"/GetEmailAddressPassword/" + emailAdress + "/" + password)}
+
+  //IDפונקצייה שמקבלת כתובת מייל וסיסמא ושולפת לפי זה את ה
+  GetEmailAddressPasswordID(emailAdress:string,password:string):Observable<number>{
+    return this.http.get<number>(this.url+"/GetEmailAddressPasswordID/" + emailAdress + "/" + password)}
     
+  GetRemoveClient(id:number):Observable<Array<Client>>{
+    return this.http.delete<Array<Client>>(this.url+"/GetRemoveClient/"+id)}
 }
 
 

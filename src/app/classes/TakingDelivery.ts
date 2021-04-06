@@ -2,7 +2,7 @@ export class TakingDelivery{
     constructor(public TakingDeliveryID?:number,
         public OrderID?:number,
         public CityID?:number,
-        public StreetName?:string,
+        public StreetID?:string,
         public BuildingNumber?:number,
         public EntranceBuilding?:number,
         public FloorNumber?:number,

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {Routes,RouterModule} from '@angular/router';
+import { Routes,RouterModule} from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';;
 
 import { AppComponent } from './app.component';
@@ -10,32 +10,40 @@ import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClientLoginComponent } from './client-login/client-login.component';
 import { ClientRegisterComponent } from './client-register/client-register.component';
-
-import { BusinessDaysService } from './services/business-days.service';
-import { CarsTypesService } from './services/cars-types.service';
 import { CityService } from './services/city.service';
 import { ClientService } from './services/client.service';
-import { CompanyBankDetailsService } from './services/company-bank-details.service';
-import { DeliveryRoutesService } from './services/delivery-routes.service';
-import { DeliveryTypeService } from './services/delivery-type.service';
-import { DeliveryUrgencyService } from './services/delivery-urgency.service';
-import { DestinationsRouteService } from './services/destinations-route.service';
 import { GivingDeliveryService } from './services/giving-delivery.service';
 import { OrderService } from './services/order.service';
-import { SendingCompanyService } from './services/sending-company.service';
-import { StreetService } from './services/street.service';
 import { TakingDeliveryService } from './services/taking-delivery.service';
 import { SiteTermsClientComponent } from './site-terms-client/site-terms-client.component';
-import { OrderComponent } from './order/order.component';
-import { BusinessDayComponent } from './business-day/business-day.component';
-
+import { DeliveryComponent } from './delivery/delivery.component';
+import { AllDetailsCompanyComponent } from './all-details-company/all-details-company.component';
+import { SiteTermCompanyComponent } from './site-term-company/site-term-company.component';
+import { TaskLogComponent } from './task-log/task-log.component';
+import { OrderTrackingComponent } from './order-tracking/order-tracking.component';
+import { PayComponent } from './pay/pay.component';
+import { AddressPrintingComponent } from './address-printing/address-printing.component';
+import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
+import { NoteComponent } from './note/note.component';
+import { google } from "google-maps";
+import {GooglePlaceModule} from "ngx-google-places-autocomplete";
+import { LoginCompanyComponent } from './login-company/login-company.component';
 
 const rout: Routes=[
   {path:"ClientRegister",component:ClientRegisterComponent},
   {path:"Home",component:HomeComponent},
   {path:"ClientLogin",component:ClientLoginComponent},
-  {path:"Order",component:OrderComponent},
-
+  {path:"Delivery",component:DeliveryComponent},
+  {path:"AllDetailsCompany",component:AllDetailsCompanyComponent},
+  {path:"SiteTermsClient",component:SiteTermsClientComponent},
+  {path:"SiteTermCompany",component:SiteTermCompanyComponent},
+  {path:"TaskLog",component:TaskLogComponent},
+  {path:"OrderTracking",component:OrderTrackingComponent},
+  {path:"Pay",component:PayComponent},
+  {path:"AddressPrinting",component:AddressPrintingComponent},
+  {path:"OrderConfirmation",component:OrderConfirmationComponent},
+  {path:"Note",component:NoteComponent},
+  {path:"LoginCompany",component:LoginCompanyComponent},
 ]
 
 @NgModule({
@@ -47,18 +55,29 @@ const rout: Routes=[
     ClientLoginComponent,
     ClientRegisterComponent,
     SiteTermsClientComponent,
-    OrderComponent,
-    BusinessDayComponent,
+    DeliveryComponent,
+    AllDetailsCompanyComponent,
+    SiteTermCompanyComponent,
+    TaskLogComponent,
+    OrderTrackingComponent,
+    PayComponent,
+    AddressPrintingComponent,
+    OrderConfirmationComponent,
+    NoteComponent,
+    LoginCompanyComponent,
   ],
   imports: [
     RouterModule.forRoot(rout),
     BrowserModule,
     FormsModule,
     HttpClientModule,
+     GooglePlaceModule
   ],
-  providers: [ClientService,OrderService,TakingDeliveryService],
-  // BusinessDaysService,CarsTypesService,CityService,,CompanyBankDetailsService,DeliveryRoutesService,
-  // DeliveryTypeService,DeliveryUrgencyService,DestinationsRouteService,GivingDeliveryService,SendingCompanyService,
+  providers: [ClientService,CityService,OrderService,GivingDeliveryService,TakingDeliveryService,SiteTermsClientComponent,
+    SiteTermCompanyComponent,TaskLogComponent,OrderTrackingComponent,PayComponent,AddressPrintingComponent,OrderConfirmationComponent,
+    NoteComponent],
+  // BusinessDaysService,CarsTypesService,,CompanyBankDetailsService,DeliveryRoutesService,
+  // DeliveryTypeService,DeliveryUrgencyService,DestinationsRouteService,SendingCompanyService,
   // StreetService
   bootstrap: [AppComponent]
 })
