@@ -2,7 +2,7 @@
     background:#fcee21;
     max-width: 40%;
     height: 2.5px;
-    margin-top: -6%;
+    margin-top: -2%;
 }
 
 .YellowLineRight{
@@ -11,6 +11,13 @@
     margin-top: -0.4%;
     margin-left: 60%;
     max-width: 40%;
+}
+.p{
+    font-size: 30px;
+    color:#c1272d;
+    text-align: center;
+    margin-top: 2%;
+    font-weight: bold;
 }
 .p{
     font-size: 30px;

@@ -44,8 +44,8 @@ export class SendingCompanyService {
     return this.http.post<Array<SendingCompany>>(this.url+"/GetUpdatSendingCompany",c)}
           
   //מחיקת חברת שליחויות  
-  GetRemoveSendingCompany(id:number):Observable<Array<SendingCompany>>{
-    return this.http.delete<Array<SendingCompany>>(this.url+"/GetRemoveSendingCompany"+id)}
+  GetRemoveSendingCompany():Observable<Array<SendingCompany>>{
+    return this.http.delete<Array<SendingCompany>>(this.url+"/GetRemoveSendingCompany/"+this.companyConected.CompanyNumber)}
   
   //בדיקה האם המשתמש קיים במערכת
   GetCompanyNumberPassword(companyNumber:number,password:string):Observable<number>{

@@ -73,9 +73,7 @@ const rout: Routes=[
     HttpClientModule,
      GooglePlaceModule
   ],
-  providers: [ClientService,CityService,OrderService,GivingDeliveryService,TakingDeliveryService,SiteTermsClientComponent,
-    SiteTermCompanyComponent,TaskLogComponent,OrderTrackingComponent,PayComponent,AddressPrintingComponent,OrderConfirmationComponent,
-    NoteComponent],
+  providers: [ClientService,CityService,OrderService,GivingDeliveryService,TakingDeliveryService,],
   // BusinessDaysService,CarsTypesService,,CompanyBankDetailsService,DeliveryRoutesService,
   // DeliveryTypeService,DeliveryUrgencyService,DestinationsRouteService,SendingCompanyService,
   // StreetService

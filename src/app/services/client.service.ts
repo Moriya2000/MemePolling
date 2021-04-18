@@ -12,7 +12,12 @@ export class ClientService {
   listClient: Array<Client> = new Array<Client>()
   newClient: Client = new Client();
   clientConected:Client=new Client();
+  
   public conected:boolean=false;
+  typeUserClient:boolean=false;
+  typeUserCompany:boolean=false;
+
+
 
   constructor(private http: HttpClient) { }
   url: string = "https://localhost:44337/api/Client"

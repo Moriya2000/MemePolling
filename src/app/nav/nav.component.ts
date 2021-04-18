@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AllDetailsCompany } from '../classes/AllDetailsCompany';
+import { Client } from '../classes/Client';
+import { ClientService } from '../services/client.service';
+import { SendingCompanyService } from '../services/sending-company.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,8 +12,66 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private route:Router) { }
+  constructor(public clientService: ClientService, public sendingCompanyService: SendingCompanyService, private route: Router) { }
+  aaa: boolean = false
+
   ngOnInit() {
     this.route.navigate(['/Home'])
+    this.clientService.newClient=new Client();
+
+  }
+
+  //הוספת לקוח
+  addClient() {
+    debugger
+    this.clientService.GetAddClient().subscribe(data => {
+      this.clientService.clientConected = this.clientService.newClient;
+      this.clientService.typeUserClient=true;
+      this.clientService.conected = true
+      this.route.navigate(['/Delivery']);
+    }, err => { alert("error" + err) })
+    this.clientService.newClient = new Client();
+  }
+
+  //לקוח שכבר רשום למערכת עושה כניסה
+  EnterClient() {
+    this.clientService.GetEmailAddressPassword(this.clientService.newClient.EmailAddress!, this.clientService.newClient.Password!)
+      .subscribe(data => {
+        if (data == 1) {
+          alert(" ברוך הבאה" + " " + this.clientService.newClient.EmailAddress);
+          this.clientService.typeUserClient=true;
+          this.clientService.conected = true
+          this.clientService.clientConected = this.clientService.newClient;
+          this.route.navigate(['/Delivery']);
+        }
+        else {
+          this.clientService.typeUserClient=false;
+          alert("משתמש לא קיים במערכת");
+          //להעביר אותו לדף ההרשמה!!!!!!!!!!!!!!!!!!
+          this.clientService.newClient = new Client();
+        }
+      }, err => { alert("שגיאה בהתחברות לשרת") })
+  }
+
+
+  //כניסה לחברה שכבר רשומה למערכת
+  EnterCompany() {
+    debugger
+    this.sendingCompanyService.GetCompanyNumberPassword(this.sendingCompanyService.newCompany.CompanyNumber!, this.sendingCompanyService.newCompany.Password!)
+      .subscribe(data => {
+        if (data == 1) {
+          this.clientService.typeUserCompany=true;
+          this.sendingCompanyService.conected = true;
+          this.sendingCompanyService.companyConected = this.sendingCompanyService.newCompany;
+          alert(" ברוך הבאה" + " " + this.sendingCompanyService.newCompany.CompanyNumber);
+          this.route.navigate(['/TaskLog']);
+        }
+        else {
+          this.clientService.typeUserCompany=false;
+          alert("משתמש לא קיים במערכת");
+          this.route.navigate(['/AllDetailsCompany']);
+          this.sendingCompanyService.newCompany = new AllDetailsCompany();
+        }
+      }, err => { alert("שגיאה בהתחברות לשרת")})
   }
 }

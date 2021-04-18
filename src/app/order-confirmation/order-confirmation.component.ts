@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TakingDeliveryService } from '../services/taking-delivery.service';
 
 @Component({
   selector: 'app-order-confirmation',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderConfirmationComponent implements OnInit {
 
-  constructor() { }
+  constructor(public takingDeliveryService:TakingDeliveryService) { }
 
   ngOnInit(): void {
+    debugger
+    this.takingDeliveryService.GetAllOrder().subscribe(data=>
+      this.takingDeliveryService.newTakingDelivery=data)
   }
 
 }

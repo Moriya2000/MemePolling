@@ -8,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 export class PayComponent implements OnInit {
 
   constructor() { }
+  CardNumber: string = ""
+  CardValidity: string = ""
+  Last3Digits: string = ""
 
 
   ngOnInit(): void {
   }
 
+  //פונקציה שקוראת אחרי הכנסת הפרטים של המשלוח
+  Pay(){
+//חישוב התשלום של ההזמנה
+//המרחק בין הכתבות בקילומטרים + הרכב שצריך להוציא אלמשלוח
+  }
 }

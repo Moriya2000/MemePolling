@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientService } from '../services/client.service';
 
 @Component({
   selector: 'app-site-terms-client',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SiteTermsClientComponent implements OnInit {
 
-  constructor() { }
+  constructor(public clientService:ClientService) { }
 
   ngOnInit(): void {
   }

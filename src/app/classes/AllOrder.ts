@@ -17,8 +17,7 @@ export class AllOrder{
         public TDlatAddress?:number,
         public TDlngaddress?:number,
         public TDNameAddress?:string,
-
-
+        public TDaddToList?:boolean,
 
         public GivingDeliveryID?:number,
         public GDOrderID?:number,
@@ -36,9 +35,10 @@ export class AllOrder{
         public GDPickUpTime?:number,
         public GDPickUpTimeUntil?:number,
         public GDlatAddress?:number,
-        public GDlngaddress?:number,
+        public GDlngAddress?:number,
         public GDNameAddress?:string,
-        
+        public GDaddToList?:boolean,
+
         public OrderID?:number,
         public ClientID?:number,
         public OrderDate?:Date,
@@ -48,6 +48,7 @@ export class AllOrder{
         public DeliveryUrgencyID?:number,
         public FinalPay?:number,
         public Note?:string,
+      
 
 
         ){}

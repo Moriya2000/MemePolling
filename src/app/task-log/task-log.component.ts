@@ -16,7 +16,7 @@ export class TaskLogComponent implements OnInit {
     debugger;
     //שליפת פרטי חברת שליחויות
     this.sendingCompanyService.GetIdAllDetailsCompany().subscribe(data=>
-      {debugger
+      {
       this.sendingCompanyService.companyConected=data
       })
 
@@ -25,5 +25,13 @@ export class TaskLogComponent implements OnInit {
   updatSendingCompany()
   {
     this.sendingCompanyService.newCompany= this.sendingCompanyService.companyConected;
+  }
+
+  delete()
+  {
+    debugger
+    this.sendingCompanyService.GetRemoveSendingCompany().subscribe(data=>
+      this.sendingCompanyService.listCompany=data)
+      alert("החברה הוסרה בהצלחה")
   }
 }

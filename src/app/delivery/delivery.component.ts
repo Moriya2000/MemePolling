@@ -3,10 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
-import { AllOrder } from '../classes/AllOrder';
-import { Order } from '../classes/Order';
+import { DeliveryType } from '../classes/DeliveryType';
+import { DeliveryUrgency } from '../classes/DeliveryUrgency';
 import { TakingDelivery } from '../classes/TakingDelivery';
-import { ClientLoginComponent } from '../client-login/client-login.component';
 import { CityService } from '../services/city.service';
 import { ClientService } from '../services/client.service';
 import { DeliveryTypeService } from '../services/delivery-type.service';
@@ -25,8 +24,9 @@ export class DeliveryComponent implements OnInit {
     public clientService: ClientService, public deliveryTypeService: DeliveryTypeService, public deliveryUrgencyService: DeliveryUrgencyService,
     public streetService: StreetService, public rout: Router) { }
 
-
   ngOnInit(): void {
+
+    this.fillDayDeliveyUrgency()
 
     //בדיקה האם המשתמש מחובר
     if (this.clientService.newClient.EmailAddress == undefined) {
@@ -48,6 +48,7 @@ export class DeliveryComponent implements OnInit {
     //שליפת רחובות
     this.streetService.GatAllStreet().subscribe(data => this.streetService.listStreet = data);
 
+    debugger
     //שליפת סוג משלוח
     this.deliveryTypeService.GatAllDeliveryType().subscribe(data => this.deliveryTypeService.listDeliveryType = data);
 
@@ -60,6 +61,30 @@ export class DeliveryComponent implements OnInit {
     }
   }
 
+  listDeliveryUrgency: DeliveryUrgency[] = new Array();
+  listDayDeliveryUrgency: DayInDeliveyUrgency[] = new Array();
+  
+  fillDayDeliveyUrgency() {
+    this.listDayDeliveryUrgency.push(new DayInDeliveyUrgency(1, "מהיום למחר", false))
+    this.listDayDeliveryUrgency.push(new DayInDeliveyUrgency(3, "עד 3 ימים", false))
+    this.listDayDeliveryUrgency.push(new DayInDeliveyUrgency(7, "עד שבוע ימים", false))
+  }
+
+  //בדיקה האם בחר יום המסויים 
+  DeliveyUrgency(numDayDeliveyUrgency: number) {
+    debugger
+    //אם לא מצא יום בחור לא מסמן
+    let d = this.listDayDeliveryUrgency.filter(x => x.numDayDeliveryUrgency == numDayDeliveyUrgency)[0]
+    d.showOrHide = !d.showOrHide
+    //אם עדיין לא בחר מכניס לרשימה
+    if (this.listDeliveryUrgency.find(d => d.DeliveryUrgencyID == numDayDeliveyUrgency) == null) {
+      this.listDeliveryUrgency.push(new DeliveryUrgency(0,numDayDeliveyUrgency,this.listDayDeliveryUrgency.find(n => n.numDayDeliveryUrgency == numDayDeliveyUrgency)?.nameDayDeliveryUrgency))
+    }
+    //אם בחר אז מסיר מהרשימה
+    else
+      this.listDeliveryUrgency.splice(this.listDeliveryUrgency.findIndex(d => d.Urgency == numDayDeliveyUrgency), 1)
+  }
+  listDeliveryType:Array<DeliveryType>=new Array<DeliveryType>();
   //לקיחת משלוח
   //פונקציה הבודקת באיזה ערים החברה עובדת
   takeDeliveryAddress(address: Address) {
@@ -84,14 +109,17 @@ export class DeliveryComponent implements OnInit {
     if (city != null) {
       this.takingDeliveryService.newTakingDelivery.GDCityID = city.CityID
       this.takingDeliveryService.newTakingDelivery.GDlatAddress = address.geometry.location.lat();
-      this.takingDeliveryService.newTakingDelivery.GDlngaddress = address.geometry.location.lng();
+      this.takingDeliveryService.newTakingDelivery.GDlngAddress = address.geometry.location.lng();
       this.takingDeliveryService.newTakingDelivery.GDNameAddress = address.formatted_address;
     }
     //אם החברה לא עובדת בעיר שבחר
     else
       alert("אין משלוחים לעיר זו. בחר כתובת אחרת")
   }
-
+checkDeliveryType(typeId:any)
+{
+  this.takingDeliveryService.newTakingDelivery.DeliveryTypeID=typeId;
+}
   //פונקציה שמוסיפה משלוח חדש
   addDetailesDelivey() {
     debugger
@@ -102,8 +130,13 @@ export class DeliveryComponent implements OnInit {
     this.takingDeliveryService.newTakingDelivery.GDStreetID = 1;
     //הוספת פרטי לקיחת משלוח
     this.takingDeliveryService.GetAddAllOrder(this.takingDeliveryService.newTakingDelivery).subscribe(data => {
-      alert("הפרטים הוכנסו בהצלחה")
+      // alert("הפרטים הוכנסו בהצלחה");
       this.takingDeliveryService.newTakingDelivery = new TakingDelivery();
     }, err => { alert("error" + err) })
   }
+}
+
+
+export class DayInDeliveyUrgency {
+  constructor(public numDayDeliveryUrgency: number, public nameDayDeliveryUrgency: string,public showOrHide: boolean) { }
 }

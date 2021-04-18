@@ -1,31 +1,48 @@
-<div class="container">
-    <div class="container-fluid" >
-        <section class="row" >
-            <div class="col-xs-12 col-lg-12">
-                <br><br><br>
-                <p class="p">מעקב הזמנה</p>    
-                <div class="YellowLineLeft"></div>
-                <div class="YellowLineRight"></div>
-                <br><br>
+<section class="row">
+    <div class="col-xs-12 col-lg-12">
+        <p class="p">מעקב הזמנה</p>
+        <div class="YellowLineLeft"></div>
+        <div class="YellowLineRight"></div>
+        <br><br>
+        <div class="container">
+            <div class="container-fluid">
                 <div class="div1" dir="rtl">
-                    <p class="p1">מעקב אחרי ההזמנה שלי</p><br>
+                    <a><p class="p1" (click)="showOrHide=false">מעקב אחרי ההזמנה שלי</p></a><br>
+                    
                     <div class="YellowLineLeft1"></div><br>
-                    <p class="p1">שינוי סיסמא</p><br>
+                        
+                    <a (click)="MyOrder()">
+                            <p class="p1" >ההזמנות שעשיתי</p>
+
+                        </a> <br>
+                        <div [hidden]="showOrHide">
+                             <div style="width: 20%;height: 50px;" *ngFor="let item of orderService.listOrder">
+                            <p>:קוד הזמנה<br>{{item.OrderID!}}</p>
+                            <p>:קוד לקוח<br>{{item.ClientID!}}</p>
+                            <p>:תאריך הזמנה<br>{{item.OrderDate!}}</p>
+                        </div>
+                        </div>
+                       
+
                     <div class="YellowLineLeft1"></div><br>
-                    <button (click)="delete()"><p class="p1">מחיקת המשתמש שלי</p><br></button>
+                    <a (click)="delete()">
+                        <p class="p1">מחיקת המשתמש שלי</p><br>
+                    </a>
                     <div class="YellowLineLeft1"></div><br>
-                </div> 
-                <div class="YellowLinealong"></div>
+                </div>
+                <div [hidden]="!showOrHide">
+                       <div class="YellowLinealong"></div>
                 <div class="div2"></div><br><br><br><br>
                 <div class="div3"></div><br><br><br><br>
                 <div class="div3"></div>
                 <div class="div4" dir="rtl">
                     <p class="p1">הזמנתך התקבלה ותטופל בקרוב<br><br><br>
-                    המשלוח נאסף<br><br><br>
-                    המשלוח הגיע ליעד</p>
-                </div>               
-
+                        המשלוח נאסף<br><br><br>
+                        המשלוח הגיע ליעד</p>
+                </div>
+                </div>
+             
             </div>
-        </section>
+        </div>
     </div>
-</div>
+</section>

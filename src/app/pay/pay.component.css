@@ -2,7 +2,7 @@
     background:#fcee21;
     max-width: 40%;
     height: 2.5px;
-    margin-top: -2%;
+    margin-top: -6%;
 }
 
 .YellowLineRight{
@@ -13,10 +13,10 @@
     max-width: 40%;
 }
 .p{
-    font-size: 30px;
+    font-size: 35px;
     color:#c1272d;
     text-align: center;
-    margin-top: 2%;
+    margin-top: 6%;
     font-weight: bold;
 }
 .p1{
@@ -55,5 +55,11 @@
     padding: 7px;
     margin-right: 43%;
     margin-top: 5%;
+    margin-bottom: 3%;
+}
+.input1{
+    width: 35%;
+    margin-right: 45%; 
+    border-color:#f3e412;
     margin-bottom: 3%;
 }

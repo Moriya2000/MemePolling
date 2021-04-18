@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientService } from '../services/client.service';
 
 @Component({
   selector: 'app-site-term-company',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SiteTermCompanyComponent implements OnInit {
 
-  constructor() { }
+  constructor(public clientService:ClientService) { }
 
   ngOnInit(): void {
   }

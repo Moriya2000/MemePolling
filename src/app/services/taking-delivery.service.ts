@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AllOrder } from '../classes/AllOrder';
 import { Client } from '../classes/Client';
+import { GivingDelivery } from '../classes/GivingDelivery';
 import { TakingDelivery } from '../classes/TakingDelivery';
 import { ClientLoginComponent } from '../client-login/client-login.component';
 
@@ -12,9 +13,9 @@ import { ClientLoginComponent } from '../client-login/client-login.component';
 export class TakingDeliveryService {
 
   listTakingDelivery:Array<TakingDelivery>=new Array<TakingDelivery>();
-  newTakingDelivery:AllOrder=new AllOrder();
   
-
+  newTakingDelivery:AllOrder=new AllOrder();
+    
   constructor(private http: HttpClient) { }
   url: string = "https://localhost:44337/api/TakingDelivery"
   
@@ -23,18 +24,21 @@ GatAllTakingDelivery():Observable<Array<TakingDelivery>>{
   return this.http.get<Array<TakingDelivery>>(this.url+"/GatAllTakingDelivery")}
           
 //שליפת לקיחת משלוח לפי קוד   
-GetIdTakingDelivery(id:number):Observable<Array<TakingDelivery>>{
-  return this.http.get<Array<TakingDelivery>>(this.url+"/GetIdTakingDelivery"+id)}
+GetAllOrder():Observable<TakingDelivery>{
+  return this.http.get<TakingDelivery>(this.url+"/GetAllOrder/"+this.newTakingDelivery.OrderID)}
 
 GetAddAllOrder(c:AllOrder):Observable<Array<AllOrder>>{
-  this.newTakingDelivery.TakingDeliveryID=1;
-  this.newTakingDelivery.GivingDeliveryID=1;
-  this.newTakingDelivery.OrderID=1;
   this.newTakingDelivery.OrderDate=new Date();
   this.newTakingDelivery.FinalPay=1;
   this.newTakingDelivery.Note="tgfhdfhdf";
   return this.http.put<Array<AllOrder>>(this.url+"/GetAddAllOrder",c);
 }
+
+GetAllOrder1():Observable<Array<AllOrder>>{
+ 
+  return this.http.get<Array<AllOrder>>(this.url+"/GetAllOrder");
+}
+
 
 //הוספת לקיחת משלוח 
 GetAddTakingDelivery(c:TakingDelivery):Observable<Array<TakingDelivery>>{

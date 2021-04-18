@@ -1,19 +1,22 @@
 <section class="row" >
     <div class="col-xs-12 col-lg-12" >
-        <br><br><br><br>
-        <p class="p">סיום הזמנה</p>    
+        <img src="../../assets/Images/pic11.jpg" class="img-responsive" style="margin-left: 45%;">
         <div class="YellowLineLeft"></div>
         <div class="YellowLineRight"></div>
         <br><br>   
-        <img src="../../assets/Images/pic11.jpg" class="img-responsive" style="margin-left: 45%;margin-top: 2%;">
         <p class="p">רק דבר אחרון וסיימת</p>
         <p class="p1">על מנת שלא ייווצרו חילופין עם חבילות<br>
         יש להדפיס את פרטי יעד המשלוח ולהדביק על החבילה</p>
-        <div class="div1">
-            <br><br><p class="p2">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p><br>
-            <p class="p2">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p><br>
+        <div class="div1 text-center" id="printDoc" ><br>
+            <p>:כתובת מלאה<br>{{takingDeliveryService.newTakingDelivery.GDNameAddress}}</p>
             <p class="p2">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+            <p>:מספר דירה<br>{{takingDeliveryService.newTakingDelivery.GDApartmentNumber}}</p>
+            <p class="p2">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+            <p>:שם פרטי{{takingDeliveryService.newTakingDelivery.GDFirstName}}</p>
+            <p class="p2">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+            <p>:שם משפחה<br>{{takingDeliveryService.newTakingDelivery.GDLastName}}</p>
         </div>
-        <button type="button" class="button1">הדפסה</button>
+        <button type="button" class="button1" (click)="printComponent('printDoc')">הדפסה</button>
+        <button type="button" class="button2" [routerLink]="['/OrderConfirmation']">המשך</button>
     </div>
 </section>

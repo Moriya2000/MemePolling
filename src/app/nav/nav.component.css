@@ -1,6 +1,5 @@
 .navbar{
     background-color: white;
-    
 }
 
 /* עיצוב האותיות והמיקום שלהם */
@@ -12,11 +11,11 @@
     color: #c1272d !important;
     font-weight: bold;
     margin-top: 13px;
-    /* right: 50px; */
+    cursor: pointer;
 }
 /* שינוי הצבע בזמן שעובר על אחד מהקישורים */
 .navbar-nav li a:hover{
-    color:#c1272d !important;
+    color:#c1272d;
     background-color:rgb(252, 252, 110) !important;
 }
 
@@ -33,20 +32,14 @@
     border-color: #c1272d;
     text-align: center;
     float: right;
-    /* margin-left: 10px;
-    margin-right: 15px; */
     margin-top: 13px;
 }
-
-
-
 
 .h1{
     color:#d42a30;
     font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
     font-weight: bold;
-    /* margin-right: 60%; */
+    margin-left: 65%;
 }
 .button1{
     width: 30%;
@@ -54,8 +47,7 @@
     color:black;
     font-weight: bold;
     border-radius: 0%;
-    margin-bottom: 18.8%;
-    
+    margin-bottom: 18.8%;  
 }
 .h4{
     font-weight: bold;
@@ -63,5 +55,79 @@
 .box{
     width: 10px;
 }
+.button2{
+    width: 22%;
+    background-color: #c1272d;
+    color:white;
+    border-color: #c1272d;   
+    font-weight: bold;
+    border-radius: 0%;
+    margin-bottom: 18.8%;
+    margin-right: 10%;
+}
 
+ ul#nav li ul { 
+    background-color: white; 
+}
+ul#nav li ul a { 
+    display:block; 
+    padding: 5px 10px; 
+    color: white; 
+    text-decoration:none; 
+    border-bottom:1px solid #ccc; 
+ }
+
+ ul#nav li ul{
+    display:none; 
+}
+
+ ul#nav li:hover ul { 
+    display:block; 
+}
+ul { 
+    list-style-type: none; 
+    padding:0; 
+    margin:0; }
+
+ul#nav li ul { 
+    position:absolute; 
+    display:none;
+    width: 10%; 
+    text-align: center;
+    font-size: 22px;
+    background-color:white;
+    
+}
+        
+
+.input{
+    width: 35%;
+    margin-right: 5%; 
+    border-color:#f3e412;
+}
+i{
+    margin-right: 5%;
+    width: 35%;
+    height: 15px;
+    color:grey;
+    font-size: 15px;
+}
+.input3
+{
+    width: 15px;
+    height: 15px;
+    margin-top: 5%;
+}
+
+.a{
+    font-size: 15px;
+    margin-right:5px;
+    color: black;
+}
+.input1{
+    width: 35%;
+    margin-right: 5%; 
+    border-color:#f3e412;
+    margin-bottom: 3%;
+}
 

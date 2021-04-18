@@ -1,19 +1,19 @@
-<div class="container">
-    <div class="container-fluid" >
-        <section class="row" >
-            <div class="col-xs-12 col-lg-12">
-                <br><br><br>
-                <p class="p">תנאי האתר</p>    
-                <div class="YellowLineLeft"></div>
-                <div class="YellowLineRight"></div>
-                <br><br>
+<section class="row">
+    <div class="col-xs-12 col-lg-12">
+        <p class="p">תנאי האתר</p>
+        <div class="YellowLineLeft"></div>
+        <div class="YellowLineRight"></div>
+        <br><br>
+        <div class="container">
+            <div class="container-fluid">
                 <p class="p1">
                     .יש לקרוא את התנאים המפורטים להלן לפני ביצוע הזמנת המשלוח<br>
                     .תנאים אלו מהווים חוזה מחייב בין האתר למזמין המשלוח<br>
                     .במקרה של אי הסכמה אינה תינתן האפשרות לביצוע ההזמנה<br>
                 </p><br>
                 <div class="div1" dir="rtl">
-                    <br><h2 class="h2">מחירי המשלוחים שלנו תלויים במספר דברים:</h2>
+                    <br>
+                    <h2 class="h2">מחירי המשלוחים שלנו תלויים במספר דברים:</h2>
                     <p class="p2">
                         סוג הרכב אותו נצטרך להוציא עבור המשלוח <br>
                         זמן הגעה משוער מיעד האיסוף ליעד החלוקה<br>
@@ -31,7 +31,7 @@
                         </p>
                     </div>
                     <div class="col-sm-5 col-lg-5">
-                        <img src="../../assets/Images/pic7.jpg" style="float: right; margin-top: 5%;">                        
+                        <img src="../../assets/Images/pic7.jpg" style="float: right; margin-top: 5%;">
                         <h3 class="h3">אופנוע:</h3>
                         <p class="p3">לכל 10 קילומטר ₪2</p>
                         <p class="p4"> עד שבוע ימים ₪40 <br>
@@ -48,7 +48,7 @@
                             מהיום למחר ₪900 <br>
                         </p>
                     </div>
-                    <div class="col-sm-5 col-lg-5">                        
+                    <div class="col-sm-5 col-lg-5">
                         <img src="../../assets/Images/pic6.jpg" style="float: right; margin-top: 5%;">
                         <h3 class="h3">רכב פרטי:</h3>
                         <p class="p3">לכל 10 קילומטר ₪5</p>
@@ -60,7 +60,9 @@
                 </section>
                 <div class="div2" dir="rtl">
                     <p class="p5">
-                        * בכל יום מהשעה 17:00 האתר שלנו בונה מסלולי איסוף ופיזור באופן אוטומטי, על חברת השליחויות להיכנס לאתר מידי יום מהשעה 17:00 ולבדוק את יומן השליחויות שלה – שם מופיעים כל השליחויות שהיא נדרשת לעשות ביום שלמחרת.<br>
+                        * בכל יום מהשעה 17:00 האתר שלנו בונה מסלולי איסוף ופיזור באופן אוטומטי, על חברת השליחויות להיכנס
+                        לאתר מידי יום מהשעה 17:00 ולבדוק את יומן השליחויות שלה – שם מופיעים כל השליחויות שהיא נדרשת
+                        לעשות ביום שלמחרת.<br>
                         * חברת השליחויות מתחייבת לעמוד לרשות האתר בכל זמני הפעילות שלה.<br>
                         * חברת השליחויות מתחייבת לעמוד בכל כמות המשלוחים אשר תינתן לה מידי יום.<br>
                         * על החברה להיות אמינה בכך שתספק ללקוחותינו את המוצרים בזמן הנדרש מימנה ביומן השליחויות.<br>
@@ -69,13 +71,16 @@
                         * במקרים של פגע במשלוח (למשל: שבירת מוצר וכדומה) על החברה לדאוג לפיצוי הלקוח!<br>
                         * חברת השליחויות תתחייב לעשות משלוחים לערים בהם היא ציינה שעובדת.<br>
                         * תשלום השכר ישלח לחשבון הבנק של החברה והיא האחראית למשכורות המשלוחנים.<br>
-                        * החברה לא תעביר את פרטיו האישיים של הלקוח (שם, מספר טלפון וכדומה), לאף גורם אחר.<br>   
-                    </p>                    
-                   <p class="p6">תודה שבחרתם ב- <img src="../../assets/Images/logo.jpg" style="width: 25%;"></p>
+                        * החברה לא תעביר את פרטיו האישיים של הלקוח (שם, מספר טלפון וכדומה), לאף גורם אחר.<br>
+                    </p>
+                    <p class="p6">תודה שבחרתם ב- <img src="../../assets/Images/logo.jpg" style="width: 25%;"></p>
+                    <button *ngIf="!clientService.typeUserCompany" type="button" class="button1">חזור</button>
                 </div>
-                <img src="../../assets/Images/.jpg" style="float: left; width:40%; height: 200px;margin-top: 3%;" class="img-thumbnail img-responsive">
-                <img src="../../assets/Images/.jpg" style="float: left; width:40%; height: 200px;" class="img-thumbnail img-responsive">
+                <img src="../../assets/Images/.jpg" style="float: left; width:40%; height: 200px;margin-top: 3%;"
+                    class="img-thumbnail img-responsive">
+                <img src="../../assets/Images/.jpg" style="float: left; width:40%; height: 200px;"
+                    class="img-thumbnail img-responsive">
             </div>
-        </section>
+        </div>
     </div>
-</div>
+</section>

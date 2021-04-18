@@ -27,7 +27,7 @@ export class ClientLoginComponent implements OnInit {
       else{
         alert("משתמש לא קיים במערכת");
         this.rout.navigate(['/ClientRegister']);
-        this.clientService.newClient=new Client;
+        this.clientService.newClient=new Client();
       }
     },err=>{alert("שגיאה בהתחברות לשרת")})
   }
