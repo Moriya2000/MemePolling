@@ -16,18 +16,19 @@ export class OrderTrackingComponent implements OnInit {
   ngOnInit(): void {
   }
   //מחיקת משתמש
-  delete() {
-    debugger
-    this.clientService.GetRemoveClient(this.clientService.clientConected.IdClient!).subscribe(data => {
-      alert("המשתמש הוסר בהצלחה")
-    }, err => { alert("error" + err) })
+  // delete() {
+  //   debugger
+  //   this.clientService.GetRemoveClient(this.clientService.clientConected.IdClient!).subscribe(data => {
+  //     alert("המשתמש הוסר בהצלחה")
+  //   }, err => { alert("error" + err) })
 
-  }
+  // }
   MyOrder() {
     debugger
+    this.showOrHide=false;
+
     this.orderService.GetAllIdOrder(this.clientService.clientConected.IdClient!).subscribe(data => 
    {   debugger
-    this.showOrHide=false;
 
 this.orderService.listOrder=data
       alert("השליפה הצליחה");

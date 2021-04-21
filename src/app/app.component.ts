@@ -15,12 +15,13 @@ export class AppComponent implements OnInit {
   listOrderToMaslul: OrderToMaslul[] = new Array()
 constructor(private ser:TakingDeliveryService){}
   ngOnInit(): void {
-this.ser.GetAllOrder1().subscribe(myData=>
-  {
-    this.listOrderToSort=myData;
-    this.createListToMishloach();
-    console.log(this.listOrderToMaslul)
-  })
+// this.ser.GetAllOrder1().subscribe(myData=>
+//   {
+//     debugger
+//     this.listOrderToSort=myData;
+//     this.createListToMishloach();
+//     console.log(this.listOrderToMaslul)
+//   })
   }
   title = 'QuicklyClient';
   handleAddressChange(event: any) {

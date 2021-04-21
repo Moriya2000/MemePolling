@@ -25,9 +25,9 @@ export class AllDetailsCompanyComponent implements OnInit, AfterViewInit {
 
   constructor(public cityService: CityService, public streetService: StreetService,
     public sendingCompanyService: SendingCompanyService, public businessDaysService: BusinessDaysService,
-    public carsTypesService: CarsTypesService,public clientService:ClientService, public rout: Router) { }
+    public carsTypesService: CarsTypesService, public clientService: ClientService, public rout: Router) { }
 
-    aaa:boolean=false
+  aaa: boolean = false
 
   ngAfterViewInit(): void {
     this.initialize()
@@ -51,14 +51,16 @@ export class AllDetailsCompanyComponent implements OnInit, AfterViewInit {
     this.carsTypesService.GatAllCarsTypes().subscribe(data => this.carsTypesService.listCarsTypes = data);
     this.initialize()
     //בדיקה האם זה הוספת חברה חדשה
-    if (this.sendingCompanyService.newCompany.SendingCompanyID == undefined) {
+    if (this.sendingCompanyService.newCompany.CompanyNumber == undefined) {
       this.sendingCompanyService.newCompany = new AllDetailsCompany();
       this.sendingCompanyService.newCompany.listCarsCompany = new Array();
+      this.sendingCompanyService.companyConected = new AllDetailsCompany();
 
-      
     }
     //אם זה עדכון
     else {
+// this.listCityName=new Array();
+this.sendingCompanyService.newCompany.listCitiesCompany?.forEach(c=> this.listCityName.push(c.nameCity!))
 
       //עובר לי על רשימת ימים
       for (let d = 0; d < this.sendingCompanyService.newCompany.listBusinessDays?.length; d++) {
@@ -90,6 +92,15 @@ export class AllDetailsCompanyComponent implements OnInit, AfterViewInit {
     }
   }
 
+//   deleteCity()
+// {
+//   for(let c=0;c<this.sendingCompanyService.newCompany.listCitiesCompany!.length;c++)
+//   {
+//     let index =this.sendingCompanyService.newCompany.listCitiesCompany?.forEach(c1=> c1.nameCity==   this.listCityName[c].)
+//   }
+ 
+
+// }
   //רשימה לשליפת ימי עסקים 
   listBusDay: BusinessDays[] = new Array();
   listDay: DayInWeek[] = new Array();
@@ -148,27 +159,27 @@ export class AllDetailsCompanyComponent implements OnInit, AfterViewInit {
     else
       this.sendingCompanyService.newCompany.listCarsCompany?.push(car);
 
-      console.log(this.sendingCompanyService.newCompany.listCarsCompany);
-      
+    console.log(this.sendingCompanyService.newCompany.listCarsCompany);
+
   }
-  changeAddress(address:Address)
-  {
-    this.sendingCompanyService.newCompany.FullAddress=address.formatted_address
+  changeAddress(address: Address) {
+    this.sendingCompanyService.newCompany.FullAddress = address.formatted_address
   }
   //הוספת חברה חדשה
   addDetailsCompany() {
     debugger
-      //בדיקה האם זה הוספה
+    //בדיקה האם זה הוספה
     if (this.sendingCompanyService.newCompany.SendingCompanyID == undefined) {
       this.sendingCompanyService.newCompany.listBusinessDays = this.listBusDay;
-      this.sendingCompanyService.newCompany.listCitiesCompany=new Array();
-    this.listCityName.forEach(c=>this.sendingCompanyService.newCompany.listCitiesCompany?.push(new CitiesCompany(0,this.sendingCompanyService.newCompany.SendingCompanyID,0,c)))
+      this.sendingCompanyService.newCompany.listCitiesCompany = new Array();
+      this.listCityName.forEach(c => this.sendingCompanyService.newCompany.listCitiesCompany?.push(new CitiesCompany(0, this.sendingCompanyService.newCompany.SendingCompanyID, 0, c)))
       this.sendingCompanyService.GetAddAllDetailsCompany(this.sendingCompanyService.newCompany).subscribe(data => {
         debugger
-
-        this.clientService.typeUserCompany=true;
-        this.sendingCompanyService.companyConected=this.sendingCompanyService.Company;
-        this.sendingCompanyService.conected=true;
+        this.clientService.typeUserCompany = true;
+        debugger
+        this.sendingCompanyService.companyConected = this.sendingCompanyService.newCompany;
+        // this.sendingCompanyService.companyConected = this.sendingCompanyService.Company;
+        this.sendingCompanyService.conected = true;
         alert("הפרטים הוכנסו בהצלחה")
         this.rout.navigate(['/TaskLog']);
 
@@ -181,11 +192,11 @@ export class AllDetailsCompanyComponent implements OnInit, AfterViewInit {
       alert(" עודכנה בהצלחה")
       this.rout.navigate(['/TaskLog']);
     }
-    this.sendingCompanyService.newCompany = new AllDetailsCompany();
+    // this.sendingCompanyService.newCompany = new AllDetailsCompany();
   }
-  hideCheckCity:boolean=true;
-listCityName:string[]=new Array();//רשימת ערים שהחברה בחרה
-cityNameChecked:string=""
+  hideCheckCity: boolean = true;
+  listCityName: string[] = new Array();//רשימת ערים שהחברה בחרה
+  cityNameChecked: string = ""
   @ViewChild("placesRef") placesRef!: GooglePlaceDirective;
   @ViewChild("searchTextField") searchTextField: any;
   initialize() {
@@ -197,18 +208,17 @@ cityNameChecked:string=""
     };
     var autocomplete = new google.maps.places.Autocomplete(input, options);
   }
-  checkedCity(address:any)
-  {
-    this.cityNameChecked=address.target.value
+  checkedCity(address: any) {
+    this.cityNameChecked = address.target.value
   }
   plusCity1()//כל פעם שהחברה בוחרת עיר מתווסף לרשימה של הערים שבחרה
   {
     debugger
-    if(this.listCityName.find(c=>c==this.cityNameChecked)==null)
-    this.listCityName.push(this.cityNameChecked)
-// this.hideCheckCity=!this.hideCheckCity
-let input = document.getElementById('searchTextField') as HTMLInputElement;
-input.value=""//איפוס תיבת הבחירה
+    if (this.listCityName.find(c => c == this.cityNameChecked) == null)
+      this.listCityName.push(this.cityNameChecked)
+    // this.hideCheckCity=!this.hideCheckCity
+    let input = document.getElementById('searchTextField') as HTMLInputElement;
+    input.value = ""//איפוס תיבת הבחירה
   }
 }
 

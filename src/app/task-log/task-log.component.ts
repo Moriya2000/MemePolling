@@ -13,17 +13,20 @@ export class TaskLogComponent implements OnInit {
   constructor(public sendingCompanyService:SendingCompanyService,) { }
 
   ngOnInit(): void {
-    debugger;
+    debugger
     //שליפת פרטי חברת שליחויות
-    this.sendingCompanyService.GetIdAllDetailsCompany().subscribe(data=>
-      {
-      this.sendingCompanyService.companyConected=data
-      })
-
+    this.sendingCompanyService.GetIdAllDetailsCompany().subscribe(data=>{
+      debugger
+      this.sendingCompanyService.newCompany=data
+    })
+     
+debugger
+// listAllCompany
   }
-
+  // (click)="updatSendingCompany()"
   updatSendingCompany()
   {
+    debugger
     this.sendingCompanyService.newCompany= this.sendingCompanyService.companyConected;
   }
 

@@ -3,6 +3,7 @@
     .p2 {
       font-size: 20px;
     }
+
     .p3{
         font-size: 17px;
     }
@@ -15,6 +16,7 @@
     .p2 {
       font-size: 15px;
     }
+
     .p3{
         font-size: 17px;
     }
@@ -81,12 +83,12 @@
 }
 
 .p3{
-    color:black;
+    color:rgb(94, 93, 93);
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .p4{
-    color:black;
+    color:rgb(94, 93, 93);
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -103,7 +105,7 @@
     border-color: #c1272d;
     margin-top: 5%;
     margin-left: 42.5%;
-    margin-bottom: 5%;
+    /* margin-bottom: 5%; */
 }
 
 .carousel-control.right, .carousel-control.left {

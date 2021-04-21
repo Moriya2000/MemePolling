@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AllOrder } from '../classes/AllOrder';
+import { TakingDeliveryService } from '../services/taking-delivery.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public takingDeliveryService:TakingDeliveryService) { }
 
   ngOnInit(): void {
+this.takingDeliveryService.newTakingDelivery=new AllOrder();
   }
 
 }

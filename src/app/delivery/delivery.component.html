@@ -26,7 +26,8 @@
                     <!-- <input placeholder="בניין" type="text" #ngArea="ngModel" [(ngModel)]="takingDeliveryService.newTakingDelivery.TDBuildingNumber" class="form-control" id="BuildingNumber" name="BuildingNumber" style="width: 8%;"> -->
 
                     <input ngx-google-places-autocomplete #placesRef="ngx-places"
-                        (onAddressChange)="takeDeliveryAddress($event)" required name="place" #place />
+                        [(ngModel)]="this.takingDeliveryService.newTakingDelivery.TDNameAddress"
+                        (onAddressChange)="takeDeliveryAddress($event)" required name="place" #place="ngModel" />
 
 
                     <div class="divError" style="width:90px;">
@@ -116,7 +117,7 @@
                             id="Email" name="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
                         <div class="error" *ngIf="ngTDEmail.invalid&&(ngTDEmail.touched||ngTDEmail.dirty)">
                             <i *ngIf="ngTDEmail.errors!.required">זהו שדה חובה</i>
-                            <i *ngIf="ngTDEmail.errors!.pattern">אינו יכול להכיל אותיות</i>
+                            <i *ngIf="ngTDEmail.errors!.pattern">אינו תקין</i>
                         </div>
                     </div>
 
@@ -145,7 +146,8 @@
         <input placeholder="בניין" type="text" #ngArea="ngModel" [(ngModel)]="takingDeliveryService.newTakingDelivery.GDBuildingNumber" class="form-control" id="BuildingNumber" name="BuildingNumber" style="width: 8%;"> -->
 
                     <input ngx-google-places-autocomplete #placesRef="ngx-places"
-                        (onAddressChange)="getDeliveryAddress($event)" required name="place" #place />
+                        [(ngModel)]="this.takingDeliveryService.newTakingDelivery.GDNameAddress"
+                        (onAddressChange)="getDeliveryAddress($event)" required name="place1" #place1="ngModel" />
 
                     <div class="divError" style="width:90px;">
                         <input placeholder="כניסה" type="text" #ngGDEntranceBuilding="ngModel"
@@ -157,7 +159,7 @@
                     <div class="divError" style="width:90px;">
                         <input placeholder="קומה" type="text" #ngGDFloorNumber="ngModel"
                             [(ngModel)]="takingDeliveryService.newTakingDelivery.GDFloorNumber"
-                            class="input4 form-control" id="FloorNumber" name="FloorNumber" pattern="[0-9]*"
+                            class="input4 form-control" id="GDFloorNumber" name="GDFloorNumber" pattern="[0-9]*"
                             style="width:90px;">
                         <div class="error"
                             *ngIf="ngGDFloorNumber.invalid&&(ngGDFloorNumber.touched||ngGDFloorNumber.dirty)">
@@ -169,7 +171,7 @@
                     <div class="divError">
                         <input placeholder="דירה" type="text" #ngGDApartmentNumber="ngModel"
                             [(ngModel)]="takingDeliveryService.newTakingDelivery.GDApartmentNumber"
-                            class="input4 form-control" id="ApartmentNumber" name="ApartmentNumber" pattern="[0-9]*"
+                            class="input4 form-control" id="GDApartmentNumber" name="GDApartmentNumber" pattern="[0-9]*"
                             required>
                         <div class="error"
                             *ngIf="ngGDApartmentNumber.invalid&&(ngGDApartmentNumber.touched||ngGDApartmentNumber.dirty)">
@@ -181,7 +183,8 @@
                     <div class="divError">
                         <input placeholder="שם פרטי" type="text" #ngGDFirstName="ngModel"
                             [(ngModel)]="takingDeliveryService.newTakingDelivery.GDFirstName"
-                            class="input4 form-control" id="FirstName" name="FirstName" pattern="[A-Za-zא-ת]*" required>
+                            class="input4 form-control" id="GDFirstName" name="GDFirstName" pattern="[A-Za-zא-ת]*"
+                            required>
                         <div class="error" *ngIf="ngGDFirstName.invalid&&(ngGDFirstName.touched||ngGDFirstName.dirty)">
                             <i *ngIf="ngGDFirstName.errors!.required">זהו שדה חובה</i>
                             <i *ngIf="ngGDFirstName.errors!.pattern">אינו יכול להכיל מספרים</i>
@@ -192,7 +195,7 @@
                     <div class="divError">
                         <input placeholder="שם משפחה" type="text" #ngGDLastName="ngModel"
                             [(ngModel)]="takingDeliveryService.newTakingDelivery.GDLastName" class="input4 form-control"
-                            id="LastName" name="LastName" pattern="[A-Za-zא-ת]*" required>
+                            id="GDLastName" name="GDLastName" pattern="[A-Za-zא-ת]*" required>
                         <div class="error" *ngIf="ngGDLastName.invalid&&(ngGDLastName.touched||ngGDLastName.dirty)">
                             <i *ngIf="ngGDLastName.errors!.required">זהו שדה חובה</i>
                             <i *ngIf="ngGDLastName.errors!.pattern">אינו יכול להכיל מספרים</i>
@@ -203,7 +206,7 @@
                     <div class="divError">
                         <input placeholder="טלפון" type="text" #ngGDPhone="ngModel"
                             [(ngModel)]="takingDeliveryService.newTakingDelivery.GDPhone" class="input4 form-control"
-                            id="Phone" name="Phone" pattern="[0-9]*" minlength="9" required>
+                            id="GDPhone" name="GDPhone" pattern="[0-9]*" minlength="9" required>
                         <div class="error" *ngIf="ngGDPhone.invalid&&(ngGDPhone.touched||ngGDPhone.dirty)">
                             <i *ngIf="ngGDPhone.errors!.required">זהו שדה חובה</i>
                             <i *ngIf="ngGDPhone.errors!.pattern">אינו יכול להכיל אותיות</i>
@@ -215,7 +218,8 @@
                     <div class="divError">
                         <input placeholder="טלפון נוסף" type="text" #ngGDAdditionalPhone="ngModel"
                             [(ngModel)]="takingDeliveryService.newTakingDelivery.GDAdditionalPhone"
-                            class="input4 form-control" id="AdditionalPhone" name="AdditionalPhone" minlength="9" pattern="[0-9]*">
+                            class="input4 form-control" id="GDAdditionalPhone" name="GDAdditionalPhone" minlength="9"
+                            pattern="[0-9]*">
                         <div class="error"
                             *ngIf="ngGDAdditionalPhone.invalid&&(ngGDAdditionalPhone.touched||ngGDAdditionalPhone.dirty)">
                             <i *ngIf="ngGDAdditionalPhone.errors!.pattern">אינו יכול להכיל אותיות</i>
@@ -227,10 +231,10 @@
                     <div class="divError">
                         <input placeholder="מייל" type="text" #ngGDEmail="ngModel"
                             [(ngModel)]="takingDeliveryService.newTakingDelivery.GDEmail" class="input4 form-control"
-                            id="Email" name="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                            id="GDEmail" name="GDEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
                         <div class="error" *ngIf="ngGDEmail.invalid&&(ngGDEmail.touched||ngGDEmail.dirty)">
                             <i *ngIf="ngGDEmail.errors!.required">זהו שדה חובה</i>
-                            <i *ngIf="ngGDEmail.errors!.pattern">אינו יכול להכיל אותיות</i>
+                            <i *ngIf="ngGDEmail.errors!.pattern">אינו תקין</i>
                         </div>
                     </div>
                     <!-- <p class="p2">שעות שניתן לקחת את המשלוח:</p>
@@ -248,12 +252,12 @@
                     <div class="div4">
 
                         <div *ngFor="let d of listDayDeliveryUrgency">
-                            <input class="radio" type="radio" name="d.numDayDeliveryUrgency"
-                                value="{{d.nameDayDeliveryUrgency}}">
+                            <input class="radio" type="radio" name="d.numDayDeliveryUrgency" 
+                                value="{{d.numDayDeliveryUrgency}}" [checked]="d.showOrHide"
+                                (change)="checkedDeliveryUrgency(d.numDayDeliveryUrgency)">
                             <label>{{d.nameDayDeliveryUrgency}}</label>
                         </div>
-                        <!-- <div class="div2" >
-                            
+                        <!-- <div class="div2" >       
                             <select [(ngModel)]="takingDeliveryService.newTakingDelivery.DeliveryUrgencyID"
                                 [ngModelOptions]="{standalone: true}" nam="DeliveryUrgency">
                                 <option *ngFor="let item of deliveryUrgencyService.listDeliveryUrgency"
@@ -261,15 +265,13 @@
                             </select>
                         </div> -->
                     </div>
-
                 </div>
                 <div class="form-inline col-sm-12 col-lg-12">
                     <h3 class="p5">סוג המשלוח?</h3><br>
-                    <!-- <div class="div6"> -->
-
                     <div class="div3">
                         <div class="div2" *ngFor="let d of deliveryTypeService.listDeliveryType">
-                            <input type="checkbox" name="d.DeliveryTypeName"  (change)="checkDeliveryType(d.DeliveryTypeID)"> 
+                            <input type="checkbox" name="d.DeliveryTypeName" [checked]="d.checked"
+                                (change)="checkDeliveryType(d.DeliveryTypeID)">
                             <label class="label1">{{d.DeliveryTypeName}}</label>
                         </div>
                         <!-- <select [(ngModel)]="takingDeliveryService.newTakingDelivery.DeliveryTypeID"
@@ -278,7 +280,7 @@
                                     value="{{item.DeliveryTypeID}}">
                                     {{item.DeliveryTypeName}}</option> -->
                         <!-- </select> -->
-                        <div class="div5" *ngIf="takingDeliveryService.newTakingDelivery.DeliveryTypeID==2"> 
+                        <div class="div5" *ngIf="takingDeliveryService.newTakingDelivery.DeliveryTypeID==2">
                             <!-- <input placeholder="כמות" type="number" #ngArea="ngModel"
                                     [(ngModel)]="takingDeliveryService.newTakingDelivery.Amount" class="form-control"
                                     id="Amount" name="Amount" style="border-color: gray;"><br><br> -->
@@ -289,8 +291,7 @@
                     </div>
                     <!-- </div> -->
                     <button type="button" class="button btn-lg" style="margin-right: 35%;"
-                        [disabled]="!myForm.form.valid" (click)="addDetailesDelivey()"
-                        [routerLink]="['/Pay']">אישור</button>
+                        (click)="addDetailesDelivey()" [disabled]="!myForm.form.valid">אישור</button>
                 </div>
             </form>
         </section>

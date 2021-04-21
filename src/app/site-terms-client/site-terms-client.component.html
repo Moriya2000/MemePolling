@@ -24,46 +24,45 @@
                     <div class="col-sm-5 col-lg-5">
                         <img src="../../assets/Images/pic8.jpg" style="float: right; margin-top: 5%;">
                         <h3 class="h3">רכב מסחרי:</h3>
-                        <p class="p3">לכל 10 קילומטר ₪10</p>
-                        <p class="p4"> עד שבוע ימים ₪240 <br>
-                            עד 3 ימים ₪360 <br>
-                            מהיום למחר ₪500 <br>
+                        <p class="p3">לכל קילומטר ₪10</p>
+                        <p class="p4"> עד שבוע ימים ₪60 <br>
+                            עד 3 ימים ₪90 <br>
+                            מהיום למחר ₪120 <br>
                         </p>
                     </div>
                     <div class="col-sm-5 col-lg-5">
                         <img src="../../assets/Images/pic7.jpg" style="float: right; margin-top: 5%;">
                         <h3 class="h3">אופנוע:</h3>
-                        <p class="p3">לכל 10 קילומטר ₪2</p>
-                        <p class="p4"> עד שבוע ימים ₪40 <br>
-                            עד 3 ימים ₪60 <br>
-                            מהיום למחר ₪100 <br>
+                        <p class="p3">לכל קילומטר ₪2</p>
+                        <p class="p4"> עד שבוע ימים ₪15 <br>
+                            עד 3 ימים ₪30 <br>
+                            מהיום למחר ₪50 <br>
                         </p>
                     </div>
                     <div class="col-sm-5 col-lg-5">
                         <img src="../../assets/Images/pic9.jpg" style="float: right; margin-top: 5%;">
                         <h3 class="h3">משאית:</h3>
-                        <p class="p3">לכל 10 קילומטר ₪13</p>
-                        <p class="p4"> עד שבוע ימים ₪500 <br>
-                            עד 3 ימים ₪640 <br>
-                            מהיום למחר ₪900 <br>
+                        <p class="p3">לכל קילומטר ₪13</p>
+                        <p class="p4"> עד שבוע ימים ₪100 <br>
+                            עד 3 ימים ₪200 <br>
+                            מהיום למחר ₪300 <br>
                         </p>
                     </div>
                     <div class="col-sm-5 col-lg-5">
                         <img src="../../assets/Images/pic6.jpg" style="float: right; margin-top: 5%;">
                         <h3 class="h3">רכב פרטי:</h3>
-                        <p class="p3">לכל 10 קילומטר ₪5</p>
-                        <p class="p4"> עד שבוע ימים ₪90 <br>
-                            עד 3 ימים ₪120 <br>
-                            מהיום למחר ₪180 <br>
+                        <p class="p3">לכל קילומטר ₪5</p>
+                        <p class="p4"> עד שבוע ימים ₪40 <br>
+                            עד 3 ימים ₪60 <br>
+                            מהיום למחר ₪80 <br>
                         </p>
                     </div>
                 </section>
                 <div class="div2" dir="rtl">
                     <p class="p5">
                         * מחירי המשלוחים יכולים להשתנות תמיד בהתאם לצרכי האתר, ניתן להתעדכן כאן בכל ביצוע הזמנה.<br>
-                        * בכל יום מהשעה 17:00 האתר שלנו בונה מסלולי איסוף ופיזור באופן אוטומטי, לכן אדם שרוצה לעשות
-                        הזמנה מומלץ לו לעשותה לפני השעה 17:00 כי אם יעשה לאחר שעה זו הזמנתו אינה תיחשב לאותו היום אלא
-                        ליום שלמחרת.<br>
+                        * בכל יום מהשעה 6:00 האתר שלנו בונה מסלולי איסוף ופיזור באופן אוטומטי, לכן אדם שרוצה לעשות
+                        הזמנה מומלץ לו לעשותה לפני השעה 6:00 כי אם יעשה לאחר שעה זו הזמנתו תגיעה ביום שלמחרת<br>
                         * בסיום ההזמנה יש להדפיס/לכתוב בכתב יד את הפרטים של יעד המשלוח ולהדביק על חבילת המשלוח.<br>
                         * במקרה שלא יהיה על המשלוח את פרטי יעד המשלוח השליח לא ייקח את המשלוח!<br>
                         * אספקת המוצרים תתבצע בהתאם לדחיפות המשלוח שקבעת במהלך ביצוע ההזמנה.<br>
@@ -88,11 +87,59 @@
                         המשתמש לערוך, פרטים אלו לא יועברו לאף גורם אחר זולת לצורך זה.<br>
                     </p>
                     <p class="p6">תודה שבחרתם ב- <img src="../../assets/Images/logo.jpg" style="width: 25%;"></p>
-                    <button *ngIf="!clientService.typeUserClient" type="button" class="button1" [routerLink]="['/ClientRegister']">חזור</button>
+                    <button *ngIf="!clientService.typeUserClient" type="button" class="button1" data-toggle="modal" data-target="#myModalRegister" [routerLink]="['/Home']">חזור</button>
                 </div>
-                <img src="../../assets/Images/.jpg" style="float: left; width:40%; height: 350px;margin-top: 10%;"
-                    class="img-thumbnail img-responsive">
+                <img src="../../assets/Images/term.jpg" class="img-responsive" style="margin-top:40%;">
+
+                <!-- <img src="../../assets/Images/.jpg"  width:40%; height: 350px;"
+                    class="img-thumbnail img-responsive"> -->
             </div>
         </div>
     </div>
-</section>
+</section><br><br><br>
+
+
+
+<!-- הרשמה לאתר ללקוח -->
+<div class="container mt-3">
+    <div class="modal fade" id="myModalRegister" style="margin-top: 7%;">
+      <div class="modal-dialog" style="width: 55%;">
+        <div class="modal-content" style="height: 500px;">
+          <button type="button" class="close" data-dismiss="modal"
+            style="margin-right: 1.5%; margin-top: 1.5%;">×</button>
+          <br><br>
+          <h1 class="h1">הרשמה לאתר</h1>
+          <form action="/action_page.php" #myForm1="ngForm" style="direction: rtl;">
+            <div class="form-group"><br>
+              <label for="email" style="margin-right:5% ;">כתובת דוא"ל:</label>
+              <input type="text" #ngEmail="ngModel" [(ngModel)]="clientService.newClient.EmailAddress"
+                class="input form-control" id="Email" name="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                required>
+              <div class="error" *ngIf="ngEmail.invalid&&(ngEmail.touched||ngEmail.dirty)">
+                <i *ngIf="ngEmail.errors!.required">זהו שדה חובה</i>
+                <i *ngIf="ngEmail.errors!.pattern">מייל לא תקין</i>
+              </div><br>
+              <div class="form-group">
+                <label for="pwd" style="margin-right:5% ;">סיסמא:</label>
+                <input type="password" #ngPassword="ngModel" [(ngModel)]="clientService.newClient.Password"
+                  class="input form-control" id="Password" name="Password" required>
+                <div class="error" *ngIf="ngPassword.invalid&&(ngPassword.touched||ngPassword.dirty)">
+                  <i *ngIf="ngPassword.errors!.required">זהו שדה חובה</i>
+                </div><br>
+                <div class="form-group form-check">
+                  <label class="form-check-label" style="margin-right: 5%;">
+                    <input type="checkbox" class="input3" name="remember" required #ngRemember [(ngModel)]="aaa">
+                    <a class="a" [routerLink]="['/SiteTermsClient']" data-dismiss="modal">אני מסכים לתנאי האתר</a>
+                  </label>
+                </div>    
+                <img src="../../assets/Images/.jpg" style="float: left; margin-top: -335px; width:420px; height:490px;border-style: groove; border-color: hotpink;"
+                class="img-thumbnail img-responsive">
+                <button (click)="addClient()" type="submit" class="button2 btn-lg" [disabled]="!myForm1.valid"
+                  data-dismiss="modal">אישור</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

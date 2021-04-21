@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ClientService } from '../services/client.service';
 
 @Component({
@@ -8,9 +9,21 @@ import { ClientService } from '../services/client.service';
 })
 export class SiteTermsClientComponent implements OnInit {
 
-  constructor(public clientService:ClientService) { }
-
+  constructor(public clientService:ClientService, public route:Router) { }
+  aaa: boolean = false
+  a: boolean = false
   ngOnInit(): void {
+  }
+  //הוספת לקוח
+  addClient() {
+    debugger
+    this.clientService.GetAddClient().subscribe(data => {
+      this.clientService.clientConected = this.clientService.newClient;
+      this.clientService.typeUserClient = true;
+      this.clientService.conected = true
+      this.route.navigate(['/Delivery']);
+    }, err => { alert("error" + err) })
+    // this.clientService.newClient = new Client();
   }
 
 }

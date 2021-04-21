@@ -24,37 +24,37 @@
                     <div class="col-sm-5 col-lg-5">
                         <img src="../../assets/Images/pic8.jpg" style="float: right; margin-top: 5%;">
                         <h3 class="h3">רכב מסחרי:</h3>
-                        <p class="p3">לכל 10 קילומטר ₪10</p>
-                        <p class="p4"> עד שבוע ימים ₪240 <br>
-                            עד 3 ימים ₪360 <br>
-                            מהיום למחר ₪500 <br>
+                        <p class="p3">לכל קילומטר ₪10</p>
+                        <p class="p4"> עד שבוע ימים ₪60 <br>
+                            עד 3 ימים ₪90 <br>
+                            מהיום למחר ₪120 <br>
                         </p>
                     </div>
                     <div class="col-sm-5 col-lg-5">
                         <img src="../../assets/Images/pic7.jpg" style="float: right; margin-top: 5%;">
                         <h3 class="h3">אופנוע:</h3>
-                        <p class="p3">לכל 10 קילומטר ₪2</p>
-                        <p class="p4"> עד שבוע ימים ₪40 <br>
-                            עד 3 ימים ₪60 <br>
-                            מהיום למחר ₪100 <br>
+                        <p class="p3">לכל קילומטר ₪2</p>
+                        <p class="p4"> עד שבוע ימים ₪15 <br>
+                            עד 3 ימים ₪30 <br>
+                            מהיום למחר ₪50 <br>
                         </p>
                     </div>
                     <div class="col-sm-5 col-lg-5">
                         <img src="../../assets/Images/pic9.jpg" style="float: right; margin-top: 5%;">
                         <h3 class="h3">משאית:</h3>
-                        <p class="p3">לכל 10 קילומטר ₪13</p>
-                        <p class="p4"> עד שבוע ימים ₪500 <br>
-                            עד 3 ימים ₪640 <br>
-                            מהיום למחר ₪900 <br>
+                        <p class="p3">לכל קילומטר ₪13</p>
+                        <p class="p4"> עד שבוע ימים ₪100 <br>
+                            עד 3 ימים ₪200 <br>
+                            מהיום למחר ₪300 <br>
                         </p>
                     </div>
                     <div class="col-sm-5 col-lg-5">
                         <img src="../../assets/Images/pic6.jpg" style="float: right; margin-top: 5%;">
                         <h3 class="h3">רכב פרטי:</h3>
-                        <p class="p3">לכל 10 קילומטר ₪5</p>
-                        <p class="p4"> עד שבוע ימים ₪90 <br>
-                            עד 3 ימים ₪120 <br>
-                            מהיום למחר ₪180 <br>
+                        <p class="p3">לכל קילומטר ₪5</p>
+                        <p class="p4"> עד שבוע ימים ₪40 <br>
+                            עד 3 ימים ₪60 <br>
+                            מהיום למחר ₪80 <br>
                         </p>
                     </div>
                 </section>
@@ -74,12 +74,14 @@
                         * החברה לא תעביר את פרטיו האישיים של הלקוח (שם, מספר טלפון וכדומה), לאף גורם אחר.<br>
                     </p>
                     <p class="p6">תודה שבחרתם ב- <img src="../../assets/Images/logo.jpg" style="width: 25%;"></p>
-                    <button *ngIf="!clientService.typeUserCompany" type="button" class="button1">חזור</button>
+                    <button *ngIf="!clientService.typeUserCompany" type="button" class="button1" [routerLink]="['/AllDetailsCompany']">חזור</button>
                 </div>
-                <img src="../../assets/Images/.jpg" style="float: left; width:40%; height: 200px;margin-top: 3%;"
-                    class="img-thumbnail img-responsive">
-                <img src="../../assets/Images/.jpg" style="float: left; width:40%; height: 200px;"
-                    class="img-thumbnail img-responsive">
+                <img src="../../assets/Images/siteC.jpg" class="img-responsive" style="margin-top:31.5%;">
+
+                <!-- <img src="../../assets/Images/.jpg" style="float: left; width:450px; height:400px;margin-top: 3%;"
+                    class="img-thumbnail img-responsive"> -->
+                <!-- <img src="../../assets/Images/.jpg" style="float: left; width:40%; height: 200px;"
+                    class="img-thumbnail img-responsive"> -->
             </div>
         </div>
     </div>

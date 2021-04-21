@@ -17,7 +17,10 @@ export class SendingCompanyService {
   Company:AllDetailsCompany=new AllDetailsCompany();
   
   companyConected:AllDetailsCompany=new AllDetailsCompany();
+  
   public conected:boolean=false;
+  
+  // listAllCompany: Array<AllDetailsCompany> = new Array<AllDetailsCompany>()
 
 
   constructor(private http: HttpClient) { }

@@ -37,5 +37,5 @@ export class OrderService {
           
   //מחיקת הזמנה  
   GetRemoveOrder(id:number):Observable<Array<Order>>{
-    return this.http.delete<Array<Order>>(this.url+"/GetRemoveOrder"+id)}
+    return this.http.delete<Array<Order>>(this.url+"/GetRemoveOrder/"+id)}
 }

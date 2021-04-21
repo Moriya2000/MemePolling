@@ -1,7 +1,11 @@
 <section class="row">
     <div class="col-xs-12 col-lg-12">
+        <img src="../../assets/Images/registCompany.jpg" class="img-responsive">
+
         <!-- <img src="../../assets/Images/pic14.jpg" class="img-thumbnail img-responsive" style="width: 100%;"> -->
-        <p class="p">הרשמה לחברה</p>
+        <p *ngIf="!sendingCompanyService.conected" class="p">הרשמה לחברה</p>
+        <p *ngIf="sendingCompanyService.conected" class="p">הפרטים שלי</p>
+
         <div class="YellowLineLeft"></div>
         <div class="YellowLineRight"></div>
     </div>
@@ -11,7 +15,7 @@
     <div class="container-fluid">
         <section class="row" dir="rtl">
             <h3 class="p1">פרטי החברה</h3>
-            <form action="/action_page.php" #myForm="ngForm"  style="direction: rtl;">
+            <form action="/action_page.php" #myForm="ngForm" style="direction: rtl;">
                 <div class="div1 col-sm-12 col-lg-12">
                     <div class="divError">
                         <input placeholder="שם החברה" type="text" #ngName="ngModel"
@@ -25,10 +29,11 @@
                         <!-- <input placeholder="כתובת מלאה" type="text" #ngFullAddress="ngModel"
                             [(ngModel)]="sendingCompanyService.newCompany.FullAddress"  class="input4 form-control" -->
 
-                            <!-- id="FullAddress" name="כתובת מלאה" required> -->
-                            <input class="input4 form-control"  ngx-google-places-autocomplete #placesRef="ngx-places"  #ngFullAddress
-                            (onAddressChange)="changeAddress($event)" required name="place" #place />
-<!-- 
+                        <!-- id="FullAddress" name="כתובת מלאה" required> -->
+                        <input class="input4 form-control" ngx-google-places-autocomplete #placesRef="ngx-places"
+                            #ngFullAddress [(ngModel)]="sendingCompanyService.newCompany.FullAddress"
+                            (onAddressChange)="changeAddress($event)" required name="place" #place="ngModel" />
+                        <!-- 
                         <div class="error" *ngIf="ngFullAddress.invalid&&(ngFullAddress.touched||ngFullAddress.dirty)">
                             <i *ngIf="ngFullAddress.errors!.required">זהו שדה חובה</i>
                         </div> -->
@@ -39,8 +44,7 @@
                             name="Phone" pattern="[0-9]*" maxlength="10" minlength="9" required>
                         <div class="error" *ngIf="ngPhone.invalid&&(ngPhone.touched||ngPhone.dirty)">
                             <i *ngIf="ngPhone.errors!.required">זהו שדה חובה</i>
-                            <i *ngIf="ngPhone.errors!.pattern">מספר לא תקין</i>
-                            <i *ngIf="ngPhone.errors!.minlength">מספר לא תקין</i>
+                            <i *ngIf="ngPhone.errors!.pattern||ngPhone.errors!.minlength">מספר לא תקין</i>
                         </div>
                     </div>
                     <div class="divError">
@@ -115,20 +119,28 @@
                 </div> -->
                 <h3 class="p1">ערים שהחברה עובדת</h3>
                 <div class="div2 col-sm-12 col-lg-12">
-                    <div class="col-3">
-                        <input #searchTextField id="searchTextField" type="text" size="50"
-                            placeholder="הכנס את מיקום העיר" autocomplete="on" (focusout)="checkedCity($event)">
-                    </div>
+                    <!-- <div class="col-12"> -->
+                    <input #searchTextField id="searchTextField" type="text" size="50" placeholder="הכנס את מיקום העיר"
+                        autocomplete="on" (focusout)="checkedCity($event)">
+                    <!-- </div> -->
                     <button class="botton1" (click)="plusCity1()">+</button>
-                    <!-- <h4 *ngFor="let city of listCityName">{{city}}</h4> -->
-                    <!-- <select #ngCity="ngModel" [(ngModel)]="sendingCompanyService.newCompany.listCitiesCompany" multiple
+                </div>
+                <div class="col-sm-12 col-lg-12">
+                    <div style="margin-top: -3%;" *ngFor="let city of listCityName">
+                        <label>{{city}}</label><br><br><br><br><br>
+                    </div>
+                    <!-- <h4 style="margin-bottom: 2%;" *ngFor="let city of listCityName">{{city}}</h4>
+                    </div><br><br> -->
+                </div>
+                <!-- <button  (click)="deleteCity()">x</button> -->
+
+                <!-- <select #ngCity="ngModel" [(ngModel)]="sendingCompanyService.newCompany.listCitiesCompany" multiple
                         (ngModelChange)="sendingCompanyService.newCompany.listCitiesCompany=$event"
                         name="CitiesCompanyID">
                         <option *ngFor="let item of cityService.listCity" (click)="clickedOption(item)"
                             [ngValue]="item">
                             {{item.CityName}}</option>
                     </select> -->
-                </div>
                 <!-- <h3 class="p1">סוגי רכבים</h3>
             <select  #ngCar="ngModel" [(ngModel)]="sendingCompanyService.newCompany.listCarsCompany" multiple (ngModelChange)="sendingCompanyService.newCompany.listCarsCompany=$event" name="CarsCompanyID">
             <option *ngFor="let item of carsTypesService.listCarsTypes" (click)="clickedOption(item)" [ngValue]="item">{{item.CarTypeName}}</option>
@@ -139,13 +151,13 @@
                         <input type="checkbox" id="cars" name="car" (change)="clickedCar(car)" class="input2"
                             [checked]="car.showOrHide">
                         <label>{{car.CarTypeName}}</label>
-                       
+
                     </div>
                 </div>
-                    <div class="col-sm-12 col-lg-12">
+                <div class="col-sm-12 col-lg-12">
                     <div *ngFor="let d of sendingCompanyService.newCompany.listCarsCompany">
-                         <label>{{d.CarTypeName}}</label>
-                         <input type="text" #ngMaxVolume="ngModel" [(ngModel)]="d.MaxVolume" class="form-control"
+                        <!-- <label>{{d.CarTypeName}}</label> -->
+                        <input type="text" #ngMaxVolume="ngModel" [(ngModel)]="d.MaxVolume" class="form-control"
                             name="MaxVolume" placeholder="נפח הרכב"><br><br><br><br>
                     </div>
                 </div>
@@ -154,7 +166,8 @@
                     <div class="divError">
                         <input placeholder="קוד חברה" type="text" #ngCompanyNumber="ngModel"
                             [(ngModel)]="sendingCompanyService.newCompany.CompanyNumber" class="input4 form-control"
-                            id="CompanyNumber" name="CompanyNumber" pattern="5?[0-9]{9}" minlength="9" required>
+                            id="CompanyNumber" name="CompanyNumber" pattern="5?[0-9]{9}" minlength="9" maxlength="9"
+                            required>
                         <div class="error"
                             *ngIf="ngCompanyNumber.invalid&&(ngCompanyNumber.touched||ngCompanyNumber.dirty)">
                             <i *ngIf="ngCompanyNumber.errors!.required">זהו שדה חובה</i>
@@ -171,9 +184,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="div4 col-sm-12 col-lg-12">
+                <div *ngIf="!sendingCompanyService.conected" class="div4 col-sm-12 col-lg-12">
                     <input type="checkbox" name="remember" class="input3" required #ngRemember [(ngModel)]="aaa">
-                    <a [routerLink]="['/SiteTermsCompany']" style="color: black;">אני מסכים לתנאי האתר</a>
+                    <a [routerLink]="['/SiteTermCompany']" style="color: black;">אני מסכים לתנאי האתר</a>
                 </div>
                 <button type="submit" class="button btn-lg" style="margin-right: 35%;" (click)="addDetailsCompany()"
                     [disabled]="!myForm.form.valid">אישור</button>

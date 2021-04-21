@@ -20,22 +20,31 @@
     font-weight: bold;
 }
 .p1{
-    font-size: 27px;
+    margin-top: 3%;
+    font-weight: bold;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 40px;
     color:#c1272d;
     text-align: center;
 }
 
 .star1{
-    margin-left: 39%;
-    font-size: 50px;
+    margin-left:39.5%;
+    font-size: 35px;
     margin-right: 2%;
     color: #fcee21;
 
 }
 .star2{
-    font-size: 50px;
+    font-size: 35px;
     margin-right: 2%;
     color:#c1272d;
+
+}
+.star3{
+    font-size: 35px;
+    margin-right: 2%;
+    color: #fcee21;
 
 }
 .note{
@@ -52,5 +61,5 @@
     padding: 7px;
     margin-left: 43%;
     margin-top: 2%;
-    margin-bottom: 3%;
+    margin-bottom: 6.2%;
 }

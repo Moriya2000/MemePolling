@@ -20,14 +20,14 @@
     font-weight: bold;
 }
 .p{
-    font-size: 30px;
+    font-size: 35px;
     color:#c1272d;
     text-align: center;
-    margin-top: 4%;
+    margin-top: 2%;
     font-weight: bold;
 }
 .div1{
-    height: 500px;
+    height: 430px;
     width: 30%;
     float: right;
     margin-top: 2%;
@@ -70,5 +70,15 @@
     margin-top: -205px;
     margin-right: 3%;
     width: 23%;
-   float: right;
+    float: right;
+    border-color: white;
+    border-style: dashed;
+}
+.div5{
+    margin-top: 2%;
+    margin-right: 1%;
+    width: 20%;
+    float: right;
+    border-color: #c1272d;
+    border-style: dotted;
 }

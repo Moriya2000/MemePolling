@@ -27,19 +27,21 @@ GatAllTakingDelivery():Observable<Array<TakingDelivery>>{
 GetAllOrder():Observable<TakingDelivery>{
   return this.http.get<TakingDelivery>(this.url+"/GetAllOrder/"+this.newTakingDelivery.OrderID)}
 
-GetAddAllOrder(c:AllOrder):Observable<Array<AllOrder>>{
+GetAddAllOrder(c:AllOrder):Observable<AllOrder>{
   this.newTakingDelivery.OrderDate=new Date();
   this.newTakingDelivery.FinalPay=1;
   this.newTakingDelivery.Note="tgfhdfhdf";
-  return this.http.put<Array<AllOrder>>(this.url+"/GetAddAllOrder",c);
+  return this.http.put<AllOrder>(this.url+"/GetAddAllOrder",c);
 }
-
+//שליפה של כל ההזמנה
 GetAllOrder1():Observable<Array<AllOrder>>{
  
   return this.http.get<Array<AllOrder>>(this.url+"/GetAllOrder");
+} 
+GetUpdatAllOrder(c:AllOrder):Observable<Array<AllOrder>>{
+  debugger
+  return this.http.post<Array<AllOrder>>(this.url+"/GetUpdatAllOrder",c);
 }
-
-
 //הוספת לקיחת משלוח 
 GetAddTakingDelivery(c:TakingDelivery):Observable<Array<TakingDelivery>>{
   return this.http.put<Array<TakingDelivery>>(this.url+"/GetAddTakingDeliver",c)}
