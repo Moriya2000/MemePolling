@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { threadId } from 'worker_threads';
+import { AllOrder } from '../classes/AllOrder';
 import { Client } from '../classes/Client';
 import { Order } from '../classes/Order';
 import { ClientService } from '../services/client.service';
@@ -12,7 +14,7 @@ import { OrderService } from '../services/order.service';
 export class OrderTrackingComponent implements OnInit {
 
   constructor(public clientService: ClientService, public orderService: OrderService) { }
-  showOrHide:boolean=true;
+  showOrHide: boolean = true;
   ngOnInit(): void {
   }
   //מחיקת משתמש
@@ -25,14 +27,16 @@ export class OrderTrackingComponent implements OnInit {
   // }
   MyOrder() {
     debugger
-    this.showOrHide=false;
-
-    this.orderService.GetAllIdOrder(this.clientService.clientConected.IdClient!).subscribe(data => 
-   {   debugger
-
-this.orderService.listOrder=data
-      alert("השליפה הצליחה");
+    this.showOrHide = false;
+    this.orderService.GetAllIdOrder(this.clientService.clientConected.IdClient!).subscribe(data => {
+      debugger
+      this.orderService.listOrder = data
+      // alert("השליפה הצליחה");
     })
-    }
+  }
 
+  OrderTrack()
+  {
+
+  }
 }

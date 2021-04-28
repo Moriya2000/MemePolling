@@ -27,6 +27,7 @@ export class AllDetailsCompanyComponent implements OnInit, AfterViewInit {
     public sendingCompanyService: SendingCompanyService, public businessDaysService: BusinessDaysService,
     public carsTypesService: CarsTypesService, public clientService: ClientService, public rout: Router) { }
 
+    password2:string=""
   aaa: boolean = false
 
   ngAfterViewInit(): void {
@@ -82,12 +83,11 @@ this.sendingCompanyService.newCompany.listCitiesCompany?.forEach(c=> this.listCi
       this.carsTypesService.GatAllCarsTypes().subscribe(data => {
         this.carsTypesService.listCarsTypes = data
 
-        // //עובר על הרשימה של הרכבים
+        //עובר על הרשימה של הרכבים
         for (let c = 0; c < this.sendingCompanyService.newCompany.listCarsCompany?.length; c++) {
           let car = this.carsTypesService.listCarsTypes.findIndex(c1 => c1.CarTypeID == this.sendingCompanyService.newCompany.listCarsCompany[c].CarTypeID)
-          this.carsTypesService.listCarsTypes[car].showOrHide = true
+          this.carsTypesService.listCarsTypes[car].showOrHide = true       
         }
-
       });
     }
   }
@@ -112,15 +112,16 @@ this.sendingCompanyService.newCompany.listCitiesCompany?.forEach(c=> this.listCi
     this.listDay.push(new DayInWeek(3, "שלישי", false))
     this.listDay.push(new DayInWeek(4, "רביעי", false))
     this.listDay.push(new DayInWeek(5, "חמישי", false))
-    this.listDay.push(new DayInWeek(6, "שישי", false))
-    this.listDay.push(new DayInWeek(7, "מוצאי שבת", false))
+    // this.listDay.push(new DayInWeek(6, "שישי", false))
+    // this.listDay.push(new DayInWeek(7, "מוצאי שבת", false))
   }
 
   //בדיקה האם כבר בחר יום המסויים 
   changeDay(numDay: number) {
     debugger
-    //אם לא מצא יום בחור לא מסמן וי
+    //בודק האם מה שחזר מהפונקציה תואם לליסט למעלה
     let d = this.listDay.filter(x => x.numDay == numDay)[0]
+    //אם כן מסמן אותו
     d.showOrHide = !d.showOrHide
     //אם עדיין לא בחר מכניס לרשימה
     if (this.listBusDay.find(d => d.Day == numDay) == null) {
@@ -180,6 +181,7 @@ this.sendingCompanyService.newCompany.listCitiesCompany?.forEach(c=> this.listCi
         this.sendingCompanyService.companyConected = this.sendingCompanyService.newCompany;
         // this.sendingCompanyService.companyConected = this.sendingCompanyService.Company;
         this.sendingCompanyService.conected = true;
+        // this.password2=this.sendingCompanyService.newCompany.Password!;
         alert("הפרטים הוכנסו בהצלחה")
         this.rout.navigate(['/TaskLog']);
 
@@ -226,3 +228,14 @@ this.sendingCompanyService.newCompany.listCitiesCompany?.forEach(c=> this.listCi
 export class DayInWeek {
   constructor(public numDay: number, public nameDay: string, public showOrHide: boolean) { }
 }
+
+
+//עדכון רכבים
+//           this.ci = this.carsTypesService.listCarsTypes.findIndex(c1 => c1.CarTypeID == this.sendingCompanyService.newCompany.listCarsCompany[c].CarTypeID)
+//           if (this.ci > -1) {
+//             let c_checked = this.carsTypesService.listCarsTypes[this.ci]
+//             c_checked.showOrHide = true;
+//             let car =this.sendingCompanyService.newCompany.listCarsCompany.filter(x=>x.CarTypeID==c_checked.CarTypeID)[0]
+// car.nameCar=this.sendingCompanyService.newCompany.listCarsCompany[this.ci].nameCar
+
+   

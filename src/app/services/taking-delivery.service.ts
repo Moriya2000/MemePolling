@@ -34,9 +34,9 @@ GetAddAllOrder(c:AllOrder):Observable<AllOrder>{
   return this.http.put<AllOrder>(this.url+"/GetAddAllOrder",c);
 }
 //שליפה של כל ההזמנה
-GetAllOrder1():Observable<Array<AllOrder>>{
+GetAllOrder1(id:number):Observable<Array<Array<AllOrder>>>{
  
-  return this.http.get<Array<AllOrder>>(this.url+"/GetAllOrder");
+  return this.http.get<Array<Array<AllOrder>>>(this.url+"/GetAllOrderByIdCompany/"+id);
 } 
 GetUpdatAllOrder(c:AllOrder):Observable<Array<AllOrder>>{
   debugger

@@ -32,7 +32,7 @@ export class SendingCompanyService {
             
   //שליפת חברת שליחויות לפי קוד   
   GetIdAllDetailsCompany():Observable<AllDetailsCompany>{
-    return this.http.get<AllDetailsCompany>(this.url+"/GetIdAllDetailsCompany/"+this.companyConected.CompanyNumber)}
+    return this.http.get<AllDetailsCompany>(this.url+"/GetIdAllDetailsCompany/"+this.newCompany.CompanyNumber)}
               
   //הוספת חברת שליחויות 
   GetAddSendingCompany(c:SendingCompany):Observable<Array<SendingCompany>>{

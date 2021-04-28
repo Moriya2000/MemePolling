@@ -17,6 +17,7 @@ export class NavComponent implements OnInit {
   constructor(public clientService: ClientService, public sendingCompanyService: SendingCompanyService,public takingDeliveryService:TakingDeliveryService, private route: Router) { }
   aaa: boolean = false
   a: boolean = false
+  password2:string=""
   ngOnInit() {
     debugger
     this.route.navigate(['/Home'])
@@ -67,6 +68,7 @@ export class NavComponent implements OnInit {
         if (data == 1) {
           this.clientService.typeUserCompany = true;
           this.sendingCompanyService.conected = true;
+          debugger
           this.sendingCompanyService.companyConected = this.sendingCompanyService.newCompany;
           alert(" ברוך הבאה" + " " + this.sendingCompanyService.newCompany.CompanyNumber);
           this.route.navigate(['/TaskLog']);

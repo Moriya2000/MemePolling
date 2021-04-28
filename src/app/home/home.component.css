@@ -1,4 +1,34 @@
 
+.rotation:hover
+{
+    animation: 1.8s rotate reverse linear infinite;	
+}
+.rotation1:hover{
+        animation: MoveUpDown 1s linear infinite;
+      }    
+      @keyframes MoveUpDown {
+        0%, 100% {
+          bottom: 0;
+        }
+        50% {
+          bottom:10px;
+        }
+      }
+      @keyframes inner-size {
+	  0%, 100% {
+		width: 75%;
+		height: 75%;
+	  }
+	  50% {
+		width: 25%;
+		height: 25%;
+	  }
+}
+
+@keyframes rotate {
+	to {transform: rotate(-360deg)}
+}
+
   @media screen and (max-width: 1200px) {
     .p2 {
       font-size: 20px;
@@ -10,6 +40,7 @@
     .p4{
         font-size: 13px;
     }
+
   }
 
   @media screen and (max-width: 900px) {
@@ -26,10 +57,35 @@
     .button{
         font-size: 10px;
     }
-  }
 
+  }
+  /* @media only screen and (min-width: 768px) {
+    .a{      height: 50px;
+        
+    }
+  } */
+
+.down{
+    margin-left: 48%;
+font-size: 4vw;
+color: rgb(70, 68, 68);
+/* border-radius: 100%; */
+background-color:initial;
+border-color:initial ;
+display: flex;
+position: relative;
+top:0;
+transition: top ease 0.5s;
+
+}
+.down:hover{
+    top: -20px;
+}
 /* .a{
-    margin-left: 47%;
+    width: 100%;
+    height: 560px;
+    border-color: white;
+    border-style: dotted;
 } */
 .YellowLineLeft{
     background:#fcee21;
@@ -61,10 +117,10 @@
     margin-left: 65%;
 }
 .p{
-    font-size: 40px;
+    font-size: 3vw;
     color:#c1272d;
     text-align: center;
-    margin-top: 4%;
+    margin-top:4%;
     font-weight: bold;
 }
 
@@ -101,11 +157,15 @@
 .button{
     width: 15%;
     background-color: #c1272d;
-    color:#fcee21;
+    color:white;
     border-color: #c1272d;
     margin-top: 5%;
     margin-left: 42.5%;
     /* margin-bottom: 5%; */
+}
+.button:hover{
+    /* background-color: #96494b; */
+    box-shadow: 5px 2px rgb(43, 11, 11);
 }
 
 .carousel-control.right, .carousel-control.left {

@@ -28,6 +28,7 @@ import { NoteComponent } from './note/note.component';
 import { google } from "google-maps";
 import {GooglePlaceModule} from "ngx-google-places-autocomplete";
 import { LoginCompanyComponent } from './login-company/login-company.component';
+import { MyRoutesComponent } from './my-routes/my-routes.component';
 
 const rout: Routes=[
   {path:"ClientRegister",component:ClientRegisterComponent},
@@ -44,6 +45,7 @@ const rout: Routes=[
   {path:"OrderConfirmation",component:OrderConfirmationComponent},
   {path:"Note",component:NoteComponent},
   {path:"LoginCompany",component:LoginCompanyComponent},
+  {path:"MyRoutes",component:MyRoutesComponent},
 ]
 
 @NgModule({
@@ -65,6 +67,7 @@ const rout: Routes=[
     OrderConfirmationComponent,
     NoteComponent,
     LoginCompanyComponent,
+    MyRoutesComponent,
   ],
   imports: [
     RouterModule.forRoot(rout),

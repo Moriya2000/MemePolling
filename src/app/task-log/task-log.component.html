@@ -15,22 +15,23 @@
                     <a>
                     <p class="p1">השליחויות שהיו שלי</p></a><br>
                     <div class="YellowLineLeft1"></div><br>
-                    <!-- <div class="row text-center"> -->
-                        <!-- <div class="thumbnail"> -->
                             <a [routerLink]="['/AllDetailsCompany']">
                                 <p class="p1" >עדכון פרטי החברה שלי</p>
                             </a><br>
-                        <!-- </div> -->
-                    <!-- </div> -->
                     <div class="YellowLineLeft1"></div><br>
                         <a (click)="delete()"><p class="p1">מחיקת המשתמש שלי</p></a><br>
                     <div class="YellowLineLeft1"></div><br>
                 </div>
-                <div class="YellowLinealong"></div>
+                <input class="form-control" ngx-google-places-autocomplete #placesRef="ngx-places"
+                #ngFullAddress [(ngModel)]="address"
+                (onAddressChange)="createaslulByAdressfromManager($event)" required name="place" #place="ngModel" />
+
+
+                <!-- <div class="YellowLinealong"></div>
                 <div class="div2"></div><br><br><br>
                 <div class="div3"></div><br><br><br>
-                <div class="div3"></div><br><br>
-                <button type="button" class="button">פירוט המסלול</button>
+                <div class="div3"></div><br><br> -->
+                <!-- <button type="button" class="button" [routerLink]="['/MyRoutes']">פירוט המסלול</button> -->
                 <!-- <button type="button" class="button">פירוט מסלולים</button><br><br><br><br>
                 <button type="button" class="button">פירוט מסלולים</button> -->
             </div>

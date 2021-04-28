@@ -34,9 +34,9 @@
                 </div>
                 <div [hidden]="showOrHide" >
                     <div class="div5"dir="rtl" *ngFor="let item of orderService.listOrder">
-                        <p>קוד הזמנה:{{item.OrderID!}}</p>
+                        <button (onclick)="OrderTrack(item.OrderID)"><p>קוד הזמנה:{{item.OrderID!}}</p>
                         <p>קוד לקוח:{{item.ClientID!}}</p>
-                        <p>תאריך הזמנה:{{item.OrderDate!}}</p>
+                        <p>תאריך הזמנה:{{item.OrderDate!}}</p></button>
                     </div>
                 </div>
             </div>

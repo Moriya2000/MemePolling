@@ -14,5 +14,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 this.takingDeliveryService.newTakingDelivery=new AllOrder();
   }
+//   scroll(el: HTMLElement) {
+//     el.scrollIntoView();
+// }
 
+scroll(el: HTMLElement) {
+  el.scrollIntoView({behavior: 'smooth'});
+}
 }

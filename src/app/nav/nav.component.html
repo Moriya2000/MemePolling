@@ -10,15 +10,15 @@
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse ">
       <ul id="nav" class="nav navbar-nav navbar-right">
-        <li *ngIf="!clientService.conected&&!sendingCompanyService.conected"><a><span
-              class="glyphicon glyphicon-user"></span>הרשמה</a>
+        <li *ngIf="!clientService.conected&&!sendingCompanyService.conected"><a style="text-align: center;"><span
+              class="glyphicon glyphicon-user"></span><br>הרשמה</a>
           <ul class="dropdown-menu">
             <li><a data-toggle="modal" data-target="#myModalRegister">לקוח</a></li>
             <li><a [routerLink]="['/AllDetailsCompany']">חברה</a></li>
           </ul>
         </li>
-        <li *ngIf="!clientService.conected&&!sendingCompanyService.conected"><a><span
-              class="glyphicon glyphicon-log-in"></span>כניסה</a>
+        <li *ngIf="!clientService.conected&&!sendingCompanyService.conected"><a style="text-align: center;"><span
+              class="glyphicon glyphicon-log-in"></span><br>כניסה</a>
           <ul class="dropdown-menu">
             <li><a data-toggle="modal" data-target="#myModalLogin">לקוח</a></li>
             <li><a data-toggle="modal" data-target="#myModalLoginComapny">חברה</a></li>
@@ -27,8 +27,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="clientService.typeUserCompany"><a [routerLink]="['/Note']">
-          <span class="fas fa-comment-dots"></span></a></li>        
-          <li *ngIf="clientService.typeUserCompany"><a [routerLink]="['/SiteTermCompany']">תנאי האתר</a></li>
+            <span class="fas fa-comment-dots"></span></a></li>
+        <li *ngIf="clientService.typeUserCompany"><a [routerLink]="['/SiteTermCompany']">תנאי האתר</a></li>
         <li *ngIf="clientService.typeUserCompany"><a [routerLink]="['/TaskLog']">יומן השליחויות שלי</a></li>
 
         <li *ngIf="clientService.typeUserClient"><a [routerLink]="['/Note']">
@@ -36,9 +36,9 @@
         <li *ngIf="clientService.typeUserClient"><a [routerLink]="['/SiteTermsClient']">תנאי האתר</a></li>
         <li *ngIf="clientService.typeUserClient"><a [routerLink]="['/OrderTracking']">ההזמנות שלי</a></li>
         <li *ngIf="clientService.typeUserClient"><a [routerLink]="['/Delivery']">ביצוע הזמנה</a></li>
-        <li><a [routerLink]="['/Home']">דף הבית</a></li>
+        <li><a [routerLink]="['/Home']"><span style="text-align: center;" class="fa fa-home"><br>דף הבית</span></a></li>
         <li *ngIf="clientService.conected||sendingCompanyService.conected"><a href="#"><span
-              class="glyphicon glyphicon-log-out"></span> יציאה</a></li>
+              class="glyphicon glyphicon-log-out"></span>יציאה</a></li>
         <!-- <li><a [routerLink]="['/OrderTracking']">צור קשר</a></li> -->
         <!-- <li><a href="#WebsiteTerms">תנאי האתר</a></li> -->
         <!-- <li><a [routerLink]="['/SiteTermCompany']">אודותינו</a></li> -->
@@ -52,15 +52,15 @@
 <div class="container mt-3">
   <div class="modal fade" id="myModalRegister" style="margin-top: 7%;">
     <div class="modal-dialog" style="width: 55%;">
-      <div class="modal-content" style="height: 500px;">
+      <div class="modal-content" style="height: 550px;">
         <button type="button" class="close" data-dismiss="modal"
           style="margin-right: 1.5%; margin-top: 1.5%;">×</button>
-        <br><br>
+        <br>
         <h1 class="h1">הרשמה לאתר</h1>
         <form action="/action_page.php" #myForm1="ngForm" style="direction: rtl;">
           <div class="form-group"><br>
             <label for="email" style="margin-right:5% ;">כתובת דוא"ל:</label>
-            <input type="text" #ngEmail="ngModel" [(ngModel)]="clientService.newClient.EmailAddress"
+            <input type="email" #ngEmail="ngModel" [(ngModel)]="clientService.newClient.EmailAddress"
               class="input form-control" id="Email" name="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
               required>
             <div class="error" *ngIf="ngEmail.invalid&&(ngEmail.touched||ngEmail.dirty)">
@@ -74,13 +74,25 @@
               <div class="error" *ngIf="ngPassword.invalid&&(ngPassword.touched||ngPassword.dirty)">
                 <i *ngIf="ngPassword.errors!.required">זהו שדה חובה</i>
               </div><br>
+
+              <div class="form-group">
+                <label for="pwd" style="margin-right:5% ;">הכנס את הסיסמא שנית:</label>
+                <input type="password" #confirmpassword="ngModel" [(ngModel)]="password2!" name="confirmpassword"
+                  id="confirmpassword" class="input form-control" required pattern="{{ ngPassword.value }}" />
+                <div class="error" *ngIf=" confirmpassword.invalid && (confirmpassword.touched||confirmpassword.dirty)">
+                  <i *ngIf="confirmpassword.errors!.required">זהו שדה חובה</i>
+                  <i *ngIf="confirmpassword.errors!.pattern">לא תואם לסיסמא</i>
+                </div>
+              </div>
+
               <div class="form-group form-check">
                 <label class="form-check-label" style="margin-right: 5%;">
                   <input type="checkbox" class="input3" name="remember" required #ngRemember [(ngModel)]="aaa">
                   <a class="a" [routerLink]="['/SiteTermsClient']" data-dismiss="modal">אני מסכים לתנאי האתר</a>
                 </label>
               </div>
-              <img src="../../assets/Images/loginC.jpg" class="img-responsive" style="float: left;margin-top: -39.5%;">
+              <img src="../../assets/Images/loginC.jpg" class="img-responsive"
+                style="position: absolute; right: 405px;top: 57px; border-top-right-radius: 50%;border-top-left-radius: 10%;">
 
               <!-- <img src="../../assets/Images/.jpg"
                 style="float: left; margin-top: -335px; width:420px; height:490px;border-style: groove; border-color: hotpink;"
@@ -101,7 +113,7 @@
 <div class="container mt-3">
   <div class="modal fade" id="myModalLogin" style="margin-top: 7%;">
     <div class="modal-dialog" style="width: 55%;">
-      <div class="modal-content" style="height: 500px;">
+      <div class="modal-content" style="height: 495px;">
         <button type="button" class="close" data-dismiss="modal"
           style="margin-right: 1.5%; margin-top: 1.5%;">×</button>
         <br><br>
@@ -109,7 +121,7 @@
         <form action="/action_page.php" #myForm2="ngForm" style="direction: rtl;">
           <div class="form-group"><br>
             <label for="email" style="margin-right:5% ;">כתובת דוא"ל:</label>
-            <input type="text" #ngEmail1="ngModel" [(ngModel)]="clientService.newClient.EmailAddress"
+            <input type="email" #ngEmail1="ngModel" [(ngModel)]="clientService.newClient.EmailAddress"
               class="input form-control" id="Email" name="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
               required>
             <div class="error" *ngIf="ngEmail1.invalid&&(ngEmail1.touched||ngEmail1.dirty)">
@@ -119,9 +131,9 @@
               <label for="pwd" style="margin-right:5% ;">סיסמא:</label>
               <input type="password" #ngPassword1="ngModel" [(ngModel)]="clientService.newClient.Password"
                 class="input1 form-control" id="Password" name="Password" required>
-                <img src="../../assets/Images/loginC.jpg" class="img-responsive" style="float: left;margin-top: -34.5%;">
+              <img src="../../assets/Images/loginC.jpg" class="img-responsive" style="position: absolute; right: 412px;top:1px; border-top-right-radius: 50%;border-bottom-right-radius: 50%;" >
 
-                <button (click)="EnterClient()" type="submit" class="button2 btn-lg" data-dismiss="modal"
+              <button (click)="EnterClient()" type="submit" class="button2 btn-lg" data-dismiss="modal"
                 [disabled]="!myForm2.valid">כניסה</button>
               <!-- כפתור העברה להרשמה -->
               <!-- <div data-toggle="modal"  data-target="#myModalRegister"></div> -->
@@ -138,7 +150,7 @@
 <div class="container mt-3">
   <div class="modal fade" id="myModalLoginComapny" style="margin-top: 7%;">
     <div class="modal-dialog" style="width: 55%;">
-      <div class="modal-content" style="height: 500px;">
+      <div class="modal-content" style="height: 495px;">
         <button type="button" class="close" data-dismiss="modal"
           style="margin-right: 1.5%; margin-top: 1.5%;">×</button>
         <br><br>
@@ -157,10 +169,10 @@
               <input type="password" #ngPassword2="ngModel" [(ngModel)]="sendingCompanyService.newCompany.Password"
                 class="input1 form-control" id="ngPassword2" name="ngPassword2" required>
 
-                <button (click)="EnterCompany()" type="submit" class="button2 btn-lg" data-dismiss="modal"
+              <button (click)="EnterCompany()" type="submit" class="button2 btn-lg" data-dismiss="modal"
                 [disabled]="!myForm3.valid">כניסה</button>
             </div>
-            <img src="../../assets/Images/loginCompany.jpg" class="img-responsive" style="float: left;margin-top: -61%">
+            <img src="../../assets/Images/loginCompany.jpg" class="img-responsive" style="position: absolute; right: 412px;top:1px; border-top-right-radius: 50%;border-bottom-right-radius: 50%;">
 
           </div>
         </form>

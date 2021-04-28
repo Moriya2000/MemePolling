@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="divError">
-                        <input placeholder="מייל" type="text" #ngEmail="ngModel"
+                        <input placeholder="מייל" type="email" #ngEmail="ngModel"
                             [(ngModel)]="sendingCompanyService.newCompany.Email" class="input4 form-control" id="Email"
                             name="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
                         <div class="error" *ngIf="ngEmail.invalid&&(ngEmail.touched||ngEmail.dirty)">
@@ -145,6 +145,7 @@
             <select  #ngCar="ngModel" [(ngModel)]="sendingCompanyService.newCompany.listCarsCompany" multiple (ngModelChange)="sendingCompanyService.newCompany.listCarsCompany=$event" name="CarsCompanyID">
             <option *ngFor="let item of carsTypesService.listCarsTypes" (click)="clickedOption(item)" [ngValue]="item">{{item.CarTypeName}}</option>
         </select>   -->
+
                 <h3 class="p1">סוגי רכבים</h3>
                 <div class="div2 col-sm-12 col-lg-12">
                     <div *ngFor="let car of carsTypesService.listCarsTypes">
@@ -154,9 +155,20 @@
 
                     </div>
                 </div>
+                  <!--  <div *ngFor="let d of listBusDay">
+                        <label>{{d.nameDay}}</label>
+                        <label>{{d.BeginningTime}}</label>
+                        <label>{{d.EndTime}}</label>
+                        <input type="text" #ngDay1="ngModel" [(ngModel)]="d.BeginningTime" class="form-control"
+                            name="BeginningTime" placeholder="מהשעה">
+                        <input type="text" #ngDay2="ngModel" [(ngModel)]="d.EndTime" class="form-control" name="EndTime"
+                            placeholder="עד השעה"><br><br><br><br>
+                    </div>
+                </div> -->
+
                 <div class="col-sm-12 col-lg-12">
                     <div *ngFor="let d of sendingCompanyService.newCompany.listCarsCompany">
-                        <!-- <label>{{d.CarTypeName}}</label> -->
+                        <!-- <label>{{d.nameCar}}</label> -->
                         <input type="text" #ngMaxVolume="ngModel" [(ngModel)]="d.MaxVolume" class="form-control"
                             name="MaxVolume" placeholder="נפח הרכב"><br><br><br><br>
                     </div>
@@ -183,6 +195,14 @@
                             <i *ngIf="ngPassword.errors!.required">זהו שדה חובה</i>
                         </div>
                     </div>
+                    <div class="divError">
+                        <input type="password" placeholder="הכנס שנית את הסיסמא" #confirmpassword="ngModel" [(ngModel)]="password2!" name="confirmpassword"
+                          id="confirmpassword" class="input4 form-control" required pattern="{{ ngPassword.value }}" />
+                        <div class="error" *ngIf=" confirmpassword.invalid && (confirmpassword.touched||confirmpassword.dirty)">
+                          <i *ngIf="confirmpassword.errors!.required">זהו שדה חובה</i>
+                          <i *ngIf="confirmpassword.errors!.pattern">לא תואם לסיסמא</i>
+                        </div>
+                      </div>
                 </div>
                 <div *ngIf="!sendingCompanyService.conected" class="div4 col-sm-12 col-lg-12">
                     <input type="checkbox" name="remember" class="input3" required #ngRemember [(ngModel)]="aaa">
