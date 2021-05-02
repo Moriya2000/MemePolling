@@ -126,11 +126,13 @@
                     <button class="botton1" (click)="plusCity1()">+</button>
                 </div>
                 <div class="col-sm-12 col-lg-12">
-                    <div style="margin-top: -3%;" *ngFor="let city of listCityName">
-                        <label>{{city}}</label><br><br><br><br><br>
+                    <div style="margin-top: -3%;" *ngFor="let city of sendingCompanyService.newCompany.listCitiesCompany">
+                        <button  (click)="deleteCity(city.CitiesCompanyID!)">x</button>
+                        <label>{{city.nameCity}}</label><br><br><br><br>
+
                     </div>
-                    <!-- <h4 style="margin-bottom: 2%;" *ngFor="let city of listCityName">{{city}}</h4>
-                    </div><br><br> -->
+                    <h4 style="margin-bottom: 2%;" *ngFor="let city of listCityName"><label>{{city}}</label></h4>
+                    <br><br>
                 </div>
                 <!-- <button  (click)="deleteCity()">x</button> -->
 
@@ -167,10 +169,10 @@
                 </div> -->
 
                 <div class="col-sm-12 col-lg-12">
-                    <div *ngFor="let d of sendingCompanyService.newCompany.listCarsCompany">
-                        <!-- <label>{{d.nameCar}}</label> -->
-                        <input type="text" #ngMaxVolume="ngModel" [(ngModel)]="d.MaxVolume" class="form-control"
-                            name="MaxVolume" placeholder="נפח הרכב"><br><br><br><br>
+                    <div *ngFor="let d of sendingCompanyService.newCompany.listCarsCompany; let i = index;trackBy:trackByIdx">
+                        <!-- <label>{{carsTypesService.listCarsTypes.CarTypeName}}</label> -->
+                        <input type="text" #ngMaxVolume="ngModel" [(ngModel)]="sendingCompanyService.newCompany.listCarsCompany[i].MaxVolume" class="form-control"
+                            name="{{i}}MaxVolume" placeholder="נפח הרכב"><br><br><br><br>
                     </div>
                 </div>
                 <h3 class="p1">סיום ההרשמה</h3>

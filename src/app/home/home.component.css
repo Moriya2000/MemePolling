@@ -81,12 +81,12 @@ transition: top ease 0.5s;
 .down:hover{
     top: -20px;
 }
-/* .a{
+.a{
     width: 100%;
     height: 560px;
     border-color: white;
     border-style: dotted;
-} */
+}
 .YellowLineLeft{
     background:#fcee21;
     max-width: 40%;

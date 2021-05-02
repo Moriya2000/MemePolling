@@ -3,6 +3,8 @@ import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { AllDetailsCompanyComponent } from '../all-details-company/all-details-company.component';
 import { AllDetailsCompany } from '../classes/AllDetailsCompany';
 import { AllOrder } from '../classes/AllOrder';
+import { DestinationsRoute } from '../classes/DestinationsRoute';
+import { DestinationsRouteService } from '../services/destinations-route.service';
 import { SendingCompanyService } from '../services/sending-company.service';
 import { TakingDeliveryService } from '../services/taking-delivery.service';
 
@@ -13,29 +15,36 @@ import { TakingDeliveryService } from '../services/taking-delivery.service';
 })
 export class TaskLogComponent implements OnInit {
 
+  listOrderId: Array<number> = new Array<number>();
+
+
+
   listOrderToSort: AllOrder[] = new Array()
   listOrderToMaslul: OrderToMaslul[] = new Array()//הרשימה שתכיל בסופו של דבר את המסלולים
   listOrderToMaslulChadash: OrderToMaslul[] = new Array()
   aa: Array<Array<AllOrder>> = new Array<Array<AllOrder>>();
+  bb: Array<AllOrder> = new Array<AllOrder>();
   list1: Array<AllOrder> = new Array<AllOrder>()
 
   address: string = ""
 
-  constructor(public sendingCompanyService: SendingCompanyService, public ser: TakingDeliveryService) { }
+  constructor(public sendingCompanyService: SendingCompanyService, public ser: TakingDeliveryService, public destinationsRouteService: DestinationsRouteService) { }
 
 
   ngOnInit(): void {
-    debugger
-    this.ser.GetAllOrder1(this.sendingCompanyService.newCompany.SendingCompanyID!).subscribe(
+    this.ser.GetAllOrder1(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(
       myData => {
-        debugger
         this.aa = myData
+        for (let i = 0; i < myData.length; i++)
+          for (let j = 0; j < myData[i].length; j++)
+            this.bb.push(myData[i][j])
+
+
       })
 
 
     //שליפת פרטי חברת שליחויות
     this.sendingCompanyService.GetIdAllDetailsCompany().subscribe(data => {
-      debugger
       this.sendingCompanyService.newCompany = data
     })
   }
@@ -45,6 +54,11 @@ export class TaskLogComponent implements OnInit {
     debugger
     let index = 0;
     this.listPlaceses = new Array();
+    this.listOrderToMaslulChadash = new Array();
+    this.listOrderToMaslul = new Array();
+    this.listPlaceses1 = new Array();
+    this.listOrderToSort = new Array();
+
     this.aa.forEach(x => {
       x.forEach(y => this.listPlaceses.push(new addressToSort(y.OrderID, 1, y.TDlatAddress, y.TDlngaddress, index)));
       index++;
@@ -52,8 +66,19 @@ export class TaskLogComponent implements OnInit {
     debugger
     this.sortAddress(address.geometry.location.lat(), address.geometry.location.lng());
     let addressKarov = this.listPlaceses[0]
-    this.list1 = this.aa[addressKarov.index!]
-    this.listOrderToMaslulChadash.push(new OrderToMaslul(this.list1.find(x => x.OrderID == addressKarov.idOrder)!, 1))
+    // this.list1 = this.aa[addressKarov.index!]
+    this.list1 = new Array();
+    this.listOrderToSort = new Array();
+    this.aa[addressKarov.index!].forEach(x => this.list1.push({ ...x }))
+    let a = Object.assign({}, this.list1.find(x => x.OrderID == addressKarov.idOrder)!)
+
+    this.listOrderToMaslulChadash.push(new OrderToMaslul(new AllOrder(a.TakingDeliveryID, a.TDOrderID, a.TDCityID, a.TDStreetID, a.TDBuildingNumber, a.TDEntranceBuilding, a.TDFloorNumber,
+      a.TDApartmentNumber, a.TDFirstName, a.TDLastName, a.TDPhone, a.TDAdditionalPhone, a.TDEmail, a.TDPickUpTime, a.TDPickUpTimeUntil, a.TDlatAddress, a.TDlngaddress,
+      a.TDNameAddress, a.TDaddToList, a.GivingDeliveryID, a.GDOrderID, a.GDCityID, a.GDStreetID, a.GDBuildingNumber,
+      a.GDEntranceBuilding, a.GDFloorNumber, a.GDApartmentNumber, a.GDFirstName, a.GDLastName, a.GDPhone, a.GDAdditionalPhone,
+
+      a.GDEmail, a.GDPickUpTime, a.GDPickUpTimeUntil, a.GDlatAddress, a.GDlngAddress, a.GDNameAddress, a.GDaddToList, a.OrderID,
+      a.ClientID, a.OrderDate, a.DeliveryTypeID, a.Amount, a.Volume, a.DeliveryUrgencyID, a.FinalPay, a.Note), 1))
     this.list1.find(x => x.OrderID == addressKarov.idOrder)!.TDaddToList = true;
 
     debugger
@@ -76,8 +101,17 @@ export class TaskLogComponent implements OnInit {
       }
       this.listOrderToSort = new Array();
       for (let index1 = 0; index1 < this.listOrderToMaslulChadash.length; index1++) {
-        if (this.listOrderToMaslulChadash[index1].tOrG == 1)
-          this.listOrderToSort.push(this.listOrderToMaslulChadash[index1].order)
+        if (this.listOrderToMaslulChadash[index1].tOrG == 1) {
+          let a = Object.assign({}, this.listOrderToMaslulChadash[index1].order)
+
+          this.listOrderToSort.push(new AllOrder(a.TakingDeliveryID, a.TDOrderID, a.TDCityID, a.TDStreetID, a.TDBuildingNumber, a.TDEntranceBuilding, a.TDFloorNumber,
+            a.TDApartmentNumber, a.TDFirstName, a.TDLastName, a.TDPhone, a.TDAdditionalPhone, a.TDEmail, a.TDPickUpTime, a.TDPickUpTimeUntil, a.TDlatAddress, a.TDlngaddress,
+            a.TDNameAddress, a.TDaddToList, a.GivingDeliveryID, a.GDOrderID, a.GDCityID, a.GDStreetID, a.GDBuildingNumber,
+            a.GDEntranceBuilding, a.GDFloorNumber, a.GDApartmentNumber, a.GDFirstName, a.GDLastName, a.GDPhone, a.GDAdditionalPhone,
+
+            a.GDEmail, a.GDPickUpTime, a.GDPickUpTimeUntil, a.GDlatAddress, a.GDlngAddress, a.GDNameAddress, a.GDaddToList, a.OrderID,
+            a.ClientID, a.OrderDate, a.DeliveryTypeID, a.Amount, a.Volume, a.DeliveryUrgencyID, a.FinalPay, a.Note))
+        }
       }
       if (this.listPlaceses[0].tOrG == 1) {
         let a = Object.assign({}, this.list1.find(x => x.OrderID == this.listPlaceses[0].idOrder)!)
@@ -92,15 +126,34 @@ export class TaskLogComponent implements OnInit {
         )
         this.createListToMishloach();
         if (this.distance1 <= 40000) {
-          this.listOrderToMaslulChadash.push(new OrderToMaslul(this.list1.find(x => x.OrderID == this.listPlaceses[0].idOrder)!, 1))
+          let a = Object.assign({}, this.list1.find(x => x.OrderID == this.listPlaceses[0].idOrder)!)
+
+          this.listOrderToMaslulChadash.push(new OrderToMaslul(new AllOrder(a.TakingDeliveryID, a.TDOrderID, a.TDCityID, a.TDStreetID, a.TDBuildingNumber, a.TDEntranceBuilding, a.TDFloorNumber,
+            a.TDApartmentNumber, a.TDFirstName, a.TDLastName, a.TDPhone, a.TDAdditionalPhone, a.TDEmail, a.TDPickUpTime, a.TDPickUpTimeUntil, a.TDlatAddress, a.TDlngaddress,
+            a.TDNameAddress, a.TDaddToList, a.GivingDeliveryID, a.GDOrderID, a.GDCityID, a.GDStreetID, a.GDBuildingNumber,
+            a.GDEntranceBuilding, a.GDFloorNumber, a.GDApartmentNumber, a.GDFirstName, a.GDLastName, a.GDPhone, a.GDAdditionalPhone,
+
+            a.GDEmail, a.GDPickUpTime, a.GDPickUpTimeUntil, a.GDlatAddress, a.GDlngAddress, a.GDNameAddress, a.GDaddToList, a.OrderID,
+            a.ClientID, a.OrderDate, a.DeliveryTypeID, a.Amount, a.Volume, a.DeliveryUrgencyID, a.FinalPay, a.Note), 1))
+
           this.list1.find(x => x.OrderID == this.listPlaceses[0].idOrder)!.TDaddToList = true;
         }
         else {
+
           this.list1.splice(this.list1.findIndex(x => x.OrderID == this.listPlaceses[0].idOrder), 1)
         }
       }
       else {
-        this.listOrderToMaslulChadash.push(new OrderToMaslul(this.list1.find(x => x.OrderID == this.listPlaceses[0].idOrder)!, 2))
+        let a = Object.assign({}, this.list1.find(x => x.OrderID == this.listPlaceses[0].idOrder)!)
+
+
+        this.listOrderToMaslulChadash.push(new OrderToMaslul(new AllOrder(a.TakingDeliveryID, a.TDOrderID, a.TDCityID, a.TDStreetID, a.TDBuildingNumber, a.TDEntranceBuilding, a.TDFloorNumber,
+          a.TDApartmentNumber, a.TDFirstName, a.TDLastName, a.TDPhone, a.TDAdditionalPhone, a.TDEmail, a.TDPickUpTime, a.TDPickUpTimeUntil, a.TDlatAddress, a.TDlngaddress,
+          a.TDNameAddress, a.TDaddToList, a.GivingDeliveryID, a.GDOrderID, a.GDCityID, a.GDStreetID, a.GDBuildingNumber,
+          a.GDEntranceBuilding, a.GDFloorNumber, a.GDApartmentNumber, a.GDFirstName, a.GDLastName, a.GDPhone, a.GDAdditionalPhone,
+
+          a.GDEmail, a.GDPickUpTime, a.GDPickUpTimeUntil, a.GDlatAddress, a.GDlngAddress, a.GDNameAddress, a.GDaddToList, a.OrderID,
+          a.ClientID, a.OrderDate, a.DeliveryTypeID, a.Amount, a.Volume, a.DeliveryUrgencyID, a.FinalPay, a.Note), 2))
         this.list1.find(x => x.OrderID == this.listPlaceses[0].idOrder)!.GDaddToList = true;
         this.list1.splice(this.list1.findIndex(x => x.OrderID == this.listPlaceses[0].idOrder), 1)
       }
@@ -186,7 +239,28 @@ export class TaskLogComponent implements OnInit {
 
 
 
+  deleteFromList() {
+    debugger
+    //המסלול של העובד
 
+    for (let z = 0; z < this.listOrderToMaslulChadash.length; z++) {
+      //השליחויות שיש למנהל
+      let d = this.bb.findIndex(x => x.OrderID == this.listOrderToMaslulChadash[z].order.OrderID)
+      if (d != -1)
+        this.bb.splice(d, 1);
+
+
+      //המסלולים שיש למנהל
+      for (let i = 0; i < this.aa.length; i++) {
+        let c = this.aa[i].findIndex(x => x.OrderID == this.listOrderToMaslulChadash[z].order.OrderID)
+        if (c != -1) {
+          this.aa[i].splice(c, 1);
+
+          break
+        }
+      }
+    }
+  }
 
 
 

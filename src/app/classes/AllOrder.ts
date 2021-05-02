@@ -37,7 +37,7 @@ export class AllOrder{
         public GDlatAddress?:number,
         public GDlngAddress?:number,
         public GDNameAddress?:string,
-        public GDaddToList?:boolean,
+        public GDaddToList:boolean=false,
 
         public OrderID?:number,
         public ClientID?:number,

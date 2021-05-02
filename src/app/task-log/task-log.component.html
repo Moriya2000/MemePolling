@@ -22,10 +22,24 @@
                         <a (click)="delete()"><p class="p1">מחיקת המשתמש שלי</p></a><br>
                     <div class="YellowLineLeft1"></div><br>
                 </div>
-                <input class="form-control" ngx-google-places-autocomplete #placesRef="ngx-places"
-                #ngFullAddress [(ngModel)]="address"
-                (onAddressChange)="createaslulByAdressfromManager($event)" required name="place" #place="ngModel" />
 
+המשלוחים של היום:
+                <div *ngFor="let i of bb">
+                   {{i.OrderID!}}
+                </div>
+
+
+                <input class="form-control" ngx-google-places-autocomplete #placesRef="ngx-places"
+             [(ngModel)]="address"
+                (onAddressChange)="createaslulByAdressfromManager($event)" required name="place" />
+
+                 המסלול והמשלוחים שכתובת זו צריכה לבצע
+                <div *ngFor="let i of listOrderToMaslulChadash">
+                    {{i.order.OrderID!}}
+                 </div>
+
+                 <button type="button" class="button" (click)="deleteFromList()">אישור</button>
+                 <button type="button" class="button">ביטול</button>
 
                 <!-- <div class="YellowLinealong"></div>
                 <div class="div2"></div><br><br><br>

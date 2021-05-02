@@ -65,13 +65,22 @@ export class NavComponent implements OnInit {
     debugger
     this.sendingCompanyService.GetCompanyNumberPassword(this.sendingCompanyService.newCompany.CompanyNumber!, this.sendingCompanyService.newCompany.Password!)
       .subscribe(data => {
-        if (data == 1) {
+        if(data!=0){
+        // if (data == 1) {
           this.clientService.typeUserCompany = true;
           this.sendingCompanyService.conected = true;
-          debugger
           this.sendingCompanyService.companyConected = this.sendingCompanyService.newCompany;
-          alert(" ברוך הבאה" + " " + this.sendingCompanyService.newCompany.CompanyNumber);
+          // this.sendingCompanyService.GetIdAllDetailsCompany().subscribe(data=>{})
+          // this.sendingCompanyService.GatAllSendingCompanyByNumberPassword(this.sendingCompanyService.newCompany.CompanyNumber!, this.sendingCompanyService.newCompany.Password!).subscribe
+          this.sendingCompanyService.GatAllSendingCompanyByNumberPassword(data).subscribe
+          (data=>
+            {
+              debugger
+              this.sendingCompanyService.currentCompany=data;  
+                   alert(" ברוך הבאה" + " " + this.sendingCompanyService.newCompany.CompanyNumber);
           this.route.navigate(['/TaskLog']);
+            })
+   
         }
         else {
           this.clientService.typeUserCompany = false;

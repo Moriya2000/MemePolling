@@ -31,6 +31,12 @@ export class DestinationsRouteService {
     return this.http.post<Array<DestinationsRoute>>(this.url+"/GetUpdatDestinationsRoute",c)}
           
   //מחיקת יעד במסלול  
-  GetRemoveDestinationsRoute(id:number):Observable<Array<DestinationsRoute>>{
-    return this.http.delete<Array<DestinationsRoute>>(this.url+"/GetRemoveDestinationsRoute"+id)}
+  GetRemoveDestinationsRoute(id:Array<number>):Observable<Array<DestinationsRoute>>{
+    return this.http.delete<Array<DestinationsRoute>>(this.url+"/GetRemoveDestinationsRoute/"+id)}
+
+
+    
+      //שליפת רשימת יעדים במסלול
+      GetDestinationsRoute():Observable<Array<DestinationsRoute>>{
+    return this.http.get<Array<DestinationsRoute>>(this.url+"/GetDestinationsRoute")}
 }

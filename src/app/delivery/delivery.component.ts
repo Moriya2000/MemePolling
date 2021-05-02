@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import { AllOrder } from '../classes/AllOrder';
 import { DeliveryType } from '../classes/DeliveryType';
 import { DeliveryUrgency } from '../classes/DeliveryUrgency';
 import { TakingDelivery } from '../classes/TakingDelivery';
@@ -58,7 +59,7 @@ export class DeliveryComponent implements OnInit {
 
     //בדיקה האם זה הוספה
     if (this.takingDeliveryService.newTakingDelivery.TakingDeliveryID == undefined) {
-      this.takingDeliveryService.newTakingDelivery = new TakingDelivery();
+      this.takingDeliveryService.newTakingDelivery = new AllOrder();
       //לשים במשתנה של הבחירה מהליסט TYPE FALSE
       this.deliveryTypeService.GatAllDeliveryType().subscribe(data => {
         this.deliveryTypeService.listDeliveryType = data

@@ -15,6 +15,7 @@ export class TakingDeliveryService {
   listTakingDelivery:Array<TakingDelivery>=new Array<TakingDelivery>();
   
   newTakingDelivery:AllOrder=new AllOrder();
+  // newTakingDelivery1:TakingDelivery=new TakingDelivery();
     
   constructor(private http: HttpClient) { }
   url: string = "https://localhost:44337/api/TakingDelivery"
@@ -24,8 +25,8 @@ GatAllTakingDelivery():Observable<Array<TakingDelivery>>{
   return this.http.get<Array<TakingDelivery>>(this.url+"/GatAllTakingDelivery")}
           
 //שליפת לקיחת משלוח לפי קוד   
-GetAllOrder():Observable<TakingDelivery>{
-  return this.http.get<TakingDelivery>(this.url+"/GetAllOrder/"+this.newTakingDelivery.OrderID)}
+GetAllOrder():Observable<AllOrder>{
+  return this.http.get<AllOrder>(this.url+"/GetAllOrder/"+this.newTakingDelivery.OrderID)}
 
 GetAddAllOrder(c:AllOrder):Observable<AllOrder>{
   this.newTakingDelivery.OrderDate=new Date();

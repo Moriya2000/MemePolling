@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CitiesCompany } from '../classes/CitiesCompany';
 import { City } from '../classes/City';
 
 @Injectable({
@@ -34,6 +35,6 @@ export class CityService {
     return this.http.post<Array<City>>(this.url+"/GetUpdatCity",c)}
   
   //מחיקת עיר  
-  GetRemoveCity(id:number):Observable<Array<City>>{
-    return this.http.delete<Array<City>>(this.url+"/GetRemoveCity"+id)}
+  GetRemoveCitiesCompany(id:number):Observable<Array<CitiesCompany>>{
+    return this.http.delete<Array<CitiesCompany>>(this.url+"/GetRemoveCitiesCompany/"+id)}
 }

@@ -13,6 +13,7 @@ export class OrderConfirmationComponent implements OnInit {
   ngOnInit(): void {
     debugger
     this.takingDeliveryService.GetAllOrder().subscribe(data=>
+      //לא עבד שינינו את הסוג בסרוויס
       this.takingDeliveryService.newTakingDelivery=data)
   }
 

@@ -17,7 +17,8 @@ export class SendingCompanyService {
   Company:AllDetailsCompany=new AllDetailsCompany();
   
   companyConected:AllDetailsCompany=new AllDetailsCompany();
-  
+  currentCompany:SendingCompany=new SendingCompany();
+
   public conected:boolean=false;
   
   // listAllCompany: Array<AllDetailsCompany> = new Array<AllDetailsCompany>()
@@ -45,12 +46,21 @@ export class SendingCompanyService {
     //עדכון חברת שליחויות  
   GetUpdatSendingCompany(c:SendingCompany):Observable<Array<SendingCompany>>{
     return this.http.post<Array<SendingCompany>>(this.url+"/GetUpdatSendingCompany",c)}
-          
-  //מחיקת חברת שליחויות  
+  
+    //עדכון כל הפרטים של חברת שליחויות  
+  GetUpdatSendingCompany1(c:AllDetailsCompany):Observable<Array<AllDetailsCompany>>{
+    return this.http.post<Array<AllDetailsCompany>>(this.url+"/GetUpdatSendingCompany1",c)} 
+  
+    //מחיקת חברת שליחויות  
   GetRemoveSendingCompany():Observable<Array<SendingCompany>>{
     return this.http.delete<Array<SendingCompany>>(this.url+"/GetRemoveSendingCompany/"+this.companyConected.CompanyNumber)}
   
   //בדיקה האם המשתמש קיים במערכת
   GetCompanyNumberPassword(companyNumber:number,password:string):Observable<number>{
     return this.http.get<number>(this.url+"/GetCompanyNumberPassword/" + companyNumber + "/" + password)}
+
+    // GatAllSendingCompanyByNumberPassword(companyNumber:number,password:string):Observable<SendingCompany>{
+    //   return this.http.get<SendingCompany>(this.url+"/GatAllSendingCompanyByNumberPassword/" + companyNumber + "/" + password)}
+    GatAllSendingCompanyByNumberPassword(SendingCompanyID:number):Observable<SendingCompany>{
+    return this.http.get<SendingCompany>(this.url+"/GatAllSendingCompanyByNumberPassword/" +SendingCompanyID)}
 }    

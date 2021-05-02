@@ -34,11 +34,19 @@
                 </div>
                 <div [hidden]="showOrHide" >
                     <div class="div5"dir="rtl" *ngFor="let item of orderService.listOrder">
-                        <button (onclick)="OrderTrack(item.OrderID)"><p>קוד הזמנה:{{item.OrderID!}}</p>
+                        <button (click)="OrderTrack(item.OrderID!)" ><p>קוד הזמנה:{{item.OrderID!}}</p>
                         <p>קוד לקוח:{{item.ClientID!}}</p>
                         <p>תאריך הזמנה:{{item.OrderDate!}}</p></button>
+                        <!-- <p *ngIf="a==2">המשלוח שובץ והוא בדרך אליך</p>
+                        <p *ngIf="a==1">הזמנתך התקבלה ותטופל בקרוב</p>
+                        <p *ngIf="a==3">ההזמנה הגיעה ליעד!</p> -->
                     </div>
+
+
                 </div>
+                <p *ngIf="a==2">המשלוח שובץ והוא בדרך אליך</p><br><br>
+                <p *ngIf="a==1">הזמנתך התקבלה ותטופל בקרוב</p>
+                <p *ngIf="a==3">ההזמנה הגיעה ליעד!</p>
             </div>
         </div>
     </div>
