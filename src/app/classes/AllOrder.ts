@@ -41,7 +41,7 @@ export class AllOrder{
 
         public OrderID?:number,
         public ClientID?:number,
-        public OrderDate?:Date,
+        public OrderDate?:string,
         public DeliveryTypeID?:number,
         public Amount?:number,
         public Volume?:number,

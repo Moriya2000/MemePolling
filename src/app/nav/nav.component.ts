@@ -18,6 +18,7 @@ export class NavComponent implements OnInit {
   aaa: boolean = false
   a: boolean = false
   password2:string=""
+  l:boolean=false
   ngOnInit() {
     debugger
     this.route.navigate(['/Home'])
@@ -50,11 +51,12 @@ export class NavComponent implements OnInit {
         }
         else {
           this.clientService.typeUserClient = false;
-          alert("משתמש לא קיים במערכת");
+          this.l=true;
+          // alert("משתמש לא קיים במערכת");
           //להעביר אותו לדף ההרשמה!!!!!!!!!!!!!!!!!!
           // document.getElementById("myModalRegister")!.click();
-          this.route.navigate(['/Home']);
-          this.clientService.newClient = new Client();
+          // this.route.navigate(['/Home']);
+          // this.clientService.newClient = new Client();
         }
       }, err => { alert("שגיאה בהתחברות לשרת") })
   }

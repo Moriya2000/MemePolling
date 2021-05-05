@@ -11,6 +11,9 @@ export class DestinationsRouteService {
   listDestinationsRoute:Array<DestinationsRoute>=new Array<DestinationsRoute>();
   newDestinationsRoute:DestinationsRoute=new DestinationsRoute();
 
+  listCountOrder:Array<number>=new Array<number>();
+listSumSalary:Array<number>=new Array<number>();
+
   constructor(private http: HttpClient) { }
   url: string = "https://localhost:44337/api/DestinationsRoute"
 
@@ -19,9 +22,11 @@ export class DestinationsRouteService {
     return this.http.get<Array<DestinationsRoute>>(this.url+"/GatAllDestinationsRoute")}
             
   //שליפת יעד במסלול לפי קוד   
-  GetIdDestinationsRoute(id:number):Observable<Array<DestinationsRoute>>{
-    return this.http.get<Array<DestinationsRoute>>(this.url+"/GetIdDestinationsRoute"+id)}
-              
+  GetIdDestinationsRoute(id:number):Observable<Array<number>>{
+    return this.http.get<Array<number>>(this.url+"/GetIdDestinationsRoute/"+id)}
+     
+    GetIdDestinationsRouteForSum(id:number):Observable<Array<number>>{
+     return this.http.get<Array<number>>(this.url+"/GetIdDestinationsRouteForSum/"+id)}
   //הוספת יעד במסלול 
   GetAddDestinationsRoute(c:DestinationsRoute):Observable<Array<DestinationsRoute>>{
     return this.http.put<Array<DestinationsRoute>>(this.url+"/GetAddDestinationsRoute",c)}

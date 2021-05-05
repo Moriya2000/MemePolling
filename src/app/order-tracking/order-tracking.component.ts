@@ -14,12 +14,19 @@ export class OrderTrackingComponent implements OnInit {
   constructor(public clientService: ClientService, public takingDeliveryService: TakingDeliveryService, public orderService: OrderService, public destinationsRouteService: DestinationsRouteService) { }
   showOrHide: boolean = true;
   a: number = 0;
-
-  date: Date = new Date();
+ bool:boolean=false
+ orderTrack:number=0
+  // date:Date=new Date()
+  
   ngOnInit(): void {
     debugger
     this.destinationsRouteService.GetDestinationsRoute().subscribe(data => this.destinationsRouteService.listDestinationsRoute = data)
-  }
+  
+    // this.showOrHide = false;
+    this.orderService.GetAllIdOrder(this.clientService.clientConected.IdClient!).subscribe(data => {
+      debugger
+      this.orderService.listOrder = data
+  })}
   //מחיקת משתמש
   // delete() {
   //   debugger
@@ -28,28 +35,45 @@ export class OrderTrackingComponent implements OnInit {
   //   }, err => { alert("error" + err) })
 
   // }
-  MyOrder() {
-    debugger
-    this.showOrHide = false;
-    this.orderService.GetAllIdOrder(this.clientService.clientConected.IdClient!).subscribe(data => {
-      debugger
-      this.orderService.listOrder = data
-      // alert("השליפה הצליחה");
-    })
-  }
+  // MyOrder() {
+  //   debugger
+  //   this.showOrHide = false;
+  //   this.orderService.GetAllIdOrder(this.clientService.clientConected.IdClient!).subscribe(data => {
+  //     debugger
+  //     this.orderService.listOrder = data
+  //   })
+  // }
 
   OrderTrack(id: number) {
-
     debugger
+    this.orderService.GetOrderTrack(id).subscribe(data=>{
+      this.orderTrack=data
+    })
+    this.orderTrack=0;
 
-    this.a = 1;
-    if (this.destinationsRouteService.listDestinationsRoute.find(x => x.OrderID == id)) {
-      this.a = 2;
-    let x = this.orderService.listOrder.find(x => x.OrderID == id)
-      if (x!.OrderDate! <= this.date)
-      this.a = 3;
-
-    }
-   }
-  
+  }
 }
+
+    // let orderDate = this.orderService.listOrder.find(x => x.OrderID == id)
+    // let x = orderDate?.OrderDate?.toString();
+
+
+    // let y=d?.slice(0,10)
+    // this.date.setHours(0);
+    // this.date.setMinutes(0);
+    // this.date.setSeconds(0);
+    // let j= this.date;
+    // let dd=Date.parse(y!) - Date.parse(j.toString())
+    // if (dd < 0)
+    // {
+    //   this.a = 3;
+    // }  
+    // else{
+    //     if (this.destinationsRouteService.listDestinationsRoute.find(x => x.OrderID == id)) {
+    //       this.a = 2;
+    //     }
+    //     else
+    //     {
+    //         this.a=1;
+    //     }
+    // }

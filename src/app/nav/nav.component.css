@@ -18,6 +18,9 @@
     color:#c1272d;
     background-color:rgb(252, 252, 110) !important;
 }
+.navbar-nav li a:focus{
+    background-color:rgb(255, 255, 169);
+}
 
 /* עיצוב הלוגו */
 .logo{
@@ -133,4 +136,15 @@ i{
 
 span{
     text-align: center;
+}
+.button3
+{
+    width: 22%;
+    background-color: #c1272d;
+    color:white;
+    border-color: #c1272d;   
+    font-weight: bold;
+    border-radius: 0%;
+    margin-bottom: 1%;
+    margin-right: 10%;
 }

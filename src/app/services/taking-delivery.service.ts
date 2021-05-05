@@ -29,7 +29,7 @@ GetAllOrder():Observable<AllOrder>{
   return this.http.get<AllOrder>(this.url+"/GetAllOrder/"+this.newTakingDelivery.OrderID)}
 
 GetAddAllOrder(c:AllOrder):Observable<AllOrder>{
-  this.newTakingDelivery.OrderDate=new Date();
+  // this.newTakingDelivery.OrderDate=new Date();
   this.newTakingDelivery.FinalPay=1;
   this.newTakingDelivery.Note="tgfhdfhdf";
   return this.http.put<AllOrder>(this.url+"/GetAddAllOrder",c);

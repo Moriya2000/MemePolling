@@ -26,8 +26,11 @@ export class OrderService {
   //שליפת כל ההזמנות לפי קוד   
   GetAllIdOrder(id:number):Observable<Array<Order>>{
     return this.http.get<Array<Order>>(this.url+"/GetAllIdOrder/"+id)}
-  
-    //הוספת הזמנה
+    
+    GetOrderTrack(id:number):Observable<number>{
+    return this.http.get<number>(this.url+"/GetOrderTrack/"+id)}
+
+  //הוספת הזמנה
   GetAddOrder(c:Order):Observable<Array<Order>>{
     return this.http.put<Array<Order>>(this.url+"/GetAddOrder",c)}
           

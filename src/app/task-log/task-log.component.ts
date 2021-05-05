@@ -1,9 +1,11 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { AllDetailsCompanyComponent } from '../all-details-company/all-details-company.component';
 import { AllDetailsCompany } from '../classes/AllDetailsCompany';
 import { AllOrder } from '../classes/AllOrder';
 import { DestinationsRoute } from '../classes/DestinationsRoute';
+import { DeliveryRoutesService } from '../services/delivery-routes.service';
 import { DestinationsRouteService } from '../services/destinations-route.service';
 import { SendingCompanyService } from '../services/sending-company.service';
 import { TakingDeliveryService } from '../services/taking-delivery.service';
@@ -16,9 +18,6 @@ import { TakingDeliveryService } from '../services/taking-delivery.service';
 export class TaskLogComponent implements OnInit {
 
   listOrderId: Array<number> = new Array<number>();
-
-
-
   listOrderToSort: AllOrder[] = new Array()
   listOrderToMaslul: OrderToMaslul[] = new Array()//הרשימה שתכיל בסופו של דבר את המסלולים
   listOrderToMaslulChadash: OrderToMaslul[] = new Array()
@@ -27,11 +26,12 @@ export class TaskLogComponent implements OnInit {
   list1: Array<AllOrder> = new Array<AllOrder>()
 
   address: string = ""
-
-  constructor(public sendingCompanyService: SendingCompanyService, public ser: TakingDeliveryService, public destinationsRouteService: DestinationsRouteService) { }
-
+  constructor(public deliveryRoutesService: DeliveryRoutesService, public sendingCompanyService: SendingCompanyService, public ser: TakingDeliveryService, public destinationsRouteService: DestinationsRouteService) { }
+gg:boolean=false
+showOrHide: boolean = true
 
   ngOnInit(): void {
+    // this.showOrHide=true;
     this.ser.GetAllOrder1(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(
       myData => {
         this.aa = myData
@@ -47,6 +47,7 @@ export class TaskLogComponent implements OnInit {
     this.sendingCompanyService.GetIdAllDetailsCompany().subscribe(data => {
       this.sendingCompanyService.newCompany = data
     })
+
   }
 
 
@@ -260,10 +261,24 @@ export class TaskLogComponent implements OnInit {
         }
       }
     }
+    this.address="";
   }
 
 
+  orderPath() {
 
+    this.deliveryRoutesService.GetIdDeliveryRoutes(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(data =>
+       { this.deliveryRoutesService.listDeliveryRoutes = data }
+      )
+      this.destinationsRouteService.GetIdDestinationsRoute(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(data=>{
+        this.destinationsRouteService.listCountOrder=data})
+       
+        debugger
+        this.destinationsRouteService.GetIdDestinationsRouteForSum(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(data=>{
+          this.destinationsRouteService.listSumSalary=data})
+          this.showOrHide=false;
+
+  }
 
   updatSendingCompany() {
     debugger
@@ -272,9 +287,10 @@ export class TaskLogComponent implements OnInit {
 
   delete() {
     debugger
-    this.sendingCompanyService.GetRemoveSendingCompany().subscribe(data =>
-      this.sendingCompanyService.listCompany = data)
-    alert("החברה הוסרה בהצלחה")
+    // this.sendingCompanyService.GetRemoveSendingCompany().subscribe(data =>
+    //   this.sendingCompanyService.listCompany = data)
+    // alert("החברה הוסרה בהצלחה")
+    alert("קיבלנו את בקשתך אך עלייך לבצע את כל השליחויות שלך וכבר בבוקר פעולתך באתרנו תסתיים")
   }
 }
 

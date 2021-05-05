@@ -1,6 +1,6 @@
 <section class="row">
     <div class="col-xs-12 col-lg-12">
-        <img src="../../assets/Images/date.jpg" class="img-responsive" >
+        <img src="../../assets/Images/date.jpg" class="img-responsive">
         <p class="p">השליחויות שלי</p>
         <div class="YellowLineLeft"></div>
         <div class="YellowLineRight"></div>
@@ -8,47 +8,107 @@
         <div class="container">
             <div class="container-fluid">
                 <div class="div1" dir="rtl">
-                    <a >
-                        <p class="p1">יומן השליחויות שלי</p><br>
-                    </a>
+                    <a (click)="showOrHide=true">
+                        <p class="p1">ההזמנות שלי להיום</p>
+                    </a><br>
                     <div class="YellowLineLeft1"></div><br>
-                    <a>
-                    <p class="p1">השליחויות שהיו שלי</p></a><br>
+                    <a (click)="orderPath()">
+                        <p class="p1">השליחויות שהיו שלי</p>
+                    </a><br>
                     <div class="YellowLineLeft1"></div><br>
-                            <a [routerLink]="['/AllDetailsCompany']">
-                                <p class="p1" >עדכון פרטי החברה שלי</p>
-                            </a><br>
+                    <a [routerLink]="['/AllDetailsCompany']">
+                        <p class="p1">עדכון פרטי החברה שלי</p>
+                    </a><br>
                     <div class="YellowLineLeft1"></div><br>
-                        <a (click)="delete()"><p class="p1">מחיקת המשתמש שלי</p></a><br>
+                    <a (click)="delete()">
+                        <p class="p1">מחיקת המשתמש שלי</p>
+                    </a><br>
                     <div class="YellowLineLeft1"></div><br>
                 </div>
-
-המשלוחים של היום:
-                <div *ngFor="let i of bb">
-                   {{i.OrderID!}}
+                <div *ngIf="!showOrHide">
+                    <div *ngFor="let item of deliveryRoutesService.listDeliveryRoutes">
+                        <p> {{item.Date | slice: 0:10}}</p>
+                    </div>
+                    <div *ngFor="let item1 of destinationsRouteService.listCountOrder">
+                        <p> {{item1}}</p>
+                    </div>
+                    <div *ngFor="let item of destinationsRouteService.listSumSalary">
+                        <p> {{item}}</p>
+                    </div>
                 </div>
+                <div *ngIf="showOrHide==true">
+                    <div class="order" dir="rtl">
+                        <i class="ii" dir="rtl">אנא אכנס כתובת שמימנה מתכננים לצאת למסלול</i><br><br><input dir="rtl"
+                            class="input1 form-control" id="addrss" ngx-google-places-autocomplete
+                            #placesRef="ngx-places" [(ngModel)]="address"
+                            (onAddressChange)="createaslulByAdressfromManager($event)" required name="place" /><br><br>
 
+                        <button class="btnShortRout" *ngIf="address" data-toggle="modal" data-target="#ShortRoute"
+                            style="float: none; margin-right: -18%;">אישור</button><br><br>
 
-                <input class="form-control" ngx-google-places-autocomplete #placesRef="ngx-places"
-             [(ngModel)]="address"
-                (onAddressChange)="createaslulByAdressfromManager($event)" required name="place" />
+                        <div *ngFor="let i of bb">
+                            <p class="p2"><i>משלוח מספר:</i>{{i.OrderID!}}
+                                <i>אוספים את המשלוח מ:</i> {{i.TDNameAddress!}}
+                                <i>נותנים את המשלוח ב:</i> {{i.GDNameAddress!}}
+                            </p>
+                        </div>
+                    </div>
 
-                 המסלול והמשלוחים שכתובת זו צריכה לבצע
+                </div>
+                <!-- המסלול והמשלוחים שכתובת זו צריכה לבצע
                 <div *ngFor="let i of listOrderToMaslulChadash">
                     {{i.order.OrderID!}}
-                 </div>
-
-                 <button type="button" class="button" (click)="deleteFromList()">אישור</button>
-                 <button type="button" class="button">ביטול</button>
-
-                <!-- <div class="YellowLinealong"></div>
-                <div class="div2"></div><br><br><br>
-                <div class="div3"></div><br><br><br>
-                <div class="div3"></div><br><br> -->
-                <!-- <button type="button" class="button" [routerLink]="['/MyRoutes']">פירוט המסלול</button> -->
-                <!-- <button type="button" class="button">פירוט מסלולים</button><br><br><br><br>
-                <button type="button" class="button">פירוט מסלולים</button> -->
+                </div>
+                <button type="button" class="button" (click)="deleteFromList()">אישור</button>
+                <button type="button" class="button">ביטול</button> -->
             </div>
         </div>
     </div>
 </section>
+
+
+
+
+<!-- הרשמה לאתר ללקוח -->
+<div class="container mt-3">
+    <div class="modal fade" id="ShortRoute" style="margin-top: 7%;">
+        <div class="modal-dialog" style="width: 70%;">
+            <div class="modal-content" style="display: flex; flex-direction: column; min-height: 10vh;">
+                <button type="button" class="close" data-dismiss="modal"
+                    style="margin-right:-95%; margin-top: 1.5%;">×</button>
+                <!-- <br> -->
+                <h1>המסלול הקצר שלי</h1><br>
+                <!-- המסלול והמשלוחים שכתובת זו צריכה לבצע -->
+                <div dir="rtl">
+                    <div *ngFor="let i of listOrderToMaslulChadash">
+                        <p class="p2" style="text-align: center;">
+                            <i>מספר משלוח: </i>{{i.order.OrderID!}}
+                            <i>נפח המשלוח: </i>{{i.order.Volume!}}<br>
+
+                            <i class="iii">איסוף חבילה:</i><br>
+                            <i>כתובת: </i>{{i.order.TDNameAddress!}}
+                            <i>מספר דירה: </i>{{i.order.TDApartmentNumber!}}
+                            <i>שם מלא: </i>{{i.order.TDFirstName!}}
+                            {{i.order.TDLastName!}}
+                            <i>פלאפון: </i>{{i.order.TDPhone!}}
+                            <i>פלאפון נוסף: </i>{{i.order.TDAdditionalPhone!}}<br>
+
+                            <i class="iii">נתינת חבילה:</i><br>
+                            <i>כתובת: </i>{{i.order.GDNameAddress!}}
+                            <i>מספר דירה: </i>{{i.order.GDApartmentNumber!}}
+                            <i>שם מלא: </i>{{i.order.GDFirstName!}}
+                            {{i.order.GDLastName!}}
+                            <i>פלאפון: </i>{{i.order.GDPhone!}}
+                            <i>פלאפון נוסף: </i>{{i.order.GDAdditionalPhone!}}
+                        </p>
+                        <p style="color: #fdec00;">
+                            ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                        </p>
+                    </div>
+                </div>
+                <button type="button" class="button" (click)="deleteFromList()" data-dismiss="modal">אישור</button>
+                <button type="button" class="button1" data-dismiss="modal">ביטול</button>
+            </div>
+        </div>
+    </div>
+</div>

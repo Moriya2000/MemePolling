@@ -20,7 +20,7 @@ export class DeliveryRoutesService {
         
   //שליפת מסלול משלוח לפי קוד   
   GetIdDeliveryRoutes(id:number):Observable<Array<DeliveryRoutes>>{
-    return this.http.get<Array<DeliveryRoutes>>(this.url+"/GetIdDeliveryRoutes"+id)}
+    return this.http.get<Array<DeliveryRoutes>>(this.url+"/GetIdDeliveryRoutes/"+id)}
           
   //הוספת מסלול משלוח  
   GetAddDeliveryRoutes(c:DeliveryRoutes):Observable<Array<DeliveryRoutes>>{
