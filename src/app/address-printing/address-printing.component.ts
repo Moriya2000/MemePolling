@@ -23,6 +23,8 @@ export class AddressPrintingComponent implements OnInit {
     const WindowPrt = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
     WindowPrt?WindowPrt.document.write(printContent?printContent.innerHTML:""):null;
     // WindowPrt?WindowPrt.document.write(""):null;// אם רוצים להוסיף טקסט נוסף למסמך בנוסף למה שיש עכשיו
+    
+    // WindowPrt?WindowPrt.document.
     debugger
     WindowPrt?WindowPrt.document.close():null
     

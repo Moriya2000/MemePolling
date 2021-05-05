@@ -19,6 +19,8 @@ export class NavComponent implements OnInit {
   a: boolean = false
   password2:string=""
   l:boolean=false
+  ll:boolean=false
+
   ngOnInit() {
     debugger
     this.route.navigate(['/Home'])
@@ -32,7 +34,7 @@ export class NavComponent implements OnInit {
     this.clientService.GetAddClient().subscribe(data => {
       this.clientService.clientConected = this.clientService.newClient;
       this.clientService.typeUserClient = true;
-      this.clientService.conected = true
+      this.clientService.conected = true;
       this.route.navigate(['/Delivery']);
     }, err => { alert("error" + err) })
     // this.clientService.newClient = new Client();
@@ -45,8 +47,9 @@ export class NavComponent implements OnInit {
         if (data == 1) {
           alert(" ברוך הבאה" + " " + this.clientService.newClient.EmailAddress);
           this.clientService.typeUserClient = true;
-          this.clientService.conected = true
+          this.clientService.conected = true;
           this.clientService.clientConected = this.clientService.newClient;
+
           this.route.navigate(['/Delivery']);
         }
         else {

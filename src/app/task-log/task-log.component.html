@@ -20,25 +20,29 @@
                         <p class="p1">עדכון פרטי החברה שלי</p>
                     </a><br>
                     <div class="YellowLineLeft1"></div><br>
-                    <a (click)="delete()">
+                    <a  (click)="delete()">
                         <p class="p1">מחיקת המשתמש שלי</p>
                     </a><br>
                     <div class="YellowLineLeft1"></div><br>
                 </div>
                 <div *ngIf="!showOrHide">
-                    <div *ngFor="let item of deliveryRoutesService.listDeliveryRoutes">
-                        <p> {{item.Date | slice: 0:10}}</p>
-                    </div>
-                    <div *ngFor="let item1 of destinationsRouteService.listCountOrder">
-                        <p> {{item1}}</p>
-                    </div>
-                    <div *ngFor="let item of destinationsRouteService.listSumSalary">
-                        <p> {{item}}</p>
+                    <div class="order" dir="rtl">
+
+                        <div *ngFor="let item of deliveryRoutesService.listDeliveryRoutes">
+                            <p class="p2"><i>תאריך שבו בוצע השליחות: </i>{{item.Date | slice: 0:10}}</p>
+                        </div>
+                        <div *ngFor="let item1 of destinationsRouteService.listCountOrder">
+                            <p class="p2"><i>כמות ההזמנות במסלול: </i>{{item1}}</p>
+                        </div>
+                        <div *ngFor="let item of destinationsRouteService.listSumSalary" style="float: right;">
+                            <p class="p2"><i>תשלום לחברה לכל מסלול: </i>{{item | number : '1.2-2'}}</p>
+                        </div>
+
                     </div>
                 </div>
                 <div *ngIf="showOrHide==true">
                     <div class="order" dir="rtl">
-                        <i class="ii" dir="rtl">אנא אכנס כתובת שמימנה מתכננים לצאת למסלול</i><br><br><input dir="rtl"
+                        <i class="ii" dir="rtl">אנא הכנס כתובת שמישם מתכננים לצאת למסלול</i><br><br><input dir="rtl"
                             class="input1 form-control" id="addrss" ngx-google-places-autocomplete
                             #placesRef="ngx-places" [(ngModel)]="address"
                             (onAddressChange)="createaslulByAdressfromManager($event)" required name="place" /><br><br>
@@ -82,24 +86,28 @@
                 <div dir="rtl">
                     <div *ngFor="let i of listOrderToMaslulChadash">
                         <p class="p2" style="text-align: center;">
-                            <i>מספר משלוח: </i>{{i.order.OrderID!}}
-                            <i>נפח המשלוח: </i>{{i.order.Volume!}}<br>
+                            <i style="font-size: 15px;">מספר משלוח: </i>{{i.order.OrderID!}}<br>
+                            <!-- <i>נפח המשלוח: </i>{{i.order.Volume!}} -->
 
+                         <i class="a" *ngIf="i.tOrG==1">
                             <i class="iii">איסוף חבילה:</i><br>
                             <i>כתובת: </i>{{i.order.TDNameAddress!}}
                             <i>מספר דירה: </i>{{i.order.TDApartmentNumber!}}
                             <i>שם מלא: </i>{{i.order.TDFirstName!}}
                             {{i.order.TDLastName!}}
                             <i>פלאפון: </i>{{i.order.TDPhone!}}
-                            <i>פלאפון נוסף: </i>{{i.order.TDAdditionalPhone!}}<br>
-
-                            <i class="iii">נתינת חבילה:</i><br>
+                            <i>פלאפון נוסף: </i>{{i.order.TDAdditionalPhone}}<br>
+                         </i>
+ 
+                        <i class="a" *ngIf="i.tOrG==2">
+                             <i class="iii">נתינת חבילה:</i><br>
                             <i>כתובת: </i>{{i.order.GDNameAddress!}}
                             <i>מספר דירה: </i>{{i.order.GDApartmentNumber!}}
                             <i>שם מלא: </i>{{i.order.GDFirstName!}}
                             {{i.order.GDLastName!}}
                             <i>פלאפון: </i>{{i.order.GDPhone!}}
-                            <i>פלאפון נוסף: </i>{{i.order.GDAdditionalPhone!}}
+                            <i>פלאפון נוסף: </i>{{i.order.GDAdditionalPhone}}
+                        </i>
                         </p>
                         <p style="color: #fdec00;">
                             ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

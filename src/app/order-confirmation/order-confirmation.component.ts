@@ -10,6 +10,9 @@ export class OrderConfirmationComponent implements OnInit {
 
   constructor(public takingDeliveryService:TakingDeliveryService) { }
 
+  currentDate:Date=new Date();
+  
+  
   ngOnInit(): void {
     debugger
     this.takingDeliveryService.GetAllOrder().subscribe(data=>

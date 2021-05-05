@@ -9,7 +9,7 @@
         <p class="p1">על מנת שלא ייווצרו חילופין עם חבילות<br>
         יש להדפיס את פרטי יעד המשלוח ולהדביק על החבילה</p>
         <div id="printDoc"  class="div1 text-center"><br>
-            <p class="p3">:כתובת מלאה<br>{{takingDeliveryService.newTakingDelivery.OrderID}}</p>
+            <p class="p3">:קוד הזמנה<br>{{takingDeliveryService.newTakingDelivery.OrderID}}</p>
             <p class="p2">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
             <p class="p3">:כתובת מלאה<br>{{takingDeliveryService.newTakingDelivery.GDNameAddress}}</p>
             <p class="p2">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
@@ -18,8 +18,13 @@
             <p class="p3">:שם פרטי<br>{{takingDeliveryService.newTakingDelivery.GDFirstName}}</p>
             <p class="p2">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
             <p class="p3">:שם משפחה<br>{{takingDeliveryService.newTakingDelivery.GDLastName}}</p>
-        </div>
-        <button type="button" class="button1" (click)="printComponent('printDoc')">הדפסה</button>
+        </div>       
+        <!-- <button type="button" class="button1" ><span
+            style="text-align: center;" class="i glyphicon glyphicon-print"></span><br></button> -->
+
+            <a type="button" (click)="printComponent('printDoc')"><span
+                 class="i glyphicon glyphicon-print"></span></a><br>
+
         <button type="button" class="button2" [routerLink]="['/OrderConfirmation']">המשך</button>
     </div>
 </section>

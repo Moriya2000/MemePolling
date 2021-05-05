@@ -41,13 +41,13 @@
         <li *ngIf="clientService.typeUserClient"><a [routerLink]="['/OrderTracking']" style="text-align: center;"><span class="glyphicon glyphicon-envelope" ></span><br>ההזמנות שלי</a></li>
         
         
-        <li *ngIf="clientService.typeUserClient"><a [routerLink]="['/Delivery']"><br>ביצוע הזמנה</a></li>
+        <li *ngIf="clientService.typeUserClient"><a [routerLink]="['/Delivery']" style="text-align: center;"><span class="fas fa-tv" ></span><br>ביצוע הזמנה</a></li>
         <li><a [routerLink]="['/Home']" style="text-align: center;"><span class="fa fa-home"><br>דף הבית</span></a></li>
         <li *ngIf="clientService.conected||sendingCompanyService.conected"><a href="#" style="text-align: center;" ><span
           class="glyphicon glyphicon-log-out"></span><br>יציאה</a></li>
         <!-- <li><a [routerLink]="['/OrderTracking']">צור קשר</a></li> -->
         <!-- <li><a href="#WebsiteTerms">תנאי האתר</a></li> -->
-        <!-- <li><a [routerLink]="['/SiteTermCompany']">אודותינו</a></li> -->
+        <!-- <li><a [routerLink]="['/AddressPrinting']">אודותינו</a></li> -->
         <!-- <li><a [routerLink]="['/Home']">דף הבית</a></li> -->
       </ul>
     </div>
@@ -139,10 +139,10 @@
                 class="input1 form-control" id="Password" name="Password" required>
               <img src="../../assets/Images/loginC.jpg" class="img-responsive" style="position: absolute; right: 412px;top:1px; border-top-right-radius: 50%;border-bottom-right-radius: 50%;" >
 
-              <button *ngIf="l" class="button3 btn-lg" data-toggle="modal" data-target="#myModalRegister" data-dismiss="modal">העברה להרשמה</button><br>
+              <!-- <button *ngIf="l" class="button3 btn-lg" data-toggle="modal" data-target="#myModalRegister" data-dismiss="modal">העברה להרשמה</button><br> -->
 
               <button (click)="EnterClient()" type="submit" class="button2 btn-lg"
-                [disabled]="!myForm2.valid">כניסה</button>          
+                [disabled]="!myForm2.valid" data-dismiss="modal">כניסה</button>          
               <!-- כפתור העברה להרשמה -->
               <!-- <div data-toggle="modal"  data-target="#myModalRegister"></div> -->
 

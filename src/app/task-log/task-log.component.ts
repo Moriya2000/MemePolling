@@ -126,7 +126,7 @@ showOrHide: boolean = true
           a.ClientID, a.OrderDate, a.DeliveryTypeID, a.Amount, a.Volume, a.DeliveryUrgencyID, a.FinalPay, a.Note)
         )
         this.createListToMishloach();
-        if (this.distance1 <= 40000) {
+        if (this.distance1 <= 400000) {
           let a = Object.assign({}, this.list1.find(x => x.OrderID == this.listPlaceses[0].idOrder)!)
 
           this.listOrderToMaslulChadash.push(new OrderToMaslul(new AllOrder(a.TakingDeliveryID, a.TDOrderID, a.TDCityID, a.TDStreetID, a.TDBuildingNumber, a.TDEntranceBuilding, a.TDFloorNumber,

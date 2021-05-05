@@ -183,7 +183,6 @@ export class DeliveryComponent implements OnInit {
   }
 }
 
-
 export class DayInDeliveyUrgency {
   constructor(public numDayDeliveryUrgency: number, public nameDayDeliveryUrgency: string, public showOrHide: boolean) { }
 }

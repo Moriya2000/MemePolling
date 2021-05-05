@@ -21,7 +21,7 @@
 }
 .div1{
     height: 400px;
-    width:17%;
+    width:16%;
     float: right;
     margin-top: 2%;
 }
@@ -68,13 +68,13 @@ a{
 
 .order{
     margin-top: 2%;
-
-    width: 79%;
-    height: 500px;
+    width: 83%;
+    /* height: 10vw; */
     float: right;
-    margin-right: 3%;
-/* border-color: black;
-border-style: dashed;} */}
+    /* margin-right: 1%; */
+/* border-color: black; */
+/* border-style: dashed; */
+overflow:hidden}
 i
 {
     font-size: 17px;
@@ -157,3 +157,47 @@ h1{
     margin-top: -30px;
     margin-bottom: 2%;
 }
+.a{
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.637);
+    font-size: 16px;
+    font-style: normal;font-family: Arial, Helvetica, sans-serif;
+}
+
+.pppp {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .pppp .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(139, 139, 139);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .pppp .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  .pppp:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
