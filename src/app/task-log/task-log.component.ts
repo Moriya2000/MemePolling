@@ -26,9 +26,10 @@ export class TaskLogComponent implements OnInit {
   list1: Array<AllOrder> = new Array<AllOrder>()
 
   address: string = ""
-  constructor(public deliveryRoutesService: DeliveryRoutesService, public sendingCompanyService: SendingCompanyService, public ser: TakingDeliveryService, public destinationsRouteService: DestinationsRouteService) { }
-gg:boolean=false
-showOrHide: boolean = true
+  gg: boolean = false
+  showOrHide: boolean = true
+  constructor(public deliveryRoutesService: DeliveryRoutesService, public sendingCompanyService: SendingCompanyService, 
+              public ser: TakingDeliveryService, public destinationsRouteService: DestinationsRouteService) { }
 
   ngOnInit(): void {
     // this.showOrHide=true;
@@ -38,10 +39,7 @@ showOrHide: boolean = true
         for (let i = 0; i < myData.length; i++)
           for (let j = 0; j < myData[i].length; j++)
             this.bb.push(myData[i][j])
-
-
       })
-
 
     //שליפת פרטי חברת שליחויות
     this.sendingCompanyService.GetIdAllDetailsCompany().subscribe(data => {
@@ -49,8 +47,6 @@ showOrHide: boolean = true
     })
 
   }
-
-
   createaslulByAdressfromManager(address: Address) {
     debugger
     let index = 0;
@@ -64,7 +60,6 @@ showOrHide: boolean = true
       x.forEach(y => this.listPlaceses.push(new addressToSort(y.OrderID, 1, y.TDlatAddress, y.TDlngaddress, index)));
       index++;
     })
-    debugger
     this.sortAddress(address.geometry.location.lat(), address.geometry.location.lng());
     let addressKarov = this.listPlaceses[0]
     // this.list1 = this.aa[addressKarov.index!]
@@ -82,10 +77,8 @@ showOrHide: boolean = true
       a.ClientID, a.OrderDate, a.DeliveryTypeID, a.Amount, a.Volume, a.DeliveryUrgencyID, a.FinalPay, a.Note), 1))
     this.list1.find(x => x.OrderID == addressKarov.idOrder)!.TDaddToList = true;
 
-    debugger
     while (this.list1.length > 0) {
       this.listPlaceses = new Array();
-      debugger
       for (let j = 0; j < this.list1.length; j++) {
         if (this.list1[j].TDaddToList != true) {
           this.listPlaceses.push(new addressToSort(this.list1[j].OrderID, 1, this.list1[j].TDlatAddress, this.list1[j].TDlngaddress))
@@ -104,68 +97,57 @@ showOrHide: boolean = true
       for (let index1 = 0; index1 < this.listOrderToMaslulChadash.length; index1++) {
         if (this.listOrderToMaslulChadash[index1].tOrG == 1) {
           let a = Object.assign({}, this.listOrderToMaslulChadash[index1].order)
-
           this.listOrderToSort.push(new AllOrder(a.TakingDeliveryID, a.TDOrderID, a.TDCityID, a.TDStreetID, a.TDBuildingNumber, a.TDEntranceBuilding, a.TDFloorNumber,
             a.TDApartmentNumber, a.TDFirstName, a.TDLastName, a.TDPhone, a.TDAdditionalPhone, a.TDEmail, a.TDPickUpTime, a.TDPickUpTimeUntil, a.TDlatAddress, a.TDlngaddress,
             a.TDNameAddress, a.TDaddToList, a.GivingDeliveryID, a.GDOrderID, a.GDCityID, a.GDStreetID, a.GDBuildingNumber,
             a.GDEntranceBuilding, a.GDFloorNumber, a.GDApartmentNumber, a.GDFirstName, a.GDLastName, a.GDPhone, a.GDAdditionalPhone,
-
             a.GDEmail, a.GDPickUpTime, a.GDPickUpTimeUntil, a.GDlatAddress, a.GDlngAddress, a.GDNameAddress, a.GDaddToList, a.OrderID,
             a.ClientID, a.OrderDate, a.DeliveryTypeID, a.Amount, a.Volume, a.DeliveryUrgencyID, a.FinalPay, a.Note))
         }
       }
       if (this.listPlaceses[0].tOrG == 1) {
         let a = Object.assign({}, this.list1.find(x => x.OrderID == this.listPlaceses[0].idOrder)!)
-
         this.listOrderToSort.push(new AllOrder(a.TakingDeliveryID, a.TDOrderID, a.TDCityID, a.TDStreetID, a.TDBuildingNumber, a.TDEntranceBuilding, a.TDFloorNumber,
           a.TDApartmentNumber, a.TDFirstName, a.TDLastName, a.TDPhone, a.TDAdditionalPhone, a.TDEmail, a.TDPickUpTime, a.TDPickUpTimeUntil, a.TDlatAddress, a.TDlngaddress,
           a.TDNameAddress, a.TDaddToList, a.GivingDeliveryID, a.GDOrderID, a.GDCityID, a.GDStreetID, a.GDBuildingNumber,
           a.GDEntranceBuilding, a.GDFloorNumber, a.GDApartmentNumber, a.GDFirstName, a.GDLastName, a.GDPhone, a.GDAdditionalPhone,
-
           a.GDEmail, a.GDPickUpTime, a.GDPickUpTimeUntil, a.GDlatAddress, a.GDlngAddress, a.GDNameAddress, a.GDaddToList, a.OrderID,
           a.ClientID, a.OrderDate, a.DeliveryTypeID, a.Amount, a.Volume, a.DeliveryUrgencyID, a.FinalPay, a.Note)
         )
         this.createListToMishloach();
         if (this.distance1 <= 400000) {
           let a = Object.assign({}, this.list1.find(x => x.OrderID == this.listPlaceses[0].idOrder)!)
-
           this.listOrderToMaslulChadash.push(new OrderToMaslul(new AllOrder(a.TakingDeliveryID, a.TDOrderID, a.TDCityID, a.TDStreetID, a.TDBuildingNumber, a.TDEntranceBuilding, a.TDFloorNumber,
             a.TDApartmentNumber, a.TDFirstName, a.TDLastName, a.TDPhone, a.TDAdditionalPhone, a.TDEmail, a.TDPickUpTime, a.TDPickUpTimeUntil, a.TDlatAddress, a.TDlngaddress,
             a.TDNameAddress, a.TDaddToList, a.GivingDeliveryID, a.GDOrderID, a.GDCityID, a.GDStreetID, a.GDBuildingNumber,
             a.GDEntranceBuilding, a.GDFloorNumber, a.GDApartmentNumber, a.GDFirstName, a.GDLastName, a.GDPhone, a.GDAdditionalPhone,
-
             a.GDEmail, a.GDPickUpTime, a.GDPickUpTimeUntil, a.GDlatAddress, a.GDlngAddress, a.GDNameAddress, a.GDaddToList, a.OrderID,
             a.ClientID, a.OrderDate, a.DeliveryTypeID, a.Amount, a.Volume, a.DeliveryUrgencyID, a.FinalPay, a.Note), 1))
-
           this.list1.find(x => x.OrderID == this.listPlaceses[0].idOrder)!.TDaddToList = true;
         }
         else {
-
           this.list1.splice(this.list1.findIndex(x => x.OrderID == this.listPlaceses[0].idOrder), 1)
         }
       }
       else {
         let a = Object.assign({}, this.list1.find(x => x.OrderID == this.listPlaceses[0].idOrder)!)
-
-
         this.listOrderToMaslulChadash.push(new OrderToMaslul(new AllOrder(a.TakingDeliveryID, a.TDOrderID, a.TDCityID, a.TDStreetID, a.TDBuildingNumber, a.TDEntranceBuilding, a.TDFloorNumber,
           a.TDApartmentNumber, a.TDFirstName, a.TDLastName, a.TDPhone, a.TDAdditionalPhone, a.TDEmail, a.TDPickUpTime, a.TDPickUpTimeUntil, a.TDlatAddress, a.TDlngaddress,
           a.TDNameAddress, a.TDaddToList, a.GivingDeliveryID, a.GDOrderID, a.GDCityID, a.GDStreetID, a.GDBuildingNumber,
           a.GDEntranceBuilding, a.GDFloorNumber, a.GDApartmentNumber, a.GDFirstName, a.GDLastName, a.GDPhone, a.GDAdditionalPhone,
-
           a.GDEmail, a.GDPickUpTime, a.GDPickUpTimeUntil, a.GDlatAddress, a.GDlngAddress, a.GDNameAddress, a.GDaddToList, a.OrderID,
           a.ClientID, a.OrderDate, a.DeliveryTypeID, a.Amount, a.Volume, a.DeliveryUrgencyID, a.FinalPay, a.Note), 2))
         this.list1.find(x => x.OrderID == this.listPlaceses[0].idOrder)!.GDaddToList = true;
         this.list1.splice(this.list1.findIndex(x => x.OrderID == this.listPlaceses[0].idOrder), 1)
       }
     }
-    debugger
     console.log(this.listOrderToMaslulChadash);//זה הרשימה שהמשלוחן של הכתובת שהוכנסה צריך לעושות
   }
 
   handleAddressChange(event: any) {
     console.log(event);
   }
+
   distance1 = 0;
   createListToMishloach() {
     debugger
@@ -195,7 +177,6 @@ showOrHide: boolean = true
         this.listOrderToSort.find(o => o.OrderID == orderTop.idOrder)!.GDaddToList = true;
       i++;
     }
-
     for (let j = 0; j < this.listOrderToMaslul.length - 1; j++) {
       let before = new google.maps.LatLng(0, 0)
       let after = new google.maps.LatLng(0, 0)
@@ -211,7 +192,6 @@ showOrHide: boolean = true
       this.distance1 += co;
     }
   }
-
   listPlaceses: addressToSort[] = new Array()
   sortAddress(origLat: number = 0, origLong: number = 0) {
     this.listPlaceses = this.listPlaceses.sort((a: addressToSort, b: addressToSort) => {
@@ -238,53 +218,42 @@ showOrHide: boolean = true
     return dist;
   };
 
-
-
   deleteFromList() {
-    debugger
     //המסלול של העובד
-
     for (let z = 0; z < this.listOrderToMaslulChadash.length; z++) {
       //השליחויות שיש למנהל
       let d = this.bb.findIndex(x => x.OrderID == this.listOrderToMaslulChadash[z].order.OrderID)
       if (d != -1)
         this.bb.splice(d, 1);
-
-
       //המסלולים שיש למנהל
       for (let i = 0; i < this.aa.length; i++) {
         let c = this.aa[i].findIndex(x => x.OrderID == this.listOrderToMaslulChadash[z].order.OrderID)
         if (c != -1) {
           this.aa[i].splice(c, 1);
-
           break
         }
       }
     }
-    this.address="";
+    this.address = "";
   }
-
 
   orderPath() {
+    this.deliveryRoutesService.GetIdDeliveryRoutes(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(data => { this.deliveryRoutesService.listDeliveryRoutes = data }
+    )
+    this.destinationsRouteService.GetIdDestinationsRoute(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(data => {
+      this.destinationsRouteService.listCountOrder = data
+    })
 
-    this.deliveryRoutesService.GetIdDeliveryRoutes(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(data =>
-       { this.deliveryRoutesService.listDeliveryRoutes = data }
-      )
-      this.destinationsRouteService.GetIdDestinationsRoute(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(data=>{
-        this.destinationsRouteService.listCountOrder=data})
-       
-        debugger
-        this.destinationsRouteService.GetIdDestinationsRouteForSum(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(data=>{
-          this.destinationsRouteService.listSumSalary=data})
-          this.showOrHide=false;
+    this.destinationsRouteService.GetIdDestinationsRouteForSum(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(data => {
+      this.destinationsRouteService.listSumSalary = data
+    })
+    this.showOrHide = false;
 
   }
-
   updatSendingCompany() {
     debugger
     this.sendingCompanyService.newCompany = this.sendingCompanyService.companyConected;
   }
-
   delete() {
     debugger
     // this.sendingCompanyService.GetRemoveSendingCompany().subscribe(data =>
@@ -293,27 +262,9 @@ showOrHide: boolean = true
     alert("קיבלנו את בקשתך אך עלייך לבצע את כל השליחויות שלך וכבר בבוקר פעולתך באתרנו תסתיים")
   }
 }
-
-
-
 export class OrderToMaslul {
   constructor(public order: AllOrder, public tOrG: number) { }
 }
-
 export class addressToSort {
   constructor(public idOrder?: number, public tOrG?: number, public lat?: number, public lng?: number, public index?: number) { }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
