@@ -36,7 +36,6 @@
     color:#c1272d;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: bold;
-
 }
 .YellowLinealong{
     background:#fcee21;
@@ -52,7 +51,6 @@
     border-radius: 50%;
     margin-top: -220px;
     margin-left: 69.4%;
-
 }
 .div3{
     background:#c1272d;
@@ -61,36 +59,29 @@
     border-radius: 50%;
     margin-left: 69.4%;
 }
-
 a{
     cursor: pointer;
 }
-
 .order{
     margin-top: 2%;
     width: 83%;
-    /* height: 10vw; */
     float: right;
-    /* margin-right: 1%; */
-/* border-color: black; */
-/* border-style: dashed; */
-overflow:hidden}
-i
-{
+    overflow:hidden
+}
+i{
     font-size: 17px;
     font-weight: bold;
     padding-left: 2px;
-     padding-right: 5px;
+    padding-right: 5px;
     color: rgba(0, 0, 0, 0.911);
-text-transform: capitalize;
-font-family:"Trebuchet MS", Verdana, sans-serif;
-font-style: normal;
+    text-transform: capitalize;
+    font-family:"Trebuchet MS", Verdana, sans-serif;
+    font-style: normal;
 }
 .p2{
     color: rgba(0, 0, 0, 0.747);
     font-size: 16px;
 }
-
 .input1{
     width: 25%;
     margin-right: 5%; 
@@ -120,7 +111,7 @@ font-style: normal;
 h1{
     color: #f5ea57;
     text-shadow: 1px 1px 1px #0303031e,
-             1px 1px 1px #0c0c0b;
+                 1px 1px 1px #0c0c0b;
     font-weight: bold;
     text-align: center;
 }
@@ -138,11 +129,8 @@ h1{
     color:rgb(0, 0, 0);
     border-color: #fdec00;
     text-align: center;
-    /* float: right; */
     font-weight: bold;
     margin-left:50%;
-    /* margin-bottom: 2%; */
-    /* margin-top: 30%; */
 }
 .button1{
     width: 15%;
@@ -153,7 +141,6 @@ h1{
     text-align: center;
     font-weight: bold;
     margin-left: 33%;
-    /* margin-bottom: 2%; */
     margin-top: -30px;
     margin-bottom: 2%;
 }
@@ -163,13 +150,11 @@ h1{
     font-size: 16px;
     font-style: normal;font-family: Arial, Helvetica, sans-serif;
 }
-
 .pppp {
     position: relative;
     display: inline-block;
-  }
-  
-  .pppp .tooltiptext {
+}
+.pppp .tooltiptext {
     visibility: hidden;
     width: 120px;
     background-color: rgb(139, 139, 139);
@@ -184,9 +169,8 @@ h1{
     margin-left: -60px;
     opacity: 0;
     transition: opacity 0.3s;
-  }
-  
-  .pppp .tooltiptext::after {
+} 
+.pppp .tooltiptext::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -195,9 +179,8 @@ h1{
     border-width: 5px;
     border-style: solid;
     border-color: #555 transparent transparent transparent;
-  }
-  
-  .pppp:hover .tooltiptext {
+} 
+.pppp:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
-  }
+}
