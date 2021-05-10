@@ -4,13 +4,12 @@ import { Observable } from 'rxjs';
 import { AllOrder } from '../classes/AllOrder';
 import { TakingDelivery } from '../classes/TakingDelivery';
 
-
 @Injectable({
   providedIn: 'root'
 })
 
 export class TakingDeliveryService {
-
+  
   listTakingDelivery: Array<TakingDelivery> = new Array<TakingDelivery>();
   newTakingDelivery: AllOrder = new AllOrder();
 
@@ -27,12 +26,12 @@ export class TakingDeliveryService {
     return this.http.get<AllOrder>(this.url + "/GetAllOrder/" + this.newTakingDelivery.OrderID)
   }
 
+  //שליפת כל ההזמנות 
   GetAddAllOrder(c: AllOrder): Observable<AllOrder> {
     this.newTakingDelivery.OrderDate = new Date();
-    this.newTakingDelivery.FinalPay = 1;
-    this.newTakingDelivery.Note = "tgfhdfhdf";
     return this.http.put<AllOrder>(this.url + "/GetAddAllOrder", c);
   }
+
   //שליפה של רשימת ההזמנות מתוך רשימת המסלולים מתוך רשימת החברות
   GetAllOrder1(id: number): Observable<Array<Array<AllOrder>>> {
     return this.http.get<Array<Array<AllOrder>>>(this.url + "/GetAllOrderByIdCompany/" + id);
