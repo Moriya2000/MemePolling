@@ -12,18 +12,13 @@ import { TakingDeliveryService } from '../services/taking-delivery.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public takingDeliveryService:TakingDeliveryService) { }
+  constructor(public takingDeliveryService: TakingDeliveryService) { }
 
   ngOnInit(): void {
-this.takingDeliveryService.newTakingDelivery=new AllOrder();
+    this.takingDeliveryService.newTakingDelivery = new AllOrder();
   }
-//   scroll(el: HTMLElement) {
-//     el.scrollIntoView();
-// }
 
-scroll(el: HTMLElement) {
-  el.scrollIntoView({behavior: 'smooth'});
-}
-
-
+  scroll(el: HTMLElement) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
 }
