@@ -10,13 +10,13 @@
             <p class="p">!הזמנתך הסתיימה בהצלחה</p>
             <p class="p1">תודה שהשתמשת בשירות שלנו</p>
             <div class="div1 text-center"><br>
-                <p class="p3">:שם מלא</p>{{takingDeliveryService.newTakingDelivery. TDFirstName}}
-                    {{takingDeliveryService.newTakingDelivery.TDLastName}}
+                <p class="p3">:שם מלא</p><p class="p5">{{takingDeliveryService.newTakingDelivery. TDFirstName}}
+                    {{takingDeliveryService.newTakingDelivery.TDLastName}}</p>
 
                 <!-- <p class="p3">:שם משפחה<br>{{takingDeliveryService.newTakingDelivery.TDLastName}}</p><br> -->
-                <br><p class="p3">:תאריך ההזמנה</p>{{currentDate | date:'yyyy-MM-dd'}}<br>
+                <p class="p3">:תאריך ההזמנה</p><p class="p5">{{currentDate | date:'yyyy-MM-dd'}}</p><br>
             </div>
-            <p class="p2">₪</p>{{takingDeliveryService.newTakingDelivery.FinalPay | number : '1.2-2'}}
+            <br><br><p class="p2">₪{{takingDeliveryService.newTakingDelivery.FinalPay | number : '1.2-2'}}</p>
             <p class="p4" style="text-align: center;"><span
                 class="fa fa-check"></span>שולם</p>
         </div>

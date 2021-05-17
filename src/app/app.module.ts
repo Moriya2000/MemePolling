@@ -8,8 +8,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
-import { ClientLoginComponent } from './client-login/client-login.component';
-import { ClientRegisterComponent } from './client-register/client-register.component';
 import { CityService } from './services/city.service';
 import { ClientService } from './services/client.service';
 import { GivingDeliveryService } from './services/giving-delivery.service';
@@ -27,13 +25,10 @@ import { OrderConfirmationComponent } from './order-confirmation/order-confirmat
 import { NoteComponent } from './note/note.component';
 import { google } from "google-maps";
 import {GooglePlaceModule} from "ngx-google-places-autocomplete";
-import { LoginCompanyComponent } from './login-company/login-company.component';
 import { MyRoutesComponent } from './my-routes/my-routes.component';
 
 const rout: Routes=[
-  {path:"ClientRegister",component:ClientRegisterComponent},
   {path:"Home",component:HomeComponent},
-  {path:"ClientLogin",component:ClientLoginComponent},
   {path:"Delivery",component:DeliveryComponent},
   {path:"AllDetailsCompany",component:AllDetailsCompanyComponent},
   {path:"SiteTermsClient",component:SiteTermsClientComponent},
@@ -44,7 +39,6 @@ const rout: Routes=[
   {path:"AddressPrinting",component:AddressPrintingComponent},
   {path:"OrderConfirmation",component:OrderConfirmationComponent},
   {path:"Note",component:NoteComponent},
-  {path:"LoginCompany",component:LoginCompanyComponent},
   {path:"MyRoutes",component:MyRoutesComponent},
 ]
 
@@ -54,8 +48,6 @@ const rout: Routes=[
     HomeComponent,
     NavComponent,
     FooterComponent,
-    ClientLoginComponent,
-    ClientRegisterComponent,
     SiteTermsClientComponent,
     DeliveryComponent,
     AllDetailsCompanyComponent,
@@ -66,7 +58,6 @@ const rout: Routes=[
     AddressPrintingComponent,
     OrderConfirmationComponent,
     NoteComponent,
-    LoginCompanyComponent,
     MyRoutesComponent,
   ],
   imports: [
@@ -77,9 +68,6 @@ const rout: Routes=[
      GooglePlaceModule
   ],
   providers: [ClientService,CityService,OrderService,GivingDeliveryService,TakingDeliveryService,],
-  // BusinessDaysService,CarsTypesService,,CompanyBankDetailsService,DeliveryRoutesService,
-  // DeliveryTypeService,DeliveryUrgencyService,DestinationsRouteService,SendingCompanyService,
-  // StreetService
   bootstrap: [AppComponent]
 })
 export class AppModule { }

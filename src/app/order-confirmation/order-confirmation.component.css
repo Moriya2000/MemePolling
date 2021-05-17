@@ -52,7 +52,7 @@
 
 }
 .p3{
-    font-size: 19px;
+    font-size: 21px;
     color:black;
     text-align: center;
     font-weight: bold;
@@ -93,4 +93,7 @@ span{
     cursor: pointer;
     margin-top: 2%;
 
+  }
+  .p5{
+    font-size: 17px;
   }
