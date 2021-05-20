@@ -98,6 +98,15 @@ i{
     margin-right: 20%;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+.not{
+    float: right;
+    font-size: 30px;
+    color:black;
+    font-weight: bold;
+    margin-right: 30%;
+    margin-top: 10%;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 .btnShortRout{
     width: 11%;
     background-color: #c1272d;
@@ -109,6 +118,13 @@ i{
     margin-top: 1%;
 }
 h1{
+    color: #f5ea57;
+    text-shadow: 1px 1px 1px #0303031e,
+                 1px 1px 1px #0c0c0b;
+    font-weight: bold;
+    text-align: center;
+}
+h2{
     color: #f5ea57;
     text-shadow: 1px 1px 1px #0303031e,
                  1px 1px 1px #0c0c0b;

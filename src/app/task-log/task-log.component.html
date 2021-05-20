@@ -20,15 +20,20 @@
                         <p class="p1">עדכון פרטי החברה שלי</p>
                     </a><br>
                     <div class="YellowLineLeft1"></div><br>
-                    <a  (click)="delete()">
+                    <a (click)="delete()">
                         <p class="p1">מחיקת המשתמש שלי</p>
                     </a><br>
                     <div class="YellowLineLeft1"></div><br>
                 </div>
-                <div *ngIf="!showOrHide">
+                <div *ngIf="showOrHide==false">
                     <div class="order" dir="rtl">
-
-                        <div *ngFor="let item of deliveryRoutesService.listDeliveryRoutes">
+                        <div *ngFor="let z of listOrderPath">
+                            <p class="p2"><i>משלוח מספר:</i>{{z.OrderID!}}
+                                <i>אספו את המשלוח מ:</i> {{z.TDNameAddress!}}
+                                <i>נתנו את המשלוח ב:</i> {{z.GDNameAddress!}}
+                            </p>
+                        </div>
+                        <!-- <div *ngFor="let item of deliveryRoutesService.listDeliveryRoutes">
                             <p class="p2"><i>תאריך שבו בוצע השליחות: </i>{{item.Date | slice: 0:10}}</p>
                         </div>
                         <div *ngFor="let item1 of destinationsRouteService.listCountOrder">
@@ -36,20 +41,21 @@
                         </div>
                         <div *ngFor="let item of destinationsRouteService.listSumSalary" style="float: right;">
                             <p class="p2"><i>תשלום לחברה לכל מסלול: </i>{{item | number : '1.2-2'}}</p>
-                        </div>
-
+                        </div> -->
                     </div>
                 </div>
                 <div *ngIf="showOrHide==true">
                     <div class="order" dir="rtl">
-                        <i class="ii" dir="rtl">אנא הכנס כתובת שמישם מתכננים לצאת למסלול</i><br><br><input dir="rtl"
-                            class="input1 form-control" id="addrss" ngx-google-places-autocomplete
-                            #placesRef="ngx-places" [(ngModel)]="address"
-                            (onAddressChange)="createaslulByAdressfromManager($event)" required name="place" /><br><br>
-
-                        <button class="btnShortRout" *ngIf="address" data-toggle="modal" data-target="#ShortRoute"
-                            style="float: none; margin-right: -18%;">אישור</button><br><br>
-
+                        <i class="not" *ngIf="input==false" dir="rtl">אין לך שליחויות!</i><br><br>
+                        <div *ngIf="input==true">
+                            <i class="ii" dir="rtl">אנא הכנס כתובת שמישם מתכננים לצאת למסלול</i><br><br>
+                            <input dir="rtl" class="input1 form-control" id="addrss" ngx-google-places-autocomplete
+                                #placesRef="ngx-places" [(ngModel)]="address"
+                                (onAddressChange)="createaslulByAdressfromManager($event)" required
+                                name="place" /><br><br>
+                            <button class="btnShortRout" *ngIf="address" data-toggle="modal" data-target="#ShortRoute"
+                                style="float: none; margin-right: -18%;">אישור</button><br><br>
+                        </div>
                         <div *ngFor="let i of bb">
                             <p class="p2"><i>משלוח מספר:</i>{{i.OrderID!}}
                                 <i>אוספים את המשלוח מ:</i> {{i.TDNameAddress!}}
@@ -57,7 +63,6 @@
                             </p>
                         </div>
                     </div>
-
                 </div>
                 <!-- המסלול והמשלוחים שכתובת זו צריכה לבצע
                 <div *ngFor="let i of listOrderToMaslulChadash">
@@ -70,10 +75,7 @@
     </div>
 </section>
 
-
-
-
-<!-- הרשמה לאתר ללקוח -->
+<!-- מסלול קצר -->
 <div class="container mt-3">
     <div class="modal fade" id="ShortRoute" style="margin-top: 7%;">
         <div class="modal-dialog" style="width: 70%;">
@@ -89,33 +91,53 @@
                             <i style="font-size: 15px;">מספר משלוח: </i>{{i.order.OrderID!}}<br>
                             <!-- <i>נפח המשלוח: </i>{{i.order.Volume!}} -->
 
-                         <i class="a" *ngIf="i.tOrG==1">
-                            <i class="iii">איסוף חבילה:</i><br>
-                            <i>כתובת: </i>{{i.order.TDNameAddress!}}
-                            <i>מספר דירה: </i>{{i.order.TDApartmentNumber!}}
-                            <i>שם מלא: </i>{{i.order.TDFirstName!}}
-                            {{i.order.TDLastName!}}
-                            <i>פלאפון: </i>{{i.order.TDPhone!}}
-                            <i>פלאפון נוסף: </i>{{i.order.TDAdditionalPhone}}<br>
-                         </i>
- 
-                        <i class="a" *ngIf="i.tOrG==2">
-                             <i class="iii">נתינת חבילה:</i><br>
-                            <i>כתובת: </i>{{i.order.GDNameAddress!}}
-                            <i>מספר דירה: </i>{{i.order.GDApartmentNumber!}}
-                            <i>שם מלא: </i>{{i.order.GDFirstName!}}
-                            {{i.order.GDLastName!}}
-                            <i>פלאפון: </i>{{i.order.GDPhone!}}
-                            <i>פלאפון נוסף: </i>{{i.order.GDAdditionalPhone}}
-                        </i>
+                            <i class="a" *ngIf="i.tOrG==1">
+                                <i class="iii">איסוף חבילה:</i><br>
+                                <i>כתובת: </i>{{i.order.TDNameAddress!}}
+                                <i>מספר דירה: </i>{{i.order.TDApartmentNumber!}}
+                                <i>שם מלא: </i>{{i.order.TDFirstName!}}
+                                {{i.order.TDLastName!}}
+                                <i>פלאפון: </i>{{i.order.TDPhone!}}
+                                <i>פלאפון נוסף: </i>{{i.order.TDAdditionalPhone}}<br>
+                            </i>
+
+                            <i class="a" *ngIf="i.tOrG==2">
+                                <i class="iii">נתינת חבילה:</i><br>
+                                <i>כתובת: </i>{{i.order.GDNameAddress!}}
+                                <i>מספר דירה: </i>{{i.order.GDApartmentNumber!}}
+                                <i>שם מלא: </i>{{i.order.GDFirstName!}}
+                                {{i.order.GDLastName!}}
+                                <i>פלאפון: </i>{{i.order.GDPhone!}}
+                                <i>פלאפון נוסף: </i>{{i.order.GDAdditionalPhone}}
+                            </i>
                         </p>
                         <p style="color: #fdec00;">
                             ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
                         </p>
                     </div>
                 </div>
-                <button type="button" class="button" (click)="deleteFromList()" data-dismiss="modal">אישור</button>
+                <button type="button" class="button" (click)="deleteFromList()" data-dismiss="modal" data-toggle="modal"
+                    data-target="#email">אישור</button>
                 <button type="button" class="button1" data-dismiss="modal">ביטול</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- שליחת מייל -->
+<div class="container mt-3">
+    <div class="modal fade" id="email" style="margin-top: 7%;">
+        <div class="modal-dialog" style="width: 40%;">
+            <div class="modal-content" style="display: flex; flex-direction: column; min-height: 10vh;">
+                <button type="button" class="close" data-dismiss="modal"
+                    style="margin-right:-95%; margin-top: 1.5%;">×</button>
+                <h2>אנא הכנס את כותבת המייל של העובד</h2><br>
+                <div dir="rtl">
+                    <input type="email" #ngSendEmail="ngModel" [(ngModel)]="send"
+                        style="border-color: #fdec00;margin-right: 36%;"><br><br>
+                </div>
+                <button type="button" class="button" (click)="sendEmail(send)" data-dismiss="modal">אישור</button>
+                <!-- <button type="button" class="button1" data-dismiss="modal">ביטול</button> -->
             </div>
         </div>
     </div>

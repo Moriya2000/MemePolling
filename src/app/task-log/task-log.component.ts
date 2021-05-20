@@ -25,28 +25,40 @@ export class TaskLogComponent implements OnInit {
   bb: Array<AllOrder> = new Array<AllOrder>();
   list1: Array<AllOrder> = new Array<AllOrder>()
 
+
+  listOrderPath: Array<AllOrder> = new Array<AllOrder>();
+
+  listOrderToWorker: Array<string> = new Array<string>();
+  sendListOrderToWorker: Array<string> = new Array<string>();
+
   address: string = ""
   gg: boolean = false
   showOrHide: boolean = true
-  constructor(public deliveryRoutesService: DeliveryRoutesService, public sendingCompanyService: SendingCompanyService, 
-              public ser: TakingDeliveryService, public destinationsRouteService: DestinationsRouteService) { }
+  send: string = ""
+  yesOrNot: number = -1
+  input: boolean = true
+  orderPathV: boolean = true
+  constructor(public deliveryRoutesService: DeliveryRoutesService, public sendingCompanyService: SendingCompanyService,
+    public ser: TakingDeliveryService, public destinationsRouteService: DestinationsRouteService) { }
 
   ngOnInit(): void {
-    // this.showOrHide=true;
     this.ser.GetAllOrder1(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(
       myData => {
         this.aa = myData
-        for (let i = 0; i < myData.length; i++)
-          for (let j = 0; j < myData[i].length; j++)
+        for (let i = 0; i < myData.length; i++) {
+          for (let j = 0; j < myData[i].length; j++) {
             this.bb.push(myData[i][j])
+            this.listOrderPath.push(myData[i][j])
+          }
+        }
       })
-
     //שליפת פרטי חברת שליחויות
     this.sendingCompanyService.GetIdAllDetailsCompany().subscribe(data => {
       this.sendingCompanyService.newCompany = data
     })
 
   }
+
   createaslulByAdressfromManager(address: Address) {
     debugger
     let index = 0;
@@ -219,12 +231,21 @@ export class TaskLogComponent implements OnInit {
   };
 
   deleteFromList() {
+    this.listOrderToWorker = new Array();
     //המסלול של העובד
+    debugger
     for (let z = 0; z < this.listOrderToMaslulChadash.length; z++) {
+      if (this.listOrderToMaslulChadash[z].tOrG == 1)
+        this.listOrderToWorker.push(this.listOrderToMaslulChadash[z].order.TDNameAddress!)
+      else
+        this.listOrderToWorker.push(this.listOrderToMaslulChadash[z].order.GDNameAddress!)
       //השליחויות שיש למנהל
       let d = this.bb.findIndex(x => x.OrderID == this.listOrderToMaslulChadash[z].order.OrderID)
       if (d != -1)
         this.bb.splice(d, 1);
+      if (this.bb.length == 0)
+        this.input = false
+
       //המסלולים שיש למנהל
       for (let i = 0; i < this.aa.length; i++) {
         let c = this.aa[i].findIndex(x => x.OrderID == this.listOrderToMaslulChadash[z].order.OrderID)
@@ -232,24 +253,38 @@ export class TaskLogComponent implements OnInit {
           this.aa[i].splice(c, 1);
           break
         }
+
       }
     }
     this.address = "";
+    this.sendListOrderToWorker = this.listOrderToWorker;
   }
+
+  // orderPath() {
+  //   this.deliveryRoutesService.GetIdDeliveryRoutes(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(data => { this.deliveryRoutesService.listDeliveryRoutes = data }
+  //   )
+  //   this.destinationsRouteService.GetIdDestinationsRoute(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(data => {
+  //     this.destinationsRouteService.listCountOrder = data
+  //   })
+
+  //   this.destinationsRouteService.GetIdDestinationsRouteForSum(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(data => {
+  //     this.destinationsRouteService.listSumSalary = data
+  //   })
+  //   this.showOrHide = false;
+
+  // }
 
   orderPath() {
-    this.deliveryRoutesService.GetIdDeliveryRoutes(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(data => { this.deliveryRoutesService.listDeliveryRoutes = data }
-    )
-    this.destinationsRouteService.GetIdDestinationsRoute(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(data => {
-      this.destinationsRouteService.listCountOrder = data
-    })
-
-    this.destinationsRouteService.GetIdDestinationsRouteForSum(this.sendingCompanyService.currentCompany.SendingCompanyID!).subscribe(data => {
-      this.destinationsRouteService.listSumSalary = data
-    })
     this.showOrHide = false;
+  }
+
+  sendEmail(sendToEmail: string) {
+    debugger
+    this.deliveryRoutesService.GetSendEmail(sendToEmail, this.sendListOrderToWorker).subscribe(data => { this.yesOrNot = data });
+    this.sendListOrderToWorker = new Array();
 
   }
+
   updatSendingCompany() {
     debugger
     this.sendingCompanyService.newCompany = this.sendingCompanyService.companyConected;
@@ -259,6 +294,10 @@ export class TaskLogComponent implements OnInit {
     // this.sendingCompanyService.GetRemoveSendingCompany().subscribe(data =>
     //   this.sendingCompanyService.listCompany = data)
     // alert("החברה הוסרה בהצלחה")
+    if(this.bb.length==0)
+    alert("קיבלנו את בקשתך בלחיצה על אישור פעולתך באתרנו תסתיים")
+
+    else    
     alert("קיבלנו את בקשתך אך עלייך לבצע את כל השליחויות שלך וכבר בבוקר פעולתך באתרנו תסתיים")
   }
 }
