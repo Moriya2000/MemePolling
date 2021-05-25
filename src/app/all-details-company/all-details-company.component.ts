@@ -32,6 +32,8 @@ export class AllDetailsCompanyComponent implements OnInit, AfterViewInit {
   di: number = -1;
   ci: number = -1;
 
+  modal1:boolean=false
+
   ngAfterViewInit(): void {
     this.initialize()
   }
@@ -193,7 +195,8 @@ export class AllDetailsCompanyComponent implements OnInit, AfterViewInit {
             // this.sendingCompanyService.companyConected = this.sendingCompanyService.Company;
             this.sendingCompanyService.conected = true;
             // this.password2=this.sendingCompanyService.newCompany.Password!;
-            alert("הפרטים הוכנסו בהצלחה")
+            //alert("הפרטים הוכנסו בהצלחה")
+            this.modal1=true;
             this.rout.navigate(['/TaskLog']);
 
           }, err => { alert("error" + err) })
@@ -204,8 +207,10 @@ export class AllDetailsCompanyComponent implements OnInit, AfterViewInit {
           this.sendingCompanyService.newCompany.SendingCompanyID=this.sendingCompanyService.currentCompany.SendingCompanyID
           this.sendingCompanyService.GetUpdatSendingCompany1(this.sendingCompanyService.newCompany).subscribe(data =>
             this.sendingCompanyService.listCompany = data)
-          alert(" עודכנה בהצלחה")
-          this.rout.navigate(['/TaskLog']);
+            this.rout.navigate(['/TaskLog']);
+
+            this.modal1=true;
+          //alert(" עודכנה בהצלחה")
         }
         // this.sendingCompanyService.newCompany = new AllDetailsCompany();
       }

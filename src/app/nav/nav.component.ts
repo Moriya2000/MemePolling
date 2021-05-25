@@ -45,7 +45,7 @@ export class NavComponent implements OnInit {
     this.clientService.GetEmailAddressPassword(this.clientService.newClient.EmailAddress!, this.clientService.newClient.Password!)
       .subscribe(data => {
         if (data == 1) {
-          alert(" ברוך הבאה" + " " + this.clientService.newClient.EmailAddress);
+         // alert(" ברוך הבאה" + " " + this.clientService.newClient.EmailAddress);
           this.clientService.typeUserClient = true;
           this.clientService.conected = true;
           this.clientService.clientConected = this.clientService.newClient;
@@ -55,7 +55,7 @@ export class NavComponent implements OnInit {
         else {
           this.clientService.typeUserClient = false;
           this.l=true;
-          // alert("משתמש לא קיים במערכת");
+          alert("משתמש לא קיים במערכת");
           //להעביר אותו לדף ההרשמה!!!!!!!!!!!!!!!!!!
           // document.getElementById("myModalRegister")!.click();
           // this.route.navigate(['/Home']);
@@ -82,7 +82,7 @@ export class NavComponent implements OnInit {
             {
               debugger
               this.sendingCompanyService.currentCompany=data;  
-                   alert(" ברוך הבאה" + " " + this.sendingCompanyService.newCompany.CompanyNumber);
+                  // alert(" ברוך הבאה" + " " + this.sendingCompanyService.newCompany.CompanyNumber);
           this.route.navigate(['/TaskLog']);
             })
    

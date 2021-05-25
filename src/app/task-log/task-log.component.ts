@@ -289,16 +289,22 @@ export class TaskLogComponent implements OnInit {
     debugger
     this.sendingCompanyService.newCompany = this.sendingCompanyService.companyConected;
   }
+
+  modal1:boolean=false
   delete() {
     debugger
     // this.sendingCompanyService.GetRemoveSendingCompany().subscribe(data =>
     //   this.sendingCompanyService.listCompany = data)
     // alert("החברה הוסרה בהצלחה")
     if(this.bb.length==0)
-    alert("קיבלנו את בקשתך בלחיצה על אישור פעולתך באתרנו תסתיים")
-
+    {
+      this.modal1=true
+      // alert("קיבלנו את בקשתך בלחיצה על אישור פעולתך באתרנו תסתיים")
+    }
     else    
-    alert("קיבלנו את בקשתך אך עלייך לבצע את כל השליחויות שלך וכבר בבוקר פעולתך באתרנו תסתיים")
+    this.modal1=false
+
+    //alert("קיבלנו את בקשתך אך עלייך לבצע את כל השליחויות שלך וכבר בבוקר פעולתך באתרנו תסתיים")
   }
 }
 export class OrderToMaslul {

@@ -14,6 +14,7 @@ import { DeliveryUrgencyService } from '../services/delivery-urgency.service';
 import { StreetService } from '../services/street.service';
 import { TakingDeliveryService } from '../services/taking-delivery.service';
 
+
 @Component({
   selector: 'app-delivery',
   templateUrl: './delivery.component.html',
@@ -139,8 +140,13 @@ export class DeliveryComponent implements OnInit {
     }
     //אם החברה לא עובדת בעיר שבחר
     else
-      alert("אין משלוחים לעיר זו. בחר כתובת אחרת")
+    alert("אין משלוחים לעיר זו. בחר כתובת אחרת")
   }
+
+
+
+
+
   checkDeliveryType(typeId: any) {
     debugger
     this.takingDeliveryService.newTakingDelivery.DeliveryTypeID = typeId;
@@ -174,7 +180,7 @@ export class DeliveryComponent implements OnInit {
     else {
       this.takingDeliveryService.GetUpdatAllOrder(this.takingDeliveryService.newTakingDelivery).subscribe(data =>
         this.takingDeliveryService.listTakingDelivery = data)
-      alert(" עודכן בהצלחה")
+      //alert(" עודכן בהצלחה")
       this.rout.navigate(['/Pay'])
 
     }

@@ -211,8 +211,26 @@
                     <a [routerLink]="['/SiteTermCompany']" style="color: black;">אני מסכים לתנאי האתר</a>
                 </div>
                 <button type="submit" class="button btn-lg" style="margin-right: 41.5%;" (click)="addDetailsCompany()"
-                    [disabled]="!myForm.form.valid">אישור</button>
+                    [disabled]="!myForm.form.valid" data-toggle="modal"
+                    data-target="#enter">אישור</button>
             </form>
         </section>
     </div>
 </div>
+
+<!-- הפרטים הוכנסו בהצלחה -->
+<!-- <div class="container mt-3">
+    <div class="modal fade" id="enter" style="margin-top: 7%;">
+        <div class="modal-dialog" style="width: 40%;">
+            <div class="modal-content" style="display: flex; flex-direction: column; min-height: 10vh;">
+                <button type="button" class="close" data-dismiss="modal"
+                    style="margin-right:-95%; margin-top: 1.5%;">×</button> -->
+                    <!-- <div *ngIf="modal1==true"> -->
+
+                <!-- <h2>הפרטים הוכנסו בהצלחה</h2><br> -->
+            <!-- </div> -->
+                <!-- <button type="button" class="button" data-dismiss="modal">אישור</button>
+            </div>
+        </div>
+    </div>
+</div> -->

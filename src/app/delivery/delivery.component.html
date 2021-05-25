@@ -147,13 +147,14 @@
 
                     <input ngx-google-places-autocomplete #placesRef="ngx-places"
                         [(ngModel)]="this.takingDeliveryService.newTakingDelivery.GDNameAddress"
-                        (onAddressChange)="getDeliveryAddress($event)" required name="place1" #place1="ngModel" />
+                        (onAddressChange)="getDeliveryAddress($event)" 
+                         required name="place1" #place1="ngModel"/>
 
                     <div class="divError" style="width:90px;">
                         <input placeholder="כניסה" type="text" #ngGDEntranceBuilding="ngModel"
                             [(ngModel)]="takingDeliveryService.newTakingDelivery.GDEntranceBuilding"
                             class="input4 form-control" id="EntranceBuilding" name="EntranceBuilding"
-                            style="width:90px;">
+                            style="width:90px;" >
                     </div>
 
                     <div class="divError" style="width:90px;">
