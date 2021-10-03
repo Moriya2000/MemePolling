@@ -1,0 +1,23 @@
+{
+  "name": "memepolling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/firestore": "^4.15.1",
+    "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "firebaseui": "^5.0.0",
+    "fs": "0.0.1-security",
+    "node-captcha-generator": "0.0.1",
+    "nodemon": "^2.0.13",
+    "recaptcha-async": "0.0.4",
+    "request": "^2.88.2"
+  }
+}
