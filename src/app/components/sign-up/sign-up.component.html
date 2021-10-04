@@ -1,0 +1,20 @@
+<html>
+<h2 class="title">הרשמה לאתר</h2>
+
+<body dir="rtl">
+    <div class="div1">
+        <form action="/action_page.php" #myForm="ngForm">
+            <div class="div2">
+                <label for="email">כתובת דוא"ל:</label><br>
+                <input class="form-control" type="text" id="Email" name="Email"><br>
+                <label for="password">סיסמא:</label><br>
+                <input class="form-control" type="password" id="Password" name="Password"><br>
+                <label for="password">הכנס את הסיסמא שנית:</label><br>
+                <input class="form-control" type="password" id="Password" name="Password"><br><br>
+            </div>
+            <button type="submit" class="btn-lg" [disabled]="!myForm.valid">כניסה</button>
+        </form>
+    </div>
+</body>
+
+</html>
