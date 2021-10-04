@@ -5,6 +5,8 @@ const request = require('request')
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv').config()
 app.use(bodyParser.json())
+const cors = require('cors')
+app.use(cors())
 
 
 app.get('/', function (req, res) {
@@ -12,7 +14,7 @@ app.get('/', function (req, res) {
 });
 
 const Firestore = require('@google-cloud/firestore');
-const { get } = require('request');
+
 
 const db = new Firestore({
     projectId: 'nodal-descent-326009',
@@ -68,7 +70,12 @@ const voting = async (req, res) => {
 const votingHistory = async (req, res) => {
     let votingHistory = await db.collection("memes").get()
     let votingHistoryObject = []
-    votingHistory.docs.map(doc => votingHistoryObject.push(doc.data()))
+    votingHistory.docs.map(doc => {
+        let x = doc.data()
+        x.votingDate = doc.data().votingDate.toDate().toDateString()
+        votingHistoryObject.push(x)
+    })
+    console.log(votingHistoryObject);
     votingHistoryJson = JSON.stringify(votingHistoryObject)
     fs.writeFile('voting history json.json', votingHistoryJson, 'utf8', (err, data) => {
         if (err)
@@ -150,39 +157,42 @@ const givePermission = async (req, res) => {
 //                           req.body.recaptcha_challenge_field, 
 //                           req.body.recaptcha_response_field);
 // }
-const submit = (req, res) => {
-    // getting site key from client side
-    const response_key = req.body["g-recaptcha-response"];
-    // Put secret key here, which we get from google console
-    const secret_key = process.env.SERVER;
-
-    // Hitting POST request to the URL, Google will
-    // respond with success or error scenario.
-    const url =
-        `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${response_key}`;
-
-    // Making POST request to verify captcha
-    fetch(url, {
-        method: "post",
-    })
-        .then((response) => response.json())
-        .then((google_response) => {
-
-            // google_response is the object return by
-            // google as a response
-            if (google_response.success == true) {
-                //   if captcha is verified
-                return res.send({ response: "Successful" });
-            } else {
-                // if captcha is not verified
-                return res.send({ response: "Failed" });
+const requestFromGoogle = (secret_key, response_key) => {
+    return new Promise((resolve, reject) => {
+        let options = {
+            method: 'POST',
+            json: true,
+            url: `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${response_key}`
+        }
+        request(options, (error, response, body) => {
+            if (error) {
+                console.log(error);
+                reject(error)
+            }
+            else {
+                console.log(body);
+                resolve(body)
             }
         })
-        .catch((error) => {
-            // Some error while verify captcha
-            return res.json({ error });
-        });
-        
+    })
+}
+const submit = async (req, res) => {
+    const response_key = req.body.res;
+    const secret_key = process.env.SERVER;
+    try {
+        let google_response = await requestFromGoogle(secret_key, response_key)
+        if (google_response.success == true) {
+            return res.json({ response: "Successful" });
+        } else {
+            return res.json({ response: "Failed" });
+        }
+    } catch (error) {
+        res.json({err:error})
+    }
+
+
+
+
 }
 
 // app.use("/login/:userName/:password", login)
