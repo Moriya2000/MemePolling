@@ -1,1 +1,33 @@
-<p>memes-voting works!</p>
+<div class="divImg" *ngIf="generalService.memes!=undefined">
+    <input type="radio" name="generalService.memes[0].id" id="sad" class="input-hidden" [value]="generalService.memes[0].id" [(ngModel)]="selectedMeme" />
+    <label for="sad">
+        <img [src]="generalService.memes[0].url" />
+    </label>
+
+    <input type="radio" name="generalService.memes[1].id" id="happy" class="input-hidden" [value]="generalService.memes[1].id" [(ngModel)]="selectedMeme" />
+    <label for="happy">
+        <img [src]="generalService.memes[1].url" />
+    </label><br>
+</div>
+
+
+<div class="divCaptcha">
+    <form action="/submit" method="post">
+        <div class="g-recaptcha" data-sitekey="6LeYlqYcAAAAAH6OQOGRBl0AvVt-pksfTuEimbol"></div><br>
+        <button type="submit" (click)="submit()">שליחה</button>
+    </form>
+</div>
+
+<div class="divClick" *ngIf="clickSuccess">
+    <div class="w3-panel w3-pale-green w3-round-xxlarge w3-border">
+        <h3>תודה!</h3>
+        <p>הצבעתך התקבלה במערכת</p>
+    </div>
+</div>
+<div class="divClick" *ngIf="clickErr">
+    <div class="w3-panel w3-pale-green w3-round-xxlarge w3-border">
+        <h3>אופס,</h3>
+        <p>אי אפשר להצביע פעמיים</p>
+    </div>
+</div>
+

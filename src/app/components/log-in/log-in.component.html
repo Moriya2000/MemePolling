@@ -1,18 +1,30 @@
-<html>
 <h2 class="title">כניסה לאתר</h2>
-
-<body dir="rtl">
-    <div class="div1">
-        <form action="/action_page.php" #myForm="ngForm">
-            <div class="div2">
-                <label for="email">כתובת דוא"ל:</label><br>
-                <input class="form-control" type="text" id="Email" name="Email"><br>
-                <label for="password">סיסמא:</label><br>
-                <input class="form-control" type="password" id="Password" name="Password"><br><br>
-            </div>
-            <button type="submit" class="btn-lg" [disabled]="!myForm.valid">כניסה</button>
-        </form>
+<div class="div1">
+    <form action="/action_page.php" #myForm="ngForm" style="direction: rtl;">
+        <div class="div2">
+            <label for="email">כתובת דוא"ל:</label><br>
+            <input type="email" #ngEmail="ngModel" [(ngModel)]="userName" class="form-control" id="Email" name="Email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+            <div class="error" *ngIf="ngEmail.invalid&&(ngEmail.touched||ngEmail.dirty)">
+                <i *ngIf="ngEmail.errors!.required">זהו שדה חובה</i>
+                <i *ngIf="ngEmail.errors!.pattern">כתובת המייל אינה תקינה</i>
+            </div><br>
+            <label for="password">סיסמא:</label><br>
+            <input type="password" #ngPassword="ngModel" [(ngModel)]="password" class="form-control" name="Password"
+                id="Password" minlength="6" required>
+                <div class="error" *ngIf="ngPassword.invalid&&(ngPassword.touched||ngPassword.dirty)">
+                <i *ngIf="ngPassword.errors!.required">זהו שדה חובה</i>
+                <i *ngIf="ngPassword.errors!.minlength">סיסמא צריכה להכיל 6 ספרות או יותר</i>
+            </div><br><br>
+        </div>
+        <button type="submit" class="btn-lg" (click)="LogIn()" [disabled]="!myForm.valid">כניסה</button><br><br><br>
+    </form>
+    <button type="submit" class="colorButton btn-lg" (click)="LogInWithGoogle()" >
+        כניסה באמצעות Google <img src="../../assets/images/iconG.png"></button>
+</div>
+<div class="divErr" *ngIf="clickErr">
+    <div class="w3-panel w3-pale-green w3-round-xxlarge w3-border">
+        <h3>שגיאה!</h3>
+        <p>משתמש לא קיים במערכת</p>
     </div>
-</body>
-
-</html>
+</div>

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CaptchaComponent } from './captcha.component';
+import { ManagerScreenComponent } from './manager-screen.component';
 
-describe('CaptchaComponent', () => {
-  let component: CaptchaComponent;
-  let fixture: ComponentFixture<CaptchaComponent>;
+describe('ManagerScreenComponent', () => {
+  let component: ManagerScreenComponent;
+  let fixture: ComponentFixture<ManagerScreenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CaptchaComponent ]
+      declarations: [ ManagerScreenComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CaptchaComponent);
+    fixture = TestBed.createComponent(ManagerScreenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

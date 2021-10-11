@@ -1,3 +1,19 @@
-<a href="../../../assets/voting history json.json" download>להורדת קובץ json</a>
-
-
+<div>
+    <table>
+        <tr>
+            <th>תאריך</th>
+            <th>קישור לתמונה</th>
+            <th>מספר הצבעות</th>
+        </tr>
+        <tr *ngFor="let item of votingHistory">
+            <td>{{item.votingDate | date:'dd-MM-yyyy'}}</td>
+            <td><a href="{{item.memeUrl}}">{{item.memeUrl}}</a></td>
+            <td>{{item.votesNumber}}</td>
+        </tr><br>
+    </table> <br><br>
+    <div class="DivDownloadFile">
+        <a class="a" href="../../../assets/voting history json.json" download>
+            לחץ להורדת היסטוריית ההצבעות
+            כקובץ json </a>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<h1>המשתמשים שרשומים לאתר:</h1>
+<div class="div1">
+    <div *ngFor="let item of users">
+        <div class="pppp">
+            <p (click)="givePermission(item.id)">
+                {{item.data.userName}}
+            </p>
+            <span class="tooltiptext">לחץ על מנת לתת למשתמש זה לראות את היסטוריית ההצבעות</span>
+        </div>
+    </div>
+</div>
+<div class="divClick" *ngIf="clickSuccess">
+    <div class="w3-panel w3-pale-green w3-round-xxlarge w3-border">
+        <h3>קיבלנו את בקשתך</h3>
+        <p>משתמש זה קיבל הרשאה לראות את היסטוריית ההצבעות</p>
+    </div>
+</div>
+<div class="divClick" *ngIf="clickErr">
+    <div class="w3-panel w3-pale-green w3-round-xxlarge w3-border">
+        <h3>אופס,</h3>
+        <p>משהו השתבש אנא נסה שנית</p>
+    </div>
+</div>

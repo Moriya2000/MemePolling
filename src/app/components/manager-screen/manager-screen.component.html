@@ -1,0 +1,4 @@
+<div>
+    <button (click)="navToAnotherComponent('history')">לחץ על מנת לראות את היסטוריית ההצבעות</button>
+    <button *ngIf="!generalService.typeUserWithPermission" (click)="navToAnotherComponent('permission')">לחץ על מנת לתת גישת מנהל למשתמש</button>
+</div>

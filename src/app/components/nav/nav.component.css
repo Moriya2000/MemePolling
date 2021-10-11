@@ -1,0 +1,21 @@
+.navbar{
+    background-color: white;
+    position: relative;
+}
+/* עיצוב האותיות והמיקום שלהם */
+.navbar li a{
+    text-align: right;
+    direction: rtl;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 22px;
+    color: #2758c1 !important;
+    font-weight: bold;
+    margin-top: 13px;
+    cursor: pointer;
+    text-align: center;
+}
+/* שינוי הצבע בזמן שעובר על אחד מהקישורים */
+.navbar-nav li a:hover{
+    color:#c1272d;
+    background-color:rgb(177, 232, 248) !important;
+}

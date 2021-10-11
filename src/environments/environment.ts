@@ -6,7 +6,7 @@ export const environment = {
   production: false,
    firebaseConfig : {
     apiKey: "AIzaSyBTIeMJUvoNWoJKDQ2w3iYLY4ccHytmFIc",
-    authDomain: "memepolling.firebaseapp.com",
+    authDomain: "memepollingcloudfunctions.web.app",
     projectId: "memepolling",
     storageBucket: "memepolling.appspot.com",
     messagingSenderId: "536989833671",

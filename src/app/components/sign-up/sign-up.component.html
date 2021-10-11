@@ -1,20 +1,36 @@
-<html>
 <h2 class="title">הרשמה לאתר</h2>
+<div class="div1">
+    <form action="/action_page.php" #myForm="ngForm" style="direction: rtl;">
+        <div class="div2">
+            <label for="email">כתובת דוא"ל:</label><br>
+            <input type="email" #ngEmail="ngModel" [(ngModel)]="userName" class="form-control" id="Email" name="Email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+            <div class="error" *ngIf="ngEmail.invalid&&(ngEmail.touched||ngEmail.dirty)">
+                <i *ngIf="ngEmail.errors!.required">זהו שדה חובה</i>
+                <i *ngIf="ngEmail.errors!.pattern">כתובת המייל אינה תקינה</i>
+            </div><br>
+            <label for="password">סיסמא:</label><br>
+            <input type="password" #ngPassword="ngModel" [(ngModel)]="password" class="form-control" name="Password"
+                id="Password" minlength="6" required>
+            <div class="error" *ngIf="ngPassword.invalid&&(ngPassword.touched||ngPassword.dirty)">
+                <i *ngIf="ngPassword.errors!.required">זהו שדה חובה</i>
+                <i *ngIf="ngPassword.errors!.minlength">סיסמא צריכה להכיל 6 ספרות או יותר</i>
+            </div><br>
+            <label for="password">הכנס את הסיסמא שנית:</label><br>
+            <input type="password" #ngConfirmPassword="ngModel" [(ngModel)]="confirmPassword!" name="confirmPassword"
+              id="confirmPassword" class="form-control" pattern="{{ ngPassword.value }}" required/>
+            <div class="error" *ngIf="ngConfirmPassword.invalid && (ngConfirmPassword.touched||ngConfirmPassword.dirty)">
+              <i *ngIf="ngConfirmPassword.errors!.required">זהו שדה חובה</i>
+              <i *ngIf="ngConfirmPassword.errors!.pattern">לא תואם לסיסמא</i>
+            </div><br>
+        </div>
+        <button type="submit" class="btn-lg" (click)="SignUp()" [disabled]="!myForm.valid">כניסה</button>
+    </form>
+</div>
 
-<body dir="rtl">
-    <div class="div1">
-        <form action="/action_page.php" #myForm="ngForm">
-            <div class="div2">
-                <label for="email">כתובת דוא"ל:</label><br>
-                <input class="form-control" type="text" id="Email" name="Email"><br>
-                <label for="password">סיסמא:</label><br>
-                <input class="form-control" type="password" id="Password" name="Password"><br>
-                <label for="password">הכנס את הסיסמא שנית:</label><br>
-                <input class="form-control" type="password" id="Password" name="Password"><br><br>
-            </div>
-            <button type="submit" class="btn-lg" [disabled]="!myForm.valid">כניסה</button>
-        </form>
+<div class="divErr" *ngIf="clickErr">
+    <div class="w3-panel w3-pale-green w3-round-xxlarge w3-border">
+        <h3>אופס,</h3>
+        <p>משהו השתבש אנא נסה שנית</p>
     </div>
-</body>
-
-</html>
+</div>

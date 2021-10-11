@@ -8,6 +8,7 @@
     float: left;
     width: 100%;
     margin-top: 2%;
+    margin-bottom: 3%;
 }
 .div2{
     margin-right: auto;
@@ -29,4 +30,30 @@ button{
     font-weight: bold;
     font-size:1.4vw;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: black;
+    color: white;
+    direction: rtl;
 }
+img{
+    width: 20%;
+    height: 20%;
+}
+.colorButton{
+    background-color: white;
+    border-style: dotted;
+    color: black;
+}
+.error
+{
+    width: 100%;
+    background-color: white;
+    font-weight: bold;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:1.2vw;
+    color: rgb(19, 143, 226);
+}
+.divClick{
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
